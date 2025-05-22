@@ -17,17 +17,27 @@ export default function HomeHero() {
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const carouselApi = React.useRef<CarouselApi>(null);
 
-  React.useEffect(() => {
-    if (carouselApi.current) {
-      carouselApi.current.scrollTo(currentSlide);
-    }
-  }, [currentSlide]);
-
   const heroImages = [
     "/hero/1120_HSMC_1_compress.webp",
     "/hero/1301 C3_compress.webp",
     "/hero/SSM327 Cherry Street_compress.webp",
   ];
+
+  // Auto-advance slides
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(timer); // Cleanup on unmount
+  }, [heroImages.length]);
+
+  // Update carousel position when slide changes
+  React.useEffect(() => {
+    if (carouselApi.current) {
+      carouselApi.current.scrollTo(currentSlide);
+    }
+  }, [currentSlide]);
 
   return (
     <section className="relative w-full">
