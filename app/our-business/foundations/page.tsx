@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Buildings() {
+export default function Foundations() {
   return (
     <main className="min-h-screen">
       <Header />
@@ -12,14 +12,13 @@ export default function Buildings() {
         <div className="relative max-w-[1690px] w-full h-[744px] mx-auto">
           <Image
             src="/our-business/heroimageofbusiness.jpg"
-            alt="Buildings Hero"
+            alt="Foundations Hero"
             fill
             className="object-cover"
             priority
           />
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
-          {/* Overlay boxes - First Row */}
           {/* Overlay boxes - First Row */}
           <div className="absolute top-0 left-0 right-0 w-full">
             <div className="flex justify-center">
@@ -28,9 +27,10 @@ export default function Buildings() {
                 <h3 className="text-3xl font-semibold">Our Business</h3>
               </div>
 
-              {/* Second box - Buildings */}
-              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white">
-                <h3 className="text-3xl font-semibold">Buildings</h3>
+              {/* Second box - Foundations */}
+              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5]/80 text-black">
+                <h3 className="text-3xl font-semibold">Foundations</h3>
+                
               </div>
 
               {/* Third box - Black transparent */}
@@ -47,6 +47,7 @@ export default function Buildings() {
               <Link href="/our-business">
                 <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5] text-[#595957] transition-colors duration-300 hover:bg-[#D5D4D5]/60">
                   <h3 className="text-[1.50rem] font-semibold">◄ back to Our Business</h3>
+                 
                 </div>
               </Link>
 
