@@ -29,8 +29,10 @@ export default function RailwayWorks() {
 
               {/* Second box - Railway Works */}
               <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white">
-                <h3 className="text-3xl font-semibold">Railway & Associated Works</h3>
-                
+                <h3 className="text-3xl font-semibold">
+                  Railway &<br />
+                  Associated Works
+                </h3>
               </div>
 
               {/* Third box - Black transparent */}
@@ -46,8 +48,9 @@ export default function RailwayWorks() {
               {/* Fourth box - Back to Business */}
               <Link href="/our-business">
                 <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5] text-[#595957] transition-colors duration-300 hover:bg-[#D5D4D5]/60">
-                  <h3 className="text-[1.50rem] font-semibold">◄ back to Our Business</h3>
-                  
+                  <h3 className="text-[1.50rem] font-semibold">
+                    ◄ back to Our Business
+                  </h3>
                 </div>
               </Link>
 

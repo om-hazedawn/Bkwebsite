@@ -101,8 +101,8 @@ export default function OurBusiness() {
               <Link href="/our-business/railway-works">
                 <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
                   <h3 className="text-3xl font-semibold">
-                    Railway & Associated Works
-                  </h3>
+                   Railway &<br/>Associated Works
+                 </h3>
                   <div className="absolute top-4 right-5 w-8 h-8">
                     <Image
                       src="/our-business/white_co.webp"
