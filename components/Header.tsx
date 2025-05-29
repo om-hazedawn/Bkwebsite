@@ -44,7 +44,7 @@ export default function Header() {
           <Image src="/logo.png" alt="Build King Logo" width={200} height={84} priority />
         </Link>
         <nav className="hidden md:flex space-x-8">
-          <Link href="/about-us/who-we-are" className="nav-link text-xl text-gray-400">
+          <Link href="/about-us" className="nav-link text-xl text-gray-400">
             {t.header.aboutUs}
           </Link>
           <Link href="/our-business" className="nav-link text-xl text-gray-400">
