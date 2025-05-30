@@ -20,35 +20,7 @@ const timelineData = [
     year: "2011",
     description:
       "Awarded Wan Chai Development Phase II - Central Wan Chai Bypass over MTR Tsuen Wan Line",
-    image: "/about-us/milestone/2010.jpg",
-  },
-  {
-    year: "2010",
-    description:
-      "Achieved Group C status in all 5 categories of works in the List of Approved Contractors for Public Works",
-    image: "/about-us/milestone/2010.jpg",
-  },
-  {
-    year: "2004",
-    description:
-      "The Group was listed in The Stock Exchange of Hong Kong (Stock code 240)",
-    image: "/about-us/milestone/2004.jpg",
-  },
-  {
-    year: "2002",
-    description: "Acquisition of Kier Hong Kong Limited",
-    image: "/about-us/milestone/2002.jpg",
-  },
-  {
-    year: "1995",
-    description: "Acquisition of Leader Civil Engineering Corporation Limited",
-    image: "/about-us/milestone/1995.jpg",
-  },
-  {
-    year: "1980",
-    description:
-      "Formation of Wai Kee C&T as a Site Formation Works Contractors",
-    image: "/about-us/milestone/1980.jpg",
+    image: "/about-us/milestone/2011.jpg",
   },
 ];
 
@@ -183,59 +155,37 @@ export default function AboutUs() {
         );
       case "milestones":
         return (
-          <div className="mx-auto max-w-[1200px] relative py-25">
-            <div
-              className="absolute w-[1px] bg-black left-1/2 -translate-x-1/2"
-              style={{ top: "-8rem", bottom: "-8rem" }}
-            />
-            {timelineData.map((item, idx) => (
-              <div key={idx} className="relative mb-60">
-                <div className="flex justify-center">
-                  <div className="flex justify-between items-center w-full max-w-[900px]">
-                    {/* Image Side */}
-                    <div
-                      className={`absolute ${
-                        idx % 2 === 0
-                          ? "left-1/2"
-                          : "left-1/2 -translate-x-[306px]"
-                      }`}
-                    >
-                      {/* Timeline dot positioned at corner */}
-                      <div
-                        className={`absolute ${
-                          idx % 2 === 0
-                            ? "left-0 -translate-x-[10px]"
-                            : "right-0 translate-x-[10px]"
-                        } -top-[10px]`}
-                      >
-                        <div className="w-5 h-5 bg-[#D0374C] rounded-full border-2 border-white z-10" />
-                      </div>
+          <div className="mx-auto max-w-[1200px]">
+            <div className="relative border-l-4 border-gray-300 mt-10 space-y-24 left-1/2">
+              {timelineData.map((item, idx) => (
+                <div key={idx} className="relative">
+                  {/* Dot */}
+                  <div className="absolute -left-[0.65rem] top-[150px] w-4 h-4 bg-red-500 rounded-full border-2 border-white z-10" />
 
+                  {/* Content and Image Container */}
+                  <div className={`flex items-center gap-8 ${idx % 2 === 1 ? 'flex-row' : 'flex-row-reverse'}`}>
+                    {/* Content */}
+                    <div className={`bg-white rounded-lg shadow-md p-6 w-[400px] ${idx % 2 === 0 ? '-ml-[450px]' : 'ml-8'}`}>
+                      <h2 className="text-2xl font-bold text-teal-600 mb-3">
+                        {item.year}
+                      </h2>
+                      <p className="text-gray-700 text-lg">{item.description}</p>
+                    </div>
+
+                    {/* Image */}
+                    <div className={`${idx % 2 === 0 ? 'ml-8' : '-ml-[450px]'}`}>
                       <Image
                         src={item.image}
                         alt={`Timeline ${item.year}`}
                         width={306}
                         height={306}
+                        className="rounded-md"
                       />
-                    </div>
-
-                    {/* Content Side */}
-                    <div
-                      className={`w-[400px] ${idx % 2 === 0 ? "" : "ml-auto"}`}
-                    >
-                      <div className="py-6 mt-12">
-                        <h2 className="text-2xl font-bold text-teal-600 mb-3">
-                          {item.year}
-                        </h2>
-                        <p className="text-gray-700 text-lg">
-                          {item.description}
-                        </p>
-                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         );
       case "management":
@@ -319,13 +269,7 @@ export default function AboutUs() {
             />
           </div>
         </div>
-        <div
-          className={`container mx-auto mb-20 ${
-            selectedSection === "milestones" ? "mt-48" : "mt-0"
-          }`}
-        >
-          {renderContent()}
-        </div>
+        <div className="container mx-auto mb-20">{renderContent()}</div>
       </section>
       <Footer />
     </main>
