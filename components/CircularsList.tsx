@@ -28,10 +28,9 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
       setLoading(true);
       setError(null);
       try {
-        if (initialYear == '')
-          initialYear = '2025'
+        const yearToFetch = initialYear === '' ? '2025' : initialYear;
         // Always fetch all circulars, then filter based on initialYear
-        const result = await getCircularsCollections(initialYear); 
+        const result = await getCircularsCollections(yearToFetch); 
         console.log('Fetched circulars data:', result);
         if (result && Array.isArray(result.data)) {
           let processedCirculars = result.data.filter((c: CircularData) => c.Date && c.File);

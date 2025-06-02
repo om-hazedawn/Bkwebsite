@@ -64,7 +64,7 @@ interface BusinessData {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  localizations: any[]; // Define more specifically if needed
+  localizations: { id: number; locale: string; }[]; // Define more specifically if needed
 }
 
 // Props for the component

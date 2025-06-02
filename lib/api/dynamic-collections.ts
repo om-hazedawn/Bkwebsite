@@ -19,7 +19,7 @@ export async function getDynamicCollections(collection: string) {
       const data = await res.json();
       // Sort data by Title in descending order
       if (data && Array.isArray(data.data)) {
-        data.data.sort((a: any, b: any) => {
+        data.data.sort((a: { Title: string }, b: { Title: string }) => {
           if (a.Title && b.Title) {
             return b.Title.localeCompare(a.Title);
           }

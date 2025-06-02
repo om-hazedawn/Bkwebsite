@@ -2,9 +2,8 @@
 
 import * as React from 'react';
 import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from '@/components/ui/carousel';
-import setupFade from 'embla-carousel-fade';
+import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from '@/components/ui/carousel';
+// import setupFade from 'embla-carousel-fade';
 
 interface ImageSlideshowProps {
   images: Array<{
@@ -18,7 +17,7 @@ interface ImageSlideshowProps {
 export function ImageSlideshow({ images }: ImageSlideshowProps) {
   const [api, setApi] = React.useState<CarouselApi>();
   const [current, setCurrent] = React.useState(0);
-  const [count, setCount] = React.useState(0);
+  // const [count, setCount] = React.useState(0);
   const intervalRef = React.useRef<NodeJS.Timeout | null>(null);
 
   React.useEffect(() => {
@@ -26,7 +25,7 @@ export function ImageSlideshow({ images }: ImageSlideshowProps) {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
+    // setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
     api.on('select', () => {
@@ -50,7 +49,7 @@ export function ImageSlideshow({ images }: ImageSlideshowProps) {
   }, [api]);
 
   return (
-    <Carousel setApi={setApi} className="w-full max-w-xs mx-auto relative" plugins={[setupFade()]}>
+    <Carousel setApi={setApi} className="w-full max-w-xs mx-auto relative" >
       <CarouselContent>
         {images.map((image, index) => (
           <CarouselItem key={index}>

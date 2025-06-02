@@ -36,7 +36,7 @@ const DynamicsFileList: React.FC<{ collections: string }> = ({ collections }) =>
           // Filter out items that don't have a File, as they cannot be displayed as a link
           // The API now sorts by Title, so no client-side sorting by Title is needed here.
           // If Date-based sorting or filtering were still required, it would be done here.
-          let processedDynamics = result.data.filter((c: DynamicData) => c.File);
+          const processedDynamics = result.data.filter((c: DynamicData) => c.File);
 
           setDynamics(processedDynamics);
         } else {

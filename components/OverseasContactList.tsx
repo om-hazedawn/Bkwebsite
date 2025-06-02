@@ -24,7 +24,13 @@ export interface CompanyData {
     caption: string | null;
     width: number;
     height: number;
-    formats: any;
+    formats: Record<string, {
+      url: string;
+      width: number;
+      height: number;
+      size: number;
+      mime: string;
+    }>;
     hash: string;
     ext: string;
     mime: string;
@@ -32,12 +38,12 @@ export interface CompanyData {
     url: string;
     previewUrl: string | null;
     provider: string;
-    provider_metadata: any;
+    provider_metadata?: null;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
   };
-  localizations: any[];
+  localizations: { id: number; locale: string; }[];
 }
 
 interface OverseasContactListProps {

@@ -20,7 +20,7 @@ export interface NoticeEntry {
   publishedAt: string;
   locale: string;
   Sections: NoticeSectionsData; // Updated to use the new interface
-  localizations: any[]; // Define further if structure is known
+  localizations: { id: number; locale: string; }[]; // Define further if structure is known
 }
 
 // This represents the overall API response structure for a single notice entry
