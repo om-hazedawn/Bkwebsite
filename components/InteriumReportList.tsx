@@ -18,11 +18,6 @@ interface ReportData {
   // Add other relevant report properties if needed
 }
 
-interface InteriumReportResponse {
-  data: ReportData[];
-  meta: any; // You can define a more specific type for meta if needed
-}
-
 const YEAR_RANGES = {
   'All': { start: 0, end: 9999 }, // Reinstated 'All' range
   '2019-2026': { start: 2018, end: 2024 },
@@ -86,7 +81,7 @@ const InteriumReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
     if (!allReports.length) return;
 
     const currentRange = YEAR_RANGES[selectedRange];
-    let newFilteredReports = allReports.filter(report => {
+    const newFilteredReports = allReports.filter(report => {
       if (selectedRange === 'All') {
         return true; // Include all reports if 'All' is selected
       }
@@ -112,10 +107,6 @@ const InteriumReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
 
     setFilteredReports(newFilteredReports);
   }, [selectedRange, allReports]);
-
-  const handleRangeChange = (rangeKey: YearRangeKey) => {
-    setSelectedRange(rangeKey);
-  };
 
   if (loading) {
     return <p>Loading reports...</p>;
