@@ -28,9 +28,10 @@ const AnnouncementsList: React.FC<{ initialYear: string }> = ({ initialYear }) =
       setLoading(true);
       setError(null);
       try {
-        const yearToFetch = initialYear === '' ? '2025' : initialYear;
+        if (initialYear == '')
+          initialYear = '2025'
         // Always fetch all announcements, then filter based on initialYear
-        const result = await getAnnouncementCollections(yearToFetch); 
+        const result = await getAnnouncementCollections(initialYear); 
         console.log('Fetched announcements data:', result);
         if (result && Array.isArray(result.data)) {
           let processedAnnouncements = result.data.filter((c: AnnouncementData) => c.Date && c.File);

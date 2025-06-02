@@ -1,4 +1,4 @@
-export async function getInterimReportCollections() {
+export async function getInteriumReportCollections() {
     const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { getAnnualReportCollections } from '@/lib/api/annual-report-collections'; // Assuming this is the correct path
+import { getInteriumReportCollections } from '@/lib/api/interium-report-collections'; // Assuming this is the correct path
 
 interface ReportFile {
   id: number;
@@ -18,21 +18,21 @@ interface ReportData {
   // Add other relevant report properties if needed
 }
 
-interface AnnualReportResponse {
+interface InteriumReportResponse {
   data: ReportData[];
   meta: any; // You can define a more specific type for meta if needed
 }
 
 const YEAR_RANGES = {
   'All': { start: 0, end: 9999 }, // Reinstated 'All' range
-  '2018-2024': { start: 2018, end: 2024 },
-  '2011-2017': { start: 2011, end: 2017 },
+  '2019-2026': { start: 2018, end: 2024 },
+  '2011-2018': { start: 2011, end: 2017 },
   '2001-2010': { start: 2001, end: 2010 },
 };
 
 type YearRangeKey = keyof typeof YEAR_RANGES;
 
-const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
+const InteriumReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
   const [allReports, setAllReports] = useState<ReportData[]>([]);
   const [filteredReports, setFilteredReports] = useState<ReportData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -56,7 +56,7 @@ const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
         // For this example, we'll use the local JSON data.
         // You might need to adjust the path depending on where you place the JSON file
         // relative to your public folder or how you serve static assets.
-        const result = await getAnnualReportCollections();
+        const result = await getInteriumReportCollections();
         console.log("Results");
         console.log(result);
         if (result && Array.isArray(result.data)) {
@@ -137,7 +137,7 @@ const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* <h1 className="text-2xl font-bold mb-4">Annual Reports</h1> */}
+      {/* <h1 className="text-2xl font-bold mb-4">Interium Reports</h1> */}
       
       {/* <div className="mb-4 flex space-x-2">
         {(Object.keys(YEAR_RANGES) as YearRangeKey[]).map(rangeKey => (
@@ -176,4 +176,4 @@ const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
   );
 };
 
-export default AnnualReportList;
+export default InteriumReportList;

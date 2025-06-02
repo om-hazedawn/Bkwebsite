@@ -2,8 +2,10 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
+import { getWhoWeAre } from "@/lib/api/who-we-are";
+import { BoxMessageItem } from "@/components/BoxMessage";
+import BoxMessage from "@/components/BoxMessage";
 
 const timelineData = [
   {
@@ -52,8 +54,38 @@ const timelineData = [
   },
 ];
 
+interface WhoWeAreData { 
+  data: {
+    PageTitle: string;
+    BoxMessageBlack: BoxMessageItem[];
+    BoxMessageTurquoise: BoxMessageItem[];
+    BoxMessageRed: BoxMessageItem[];
+    Message: BoxMessageItem[];
+    Detail: BoxMessageItem[];
+    locale: string;
+    MainImage: {"url": string};
+    SecondBannerBackground: {"url": string};
+    localizations: WhoWeAreData[];
+  };
+}
+
 export default function AboutUs() {
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("who-we-are");
+  const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getWhoWeAre();
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setWhoWeAreData(data);
+    };
+    fetchData();
+  }, []);
+
+  if (!whoWeAreData) {
+    return <div>Loading...</div>; // Or a more sophisticated loading component
+  }
 
   const renderContent = () => {
     switch (selectedSection) {
@@ -62,7 +94,7 @@ export default function AboutUs() {
           <div>
             <div className="relative max-w-[1690px] w-full h-[740px] mx-auto">
               <Image
-                src="/about-us/who-we-are/BK_About_Us.png"
+                src={cmsBaseUrl + whoWeAreData.data.MainImage.url}
                 alt="Aerial view of construction site"
                 fill
                 className="object-cover"
@@ -76,9 +108,7 @@ export default function AboutUs() {
                   {/* First box - with shadow */}
                   <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-starttext-white transition-colors text-white bg-[#838182]/50">
                     <h3 className="text-3xl font-normal">
-                      <strong>Undertake</strong>
-                      <br />
-                      all types of construction works
+                      <BoxMessage items={whoWeAreData.data.BoxMessageBlack}></BoxMessage>
                     </h3>
                   </div>
 
@@ -87,20 +117,13 @@ export default function AboutUs() {
                   <div className="relative w-[370px] h-[370px]"></div>
 
                   {/* Third box - with bg-[#e63946] */}
-                  <Link href="/our-business/environmental">
-                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#E63946D6] text-white">
-                      <h3 className="text-3xl font-normal">
-                        We provide
-                        <br />
-                        <strong>
-                          full project
-                          <br />
-                          life-cycle
-                        </strong>{" "}
-                        services
-                      </h3>
-                    </div>
-                  </Link>
+                  
+                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#E63946D6] text-white">
+                    <h3 className="text-3xl font-normal">
+                    <BoxMessage items={whoWeAreData.data.BoxMessageRed}></BoxMessage>
+                    </h3>
+                  </div>
+                  
                 </div>
               </div>
 
@@ -111,17 +134,13 @@ export default function AboutUs() {
                   <div className="relative w-[370px] h-[370px]"></div>
 
                   {/* Second box - with bg-[#35b3a7] */}
-                  <Link href="/our-business/civil-works">
-                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start text-white bg-[#35B3A7D6]">
-                      <h3 className="text-3xl font-normal">
-                        We pursue
-                        <br />
-                        <strong>teamwork</strong>
-                        <br />
-                        and <strong>trust</strong>
-                      </h3>
-                    </div>
-                  </Link>
+                  
+                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start text-white bg-[#35B3A7D6]">
+                    <h3 className="text-3xl font-normal">
+                    <BoxMessage items={whoWeAreData.data.BoxMessageTurquoise}></BoxMessage>
+                    </h3>
+                  </div>
+                  
 
                   {/* Third box - with bg-[#e63946] */}
                   <div className="relative w-[370px] h-[370px]"></div>
@@ -130,58 +149,41 @@ export default function AboutUs() {
             </div>
             <div className="relative mx-auto w-[1535px] h-[300px] group">
               <Image
-                src="/about-us/who-we-are/about_us_frame.png"
+                src={cmsBaseUrl + whoWeAreData.data.SecondBannerBackground.url}
                 alt="About us frame"
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black/20">
-                <p className="text-white text-4xl w-[1300px] font-normal">
-                  <strong>Build King</strong> has developed a unique competitive
-                  edge - a lean management adopting an entrepreneurial spirit
-                  that enable quick decision making and rapid responses for
-                  result oriented.
-                </p>
+                <div className="text-white text-4xl w-[1300px] font-normal">
+                  <BoxMessage items={whoWeAreData.data.Message}></BoxMessage>
+                </div>
               </div>
             </div>
 
             {/* Who We Are Section */}
             <div className="mt-16 max-w-[1300px] mx-auto">
-              <h2 className="text-4xl font-bold mb-6 text-[#838182]">
-                Who We Are
+              {/* <h2 className="text-4xl font-bold mb-6 text-[#838182]">
+                {Detail[0]?.children[0]?.text}
               </h2>
-              <h3 className="text-3xl mb-6 text-[#838182]">Our Mission</h3>
+              <h3 className="text-3xl mb-6 text-[#838182]">{Detail[2]?.children[0]?.text}</h3>
               <div className="text-[#838182] space-y-6">
                 <p>
-                  Build King focuses on becoming one of the top construction
-                  companies in Hong Kong and the preferred partner for
-                  customers, subcontractors, suppliers and joint ventures. To
-                  achieve these goals, we have developed a unique competitive
-                  edge - a lean management with an entrepreneurial style that
-                  enable quick decision making and rapid responses. Our highly
-                  motivated management team includes more than 300 professional
-                  engineers and commercial specialists and is supported by over
-                  3000 other staff;
+                  {Detail[6]?.children[0]?.text}
                 </p>
                 <p>
-                  We offer comprehensive construction service in 3 major areas -
-                  civil engineering, buildings and environmental. With a
-                  proactive management philosophy and multidisciplinary
-                  competency, we bring broad-based skills to bear on great
-                  variety of projects in both the private and public sectors.
+                  {Detail[9]?.children[0]?.text}
                 </p>
                 <p>
-                  Our services cover full project life-cycle including: design,
-                  construction, testing and commissioning, maintenance, facility
-                  management and operation. We undertake all types of
-                  construction works with contract sums in excess of billions of
-                  Hong Kong dollars.
+                  {Detail[12]?.children[0]?.text}
                 </p>
-              </div>
+              </div> */}
+              <BoxMessage items={whoWeAreData.data.Detail}></BoxMessage>
             </div>
           </div>
         );
       case "milestones":
+
         return (
           <div className="mx-auto max-w-[1200px] relative py-25">
             <div
