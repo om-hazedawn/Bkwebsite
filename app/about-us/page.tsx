@@ -240,9 +240,64 @@ export default function AboutUs() {
         );
       case "management":
         return (
-          <div className="mx-auto">
-            <h2 className="text-2xl font-bold mb-6">Our Management</h2>
-            <p>Content for Our Management section will go here</p>
+          <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl font-normal mb-12 text-[#838182]">
+              Board of Directors
+            </h2>
+
+            <div className="flex flex-col md:flex-row md:gap-16 lg:gap-24">
+              <div>
+                <h3 className="text-[20px] font-bold mb-4 text-[#0099a7]">
+                  EXECUTIVE DIRECTORS
+                </h3>
+                <div className="grid grid-cols-1 gap-4 text-lg text-[#838182]">
+                  <p>ZEN Wei Peu, Derek (Chairman)</p>
+                  <p>LUI Yau Chun, Paul (Chief Operating Officer)</p>
+                  <p>TSUI Wai Tim</p>
+                  <p>CHAN Chi Ming, Benson</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-[20px] font-bold mb-4 text-[#0099a7]">
+                  NON-EXECUTIVE DIRECTORS
+                </h3>
+                <div className="grid grid-cols-1 gap-4 text-lg text-[#838182]">
+                  <p>GEM David Howard</p>
+                  <p>CHAN Chi Hung, Anthony</p>
+                  <p>CHANG Kam Chuen, Desmond</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-[20px] font-bold mb-4 mt-12 text-[#0099a7]">
+                INDEPENDENT NON-EXECUTIVE DIRECTORS
+              </h3>
+              <div className="grid grid-cols-1 gap-4 text-lg text-[#838182]">
+                <p>HO Tai Wai, David</p>
+                <p>LING LEE Ching Man, Eleanor</p>
+                <p>LO Yiu Ching, Dantes</p>
+                <p>NG Cheuk Hei, Shirley</p>
+              </div>
+            </div>
+
+            <div>
+                <h3 className="text-[20px] font-bold mb-4 mt-12 text-[#0099a7]">SENIOR MANAGEMENT</h3>
+                <div className="grid grid-cols-1 gap-4 text-lg text-[#838182]">
+                  <p>CHAN Wing Ho, Vincent - Civil</p>
+                  <p>CHEUNG Siu Lun - Senior Consultant</p>
+                  <p>FONG Wai Pan, Felix - Building (Head of Building)</p>
+                  <p>KWOK Chi Ko, Enmale (Head of Commercial)</p>
+                  <p>LEE Man Wai - Estimating</p>
+                  <p>LIU Hoi Yu, Paul - Building</p>
+                  <p>LIU Sing Pang, Simon - Civil</p>
+                  <p>SO Yiu Wing, Wilfred - Civil (Head of Civil)</p>
+                  <p>TSE Mau Kay, Keith - Civil</p>
+                  <p>YIU Cheuk Hung, Kenneth - Building</p>
+                  <p>YU Man Kit, Andy - Civil</p>
+                </div>
+              </div>
           </div>
         );
       default:
@@ -253,7 +308,7 @@ export default function AboutUs() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="container mx-auto py-12">
+      <section className="container mx-auto py-12 bg-[#F1F1F1]">
         <div className="flex flex-wrap justify-center gap-8 mb-16">
           <div
             className="cursor-pointer"
