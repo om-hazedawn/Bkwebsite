@@ -2,8 +2,33 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { getBuilding } from "@/lib/api/building"; // Added import
+import { SectionItem } from '@/components/Sections';
+import Sections from '@/components/Sections'; // Added import for Sections
+import DynamicBusinessList from "@/components/DynamicBusinessList"; // Added import for CircularsList
 
-export default function Buildings() {
+interface BuildingsPageProps {
+  searchParams?: {
+    collections?: string;
+  };
+}
+
+export default async function Buildings({ searchParams }: BuildingsPageProps) {
+
+  let buildingSectionsData: SectionItem[] = []; // Added to store fetched building sections
+  const awaitedSearchParams = await searchParams; // Await searchParams
+  const selectedCollections = awaitedSearchParams?.collections || '';
+
+  try {
+    const buildingResponse = await getBuilding();
+    if (buildingResponse) {
+      buildingSectionsData = buildingResponse.data.Sections.sections;
+    }
+  } catch (error) {
+    console.error("Failed to load notice sections:", error);
+    // Optionally, set a default or show an error message to the user
+  }
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -32,6 +57,7 @@ export default function Buildings() {
               <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white">
                 <h3 className="text-3xl font-semibold">Buildings</h3>
               </div>
+
 
               {/* Third box - Black transparent */}
               <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start">
@@ -66,67 +92,24 @@ export default function Buildings() {
         </div>
       </section>
 
-      <section className="max-w-[1050px] mx-auto py-16">
-        <h2 className="text-4xl font-semibold mb-6 text-gray-500">Buildings</h2>
-        <p className="text-[#0099a7] font-bold">
-          St. Paul&apos;s Hospital Redevelopment - Demolition of Existing Old Block
-          and Structures, Construction of a New <br />
-          Basement and Extension of Block A, Alteration and Addition Works to
-          Block A, Block B and Basement D
-        </p>
-        <div className="relative w-[800px] h-[600px] mt-8 ml-0">
-          <Image
-            src="/our-business/subimage.jpg"
-            alt="Building Subimage"
-            fill
-            className="object-cover"
-          />
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              {/* Buildings section */}
+              <h2 className="text-2xl font-medium text-gray-700 mb-6">Buildings</h2>
+              <Sections initialSections={buildingSectionsData} basePath="/our-business/buildings" />
+            </div>
+            <div>
+              {selectedCollections === '' ? (
+                <DynamicBusinessList collections="addition-and-alteration-collections" />
+              ) : (
+                <DynamicBusinessList collections={selectedCollections} />
+              )}
+            </div>
+          </div>
         </div>
-        <h3 className="text-2xl font-semibold mt-6 mb-3 text-gray-500">
-          Project Name
-        </h3>
-        <p className="text-gray-500">
-          St. Paul&apos;s Hospital Redevelopment - Demolition of Existing Old Block
-          and Structures, Construction of a New <br />
-          Basement and Extension of Block A, Alteration and Addition Works to
-          Block A, Block B and Basement D
-        </p>
-        <h3 className="text-2xl font-semibold mt-6 mb-3 text-gray-500">
-          Client{" "}
-        </h3>
-        <p className="text-gray-500">
-          The Mother Superior of the Soeurs De Saint Paul De Chartres (Hong
-          Kong)
-        </p>
-        <h3 className="text-2xl font-semibold mt-6 mb-3 text-gray-500">
-          Contract Period
-        </h3>
-        <p className="text-gray-500">10 October 2017 - 25 September 2024</p>
-        <h3 className="text-2xl font-semibold mt-6 mb-3 text-gray-500">
-          Project Summary
-        </h3>
-        <p className="text-gray-500">
-          St. Paul&apos;s Hospital was founded in 1898 by the Sisters of St. Paul de
-          Chartres. Located in the heart of Causeway <br />
-          Bay, this comprehensive, acute private hospital provides around 500
-          beds across over 20 departments, with <br /> ongoing redevelopment to
-          expand its facilities and diversify services.
-          <br />
-          This project involves the construction of a new basement and extension
-          of Block A, alteration and addition works
-          <br />
-          to Blocks A, B, and Basement D, conversion of an open car park to a
-          landscaped garden, road widening and paving <br />
-          works at Eastern Hospital Road, and the demolition of an existing old
-          block followed by the construction of a new <br />
-          basement structure and superstructure.
-       </p>
-       <div className="flex justify-end mt-20">
-         <Link href="/our-business" className="text-[#595957] hover:text-[#1aabaf] transition-colors duration-300 mr-64">
-           <span className="text-xl font-semibold">◄ Back</span>
-         </Link>
-       </div>
-     </section>
+      </section>
       <Footer />
     </main>
   );

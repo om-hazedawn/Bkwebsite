@@ -2,8 +2,33 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { getMarineWork } from "@/lib/api/marine-work"; // Added import
+import { SectionItem } from '@/components/Sections';
+import Sections from '@/components/Sections'; // Added import for Sections
+import DynamicBusinessList from "@/components/DynamicBusinessList"; // Added import for CircularsList
 
-export default function MarineWorks() {
+interface MarineWorksPageProps {
+  searchParams?: {
+    collections?: string;
+  };
+}
+
+export default async function MarineWorks({ searchParams }: MarineWorksPageProps) {
+
+  let marineWorksSectionsData: SectionItem[] = []; // Added to store fetched marineWorks sections
+  const awaitedSearchParams = await searchParams; // Await searchParams
+  const selectedCollections = awaitedSearchParams?.collections || '';
+
+  try {
+    const marineWorksResponse = await getMarineWork();
+    if (marineWorksResponse) {
+      marineWorksSectionsData = marineWorksResponse.data.Sections.sections;
+    }
+  } catch (error) {
+    console.error("Failed to load notice sections:", error);
+    // Optionally, set a default or show an error message to the user
+  }
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -60,6 +85,24 @@ export default function MarineWorks() {
               <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start">
                 <h3 className="text-3xl font-semibold text-white"></h3>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              {/* Tunnels section */}
+              <h2 className="text-2xl font-medium text-gray-700 mb-6">Tunnels</h2>
+              <Sections initialSections={marineWorksSectionsData} basePath="/our-business/marine-works" />
+            </div>
+            <div>
+              {selectedCollections === '' ? (
+                <DynamicBusinessList collections="general-marine-works-collecitons" />
+              ) : (
+                <DynamicBusinessList collections={selectedCollections} />
+              )}
             </div>
           </div>
         </div>

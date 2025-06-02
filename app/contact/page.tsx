@@ -1,8 +1,73 @@
+'use client';
+
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import Image from "next/image"
+import Image from "next/image";
+import HongKongContactList, { CompanyData } from "@/components/HongKongContactList";
+import HongKongContactDetail from "@/components/HongKongContactDetail";
+import { getContactHongKongCollections } from "@/lib/api/contact-hong-kong-collections";
+import { useState, useEffect } from "react";
+import OverseasContactList, { CompanyData as OverseasCompanyData } from "@/components/OverseasContactList";
+
+type ContactType = 'hongkong' | 'overseas';
+import OverseasContactDetail from "@/components/OverseasContactDetail";
+import { getContactOverseaCollections } from "@/lib/api/contact-overseas-collections";
 
 export default function Contact() {
+  const [hkCompanies, setHkCompanies] = useState<CompanyData[]>([]);
+  const [hkLoading, setHkLoading] = useState(true);
+  const [hkError, setHkError] = useState<string | null>(null);
+
+  const [overseasCompanies, setOverseasCompanies] = useState<OverseasCompanyData[]>([]);
+  const [overseasLoading, setOverseasLoading] = useState(true);
+  const [overseasError, setOverseasError] = useState<string | null>(null);
+
+  const [selectedContactType, setSelectedContactType] = useState<ContactType>('hongkong');
+
+  useEffect(() => {
+    async function fetchHkData() {
+      try {
+        const data = await getContactHongKongCollections();
+        if (data && data.data) {
+          setHkCompanies(data.data);
+        }
+      } catch (err) {
+        console.error("Error fetching Hong Kong contact data:", err);
+        setHkError("Failed to load Hong Kong contact information.");
+      } finally {
+        setHkLoading(false);
+      }
+    }
+
+    async function fetchOverseasData() {
+      try {
+        const data = await getContactOverseaCollections();
+        if (data && data.data) {
+          setOverseasCompanies(data.data);
+        }
+      } catch (err) {
+        console.error("Error fetching overseas contact data:", err);
+        setOverseasError("Failed to load overseas contact information.");
+      } finally {
+        setOverseasLoading(false);
+      }
+    }
+
+    fetchHkData();
+    fetchOverseasData();
+  }, []);
+
+  if (hkLoading || overseasLoading) {
+    return <div>Loading contact information...</div>;
+  }
+
+  if (hkError) {
+    return <div className="text-red-500">{hkError}</div>;
+  }
+
+  if (overseasError) {
+    return <div className="text-red-500">{overseasError}</div>;
+  }
   return (
     <main className="min-h-screen bg-white">
       <Header />
@@ -16,64 +81,24 @@ export default function Contact() {
             fill
             className="object-cover object-center"
           />
+        </div>
+      </section>
 
-          {/* Red welcome box */}
-          <div className="absolute top-8 right-8 bg-[#e63946] text-white p-6 w-[200px]">
-            <p className="text-sm">Welcome to</p>
-            <p className="font-bold">Build King</p>
-            <p>support</p>
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="lg:w-1/3">
+            <HongKongContactList companies={hkCompanies} onSelect={() => setSelectedContactType('hongkong')} />
+            <OverseasContactList companies={overseasCompanies} onSelect={() => setSelectedContactType('overseas')} />
+          </div>
+          <div className="lg:w-2/3">
+            {selectedContactType === 'hongkong' && <HongKongContactDetail companies={hkCompanies} />}
+            {selectedContactType === 'overseas' && <OverseasContactDetail companies={overseasCompanies} />}
+          </div>
           </div>
         </div>
       </section>
 
-      {/* Contact information section */}
-      <section className="py-8 container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Hong Kong offices */}
-          <div>
-            <h2 className="text-[#35b3a7] text-xl font-medium mb-4">Hong Kong</h2>
-            <ul className="space-y-2 text-gray-600">
-              <li className="flex items-start">
-                <span className="font-medium">Build King Holdings Limited</span>
-                <span className="ml-1">»</span>
-              </li>
-              <li>Build King Civil Engineering Limited</li>
-              <li>Build King Construction Limited</li>
-              <li>Build King Interior & Construction Limited</li>
-              <li>Build King Management Limited</li>
-              <li>Build King (ZENS) Engineering Limited</li>
-              <li>Integral E&M Engineering Limited</li>
-              <li>Integral E&M Contracting Limited</li>
-              <li>Leader Marine Contractors Limited</li>
-              <li>Titan Foundation Limited</li>
-            </ul>
-          </div>
-
-          {/* Company logo and address */}
-          <div className="flex flex-col">
-            <div className="mb-6">
-              <Image src="/logo.png" alt="Build King Logo" width={150} height={45} />
-            </div>
-            <h3 className="font-medium mb-2">Build King Holdings Limited</h3>
-            <p className="text-gray-600 mb-1">6/F., Tower B, Manulife Financial Centre, 223 Wai Yip</p>
-            <p className="text-gray-600 mb-4">Street, Kwun Tong, Kowloon, Hong Kong</p>
-
-            <p className="text-gray-600 mb-1">Email: info@buildking.hk</p>
-            <p className="text-gray-600 mb-1">Tel: (852) - 2272 3680</p>
-            <p className="text-gray-600">Fax: (852) - 2375 3655</p>
-          </div>
-        </div>
-
-        {/* Overseas offices */}
-        <div className="mt-8">
-          <h2 className="text-[#35b3a7] text-xl font-medium mb-4">Overseas</h2>
-          <ul className="space-y-2 text-gray-600">
-            <li>Leader Marine Cont. LLC (U.A.E.)</li>
-            <li>Wai Kee China Construction Co., Ltd. (Shanghai Office)</li>
-            <li>Wuxi Qianhui Sewage Treatment Co., Ltd.</li>
-          </ul>
-        </div>
-      </section>
 
       {/* Contact form section */}
       <section className="py-12 bg-[#00a0a0]">

@@ -32,8 +32,8 @@ export default function TestComponentPage() {
         } else {
           setError('No image data found in the response.');
         }
-      } catch (err: Error) {
-        setError(err.message || 'Failed to fetch data');
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Failed to fetch data');
       } finally {
         setLoading(false);
       }
