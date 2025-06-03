@@ -1,8 +1,23 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image";
 import { useLanguage } from "@/contexts/language-context"
 import { locales } from "@/locales"
+import { BoxMessageItem } from "@/components/BoxMessage";
+import BoxMessage from "@/components/BoxMessage";
+
+interface Image {
+  url: string
+}
+
+interface NewsSectionProps {
+  whatsNewMessage: BoxMessageItem[];
+  whatsNewLinkText: string;
+  whatsNewBoxImg1: Image;
+  whatsNewBoxImg2: Image;
+  whatsNewBoxImg3: Image;
+}
 
 const newsItems = [
   {
@@ -19,11 +34,16 @@ const newsItems = [
   },
 ];
 
-const colorBlocks = ["bg-[#1aabaf]/80", "bg-gray-400", "bg-rose-400"];
+// const colorBlocks = ["bg-[#1aabaf]/80", "bg-gray-400", "bg-rose-400"];
 
-export default function NewsSection() {
+
+
+export default function NewsSection({ whatsNewMessage, whatsNewLinkText, whatsNewBoxImg1, whatsNewBoxImg2, whatsNewBoxImg3 }: NewsSectionProps) {
   const { language } = useLanguage()
   const t = locales[language]
+
+  const colorBlocks = [whatsNewBoxImg1.url, whatsNewBoxImg2.url, whatsNewBoxImg3.url];
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   return (
     <section>
@@ -32,10 +52,11 @@ export default function NewsSection() {
         <div className="w-full md:w-[28%] pr-0 pl-24">
           <div className="h-[168px] md:h-[264px] flex flex-col justify-center">
             <div>
-              <h2 className="text-3xl font-semibold text-gray-700 mb-4">{t.news.whatsNew}</h2>
-              <p className="text-gray-500 text-lg mb-4">{t.news.keepUpToDate}</p>
+              {/* <h2 className="text-3xl font-semibold text-gray-700 mb-4">{t.news.whatsNew}</h2>
+              <p className="text-gray-500 text-lg mb-4">{t.news.keepUpToDate}</p> */}
+              <BoxMessage items={whatsNewMessage} />
               <Link href="/news" className="text-[#35b3a7] font-semibold flex items-center">
-                {t.news.findMoreNews} <span className="ml-1">▶</span>
+                {whatsNewLinkText} <span className="ml-1">▶</span>
               </Link>
             </div>
           </div>
@@ -46,9 +67,13 @@ export default function NewsSection() {
           {/* Colored Blocks */}
           <div className="flex md:flex-col w-[270px] mr-6">
             {colorBlocks.map((color, index) => (
-              <div
+              <Image
                 key={index}
-                className={`${color} w-full h-[178px] md:h-[274px]`}
+                src={cmsBaseUrl + color}
+                alt={`News image ${index + 1}`}
+                width={363}
+                height={363}
+                className="w-full h-[178px] md:h-[274px] object-cover"
               />
             ))}
           </div>
