@@ -56,7 +56,7 @@ export default function NewsSection({ whatsNewMessage, whatsNewLinkText, whatsNe
               <p className="text-gray-500 text-lg mb-4">{t.news.keepUpToDate}</p> */}
               <BoxMessage items={whatsNewMessage} />
               <Link href="/news" className="text-[#35b3a7] font-semibold flex items-center">
-                {t.news.findMoreNews} <span className="ml-1">▶</span>
+                {whatsNewLinkText} <span className="ml-1">▶</span>
               </Link>
             </div>
           </div>
