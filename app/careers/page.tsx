@@ -3,7 +3,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-<<<<<<< HEAD
 import { useState, useRef, useEffect } from "react";
 import {
   Carousel,
@@ -11,76 +10,73 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-=======
-import { useState } from "react";
 import CurrentVacanciesList from "@/components/CurrentVacanciesList";
->>>>>>> api-linkage
 
-const jobData = [
-  {
-    title: "Graduate Engineer - Civil / Building / Building Services",
-    responsibilities: [
-      "Assist supervisor to overview project operations, planning and site co-ordination work to ensure completion with accurate budget and target schedule",
-      "Prepare document submission, monitor site progress and update project program and report",
-      "Support site daily operation by co-ordination and co-operation with site staff, site foreman & sub-contractors",
-      "Provide operational support to different construction projects",
-    ],
-    requirements: [
-      "Master or Degree holder in Civil / Structural / Building / Building Services / Electrical / Mechanical Engineering / Construction Management or related disciplines from local or overseas College / University",
-      "Good command of spoken and written English",
-      "Good communication and presentation skills",
-      "Eager to learn and hardworking",
-      "IANG Holder is welcome",
-      'We offer HKIE Civil/Building/Building Services Engineering Graduate Training Scheme "A" in Civil / Building / Building Services / E&M / Foundation / A&A / Fitting-out works / projects to the right candidates',
-    ],
-    contact: {
-      email: "bkhr.ge@buildking.hk",
-      applyLink: "Apply Online",
-    },
-  },
-  {
-    title: "Project Manager - Marine Construction",
-    responsibilities: [
-      "Lead and manage marine construction projects from inception to completion",
-      "Oversee project planning, budgeting, and resource allocation",
-      "Coordinate with various stakeholders including clients, contractors, and regulatory bodies",
-      "Ensure compliance with safety standards and quality requirements",
-      "Monitor project progress and implement corrective actions when needed",
-    ],
-    requirements: [
-      "Minimum 10 years experience in marine construction projects",
-      "Bachelor's degree in Civil Engineering or related field",
-      "Professional certification in Project Management (PMP) preferred",
-      "Strong leadership and team management skills",
-      "Experience with marine regulations and compliance requirements",
-    ],
-    contact: {
-      email: "bkhr.pm@buildking.hk",
-      applyLink: "Apply Online",
-    },
-  },
-  {
-    title: "Senior Quantity Surveyor",
-    responsibilities: [
-      "Prepare tender documents and cost estimates for construction projects",
-      "Conduct cost analysis and financial reporting",
-      "Manage contract administration and variation orders",
-      "Negotiate with subcontractors and suppliers",
-      "Review and certify contractor payment applications",
-    ],
-    requirements: [
-      "Minimum 8 years experience in quantity surveying",
-      "Degree in Quantity Surveying or equivalent",
-      "HKIS membership preferred",
-      "Proficient in measurement and cost estimation software",
-      "Strong commercial and negotiation skills",
-    ],
-    contact: {
-      email: "bkhr.qs@buildking.hk",
-      applyLink: "Apply Online",
-    },
-  },
-];
+// const jobData = [
+//   {
+//     title: "Graduate Engineer - Civil / Building / Building Services",
+//     responsibilities: [
+//       "Assist supervisor to overview project operations, planning and site co-ordination work to ensure completion with accurate budget and target schedule",
+//       "Prepare document submission, monitor site progress and update project program and report",
+//       "Support site daily operation by co-ordination and co-operation with site staff, site foreman & sub-contractors",
+//       "Provide operational support to different construction projects",
+//     ],
+//     requirements: [
+//       "Master or Degree holder in Civil / Structural / Building / Building Services / Electrical / Mechanical Engineering / Construction Management or related disciplines from local or overseas College / University",
+//       "Good command of spoken and written English",
+//       "Good communication and presentation skills",
+//       "Eager to learn and hardworking",
+//       "IANG Holder is welcome",
+//       'We offer HKIE Civil/Building/Building Services Engineering Graduate Training Scheme "A" in Civil / Building / Building Services / E&M / Foundation / A&A / Fitting-out works / projects to the right candidates',
+//     ],
+//     contact: {
+//       email: "bkhr.ge@buildking.hk",
+//       applyLink: "Apply Online",
+//     },
+//   },
+//   {
+//     title: "Project Manager - Marine Construction",
+//     responsibilities: [
+//       "Lead and manage marine construction projects from inception to completion",
+//       "Oversee project planning, budgeting, and resource allocation",
+//       "Coordinate with various stakeholders including clients, contractors, and regulatory bodies",
+//       "Ensure compliance with safety standards and quality requirements",
+//       "Monitor project progress and implement corrective actions when needed",
+//     ],
+//     requirements: [
+//       "Minimum 10 years experience in marine construction projects",
+//       "Bachelor's degree in Civil Engineering or related field",
+//       "Professional certification in Project Management (PMP) preferred",
+//       "Strong leadership and team management skills",
+//       "Experience with marine regulations and compliance requirements",
+//     ],
+//     contact: {
+//       email: "bkhr.pm@buildking.hk",
+//       applyLink: "Apply Online",
+//     },
+//   },
+//   {
+//     title: "Senior Quantity Surveyor",
+//     responsibilities: [
+//       "Prepare tender documents and cost estimates for construction projects",
+//       "Conduct cost analysis and financial reporting",
+//       "Manage contract administration and variation orders",
+//       "Negotiate with subcontractors and suppliers",
+//       "Review and certify contractor payment applications",
+//     ],
+//     requirements: [
+//       "Minimum 8 years experience in quantity surveying",
+//       "Degree in Quantity Surveying or equivalent",
+//       "HKIS membership preferred",
+//       "Proficient in measurement and cost estimation software",
+//       "Strong commercial and negotiation skills",
+//     ],
+//     contact: {
+//       email: "bkhr.qs@buildking.hk",
+//       applyLink: "Apply Online",
+//     },
+//   },
+// ];
 
 const trainingImages = [
   "/Career/traning-carouser1/n1_Graduate Engineering Programme_n4.webp",
@@ -98,7 +94,7 @@ const traningImages3 = [
 ]
 
 export default function Careers() {
-  const [jobIsOpen, setJobIsOpen] = useState<Record<number, boolean>>({});
+  // const [jobIsOpen, setJobIsOpen] = useState<Record<number, boolean>>({});
   const [selectedSection, setSelectedSection] = useState("career");
   const [currentSlide1, setCurrentSlide1] = useState(0);
   const [currentSlide2, setCurrentSlide2] = useState(0);
@@ -292,9 +288,8 @@ export default function Careers() {
                 application.
               </p>
             </div>
-<<<<<<< HEAD
 
-            <div className="max-w-[1115px] mx-auto py-12">
+            {/* <div className="max-w-[1115px] mx-auto py-12">
               {jobData.map((job, index) => (
                 <div key={index}>
                   <button
@@ -373,10 +368,8 @@ export default function Careers() {
                   )}
                 </div>
               ))}
-            </div>
-=======
+            </div> */}
             <CurrentVacanciesList />
->>>>>>> api-linkage
           </div>
         );
       case "training":

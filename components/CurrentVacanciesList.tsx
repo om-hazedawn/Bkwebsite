@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+// import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getCurrentVacanciesCollections } from "@/lib/api/current-vacancies-collections";
 
 interface DescriptionItem {

@@ -3,7 +3,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-<<<<<<< HEAD
 import { useState, useRef, useEffect } from "react";
 import {
   Carousel,
@@ -11,10 +10,6 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
-=======
-import { useState } from "react";
-import CurrentVacanciesList from "@/components/CurrentVacanciesList";
->>>>>>> api-linkage
 
 const jobData = [
   {
@@ -292,7 +287,6 @@ export default function Careers() {
                 application.
               </p>
             </div>
-<<<<<<< HEAD
 
             <div className="max-w-[1115px] mx-auto py-12">
               {jobData.map((job, index) => (
@@ -374,9 +368,6 @@ export default function Careers() {
                 </div>
               ))}
             </div>
-=======
-            <CurrentVacanciesList />
->>>>>>> api-linkage
           </div>
         );
       case "training":

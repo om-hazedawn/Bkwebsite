@@ -8,53 +8,6 @@ import { BoxMessageItem } from "@/components/BoxMessage";
 import BoxMessage from "@/components/BoxMessage";
 import { getMilestone } from "@/lib/api/milestone";
 
-const timelineData = [
-  {
-    year: "2016",
-    description: 'Unified the subsidiaries under the name of "Build King"',
-    image: "/about-us/milestone/2016.jpg",
-  },
-  {
-    year: "2014",
-    description: "Awarded 5 nos of MTRC Shatin to Central Links Contracts",
-    image: "/about-us/milestone/2014.jpg",
-  },
-  {
-    year: "2011",
-    description:
-      "Awarded Wan Chai Development Phase II - Central Wan Chai Bypass over MTR Tsuen Wan Line",
-    image: "/about-us/milestone/2010.jpg",
-  },
-  {
-    year: "2010",
-    description:
-      "Achieved Group C status in all 5 categories of works in the List of Approved Contractors for Public Works",
-    image: "/about-us/milestone/2010.jpg",
-  },
-  {
-    year: "2004",
-    description:
-      "The Group was listed in The Stock Exchange of Hong Kong (Stock code 240)",
-    image: "/about-us/milestone/2004.jpg",
-  },
-  {
-    year: "2002",
-    description: "Acquisition of Kier Hong Kong Limited",
-    image: "/about-us/milestone/2002.jpg",
-  },
-  {
-    year: "1995",
-    description: "Acquisition of Leader Civil Engineering Corporation Limited",
-    image: "/about-us/milestone/1995.jpg",
-  },
-  {
-    year: "1980",
-    description:
-      "Formation of Wai Kee C&T as a Site Formation Works Contractors",
-    image: "/about-us/milestone/1980.jpg",
-  },
-];
-
 interface WhoWeAreData { 
   data: {
     PageTitle: string;

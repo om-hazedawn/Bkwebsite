@@ -1,15 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Lato } from "next/font/google"
+// import { Lato } from "next/font/google"
 import "./globals.css"
 import { LanguageProvider } from "@/contexts/language-context"
 
-const lato = Lato({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-lato'
-})
+// const lato = Lato({
+//   weight: '400',
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-lato'
+// })
 
 export const metadata: Metadata = {
   title: "Build King",
