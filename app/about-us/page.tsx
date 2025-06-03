@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { getWhoWeAre } from "@/lib/api/who-we-are";
 import { BoxMessageItem } from "@/components/BoxMessage";
 import BoxMessage from "@/components/BoxMessage";
+import { getMilestone } from "@/lib/api/milestone";
 
 const timelineData = [
   {
@@ -69,18 +70,42 @@ interface WhoWeAreData {
   };
 }
 
+interface MileStone {
+  Title: string;
+  Description: string;
+}
+
+interface MilestoneData { 
+  data: {
+    PageTitle: string;
+    Milestones: MileStone[];
+    localizations: MilestoneData[];
+  };
+}
+
 export default function AboutUs() {
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("who-we-are");
   const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
+  const [milestoneData, setMilestoneData] = useState<MilestoneData>();
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchWhoWeAreData = async () => {
       const data = await getWhoWeAre();
       console.log("Fetched data:", data); // Log the fetched data to the console
       setWhoWeAreData(data);
     };
-    fetchData();
+    fetchWhoWeAreData();
+  }, []);
+
+  useEffect(() => {
+    const fetchMilestoneData = async () => {
+      const data = await getMilestone();
+      console.log("Fetched milestone data:", data); // Log the fetched data to the console
+      setMilestoneData(data);
+    };
+
+    fetchMilestoneData();
   }, []);
 
   if (!whoWeAreData) {
@@ -162,23 +187,8 @@ export default function AboutUs() {
             </div>
 
             {/* Who We Are Section */}
-            <div className="mt-16 max-w-[1300px] mx-auto">
-              {/* <h2 className="text-4xl font-bold mb-6 text-[#838182]">
-                {Detail[0]?.children[0]?.text}
-              </h2>
-              <h3 className="text-3xl mb-6 text-[#838182]">{Detail[2]?.children[0]?.text}</h3>
-              <div className="text-[#838182] space-y-6">
-                <p>
-                  {Detail[6]?.children[0]?.text}
-                </p>
-                <p>
-                  {Detail[9]?.children[0]?.text}
-                </p>
-                <p>
-                  {Detail[12]?.children[0]?.text}
-                </p>
-              </div> */}
-              <BoxMessage items={whoWeAreData.data.Detail}></BoxMessage>
+            <div className="mt-16 max-w-[1000px] mx-auto">
+              <BoxMessage items={whoWeAreData.data.Detail} />
             </div>
           </div>
         );
@@ -190,7 +200,7 @@ export default function AboutUs() {
               className="absolute w-[1px] bg-black left-1/2 -translate-x-1/2"
               style={{ top: "-8rem", bottom: "-8rem" }}
             />
-            {timelineData.map((item, idx) => (
+            {milestoneData?.data.Milestones.map((item, idx) => (
               <div key={idx} className="relative mb-60">
                 <div className="flex justify-center">
                   <div className="flex justify-between items-center w-full max-w-[900px]">
@@ -199,7 +209,7 @@ export default function AboutUs() {
                       className={`absolute ${
                         idx % 2 === 0
                           ? "left-1/2"
-                          : "left-1/2 -translate-x-[306px]"
+                          : "left-1/2 -translate-x-[247px]"
                       }`}
                     >
                       {/* Timeline dot positioned at corner */}
@@ -214,10 +224,10 @@ export default function AboutUs() {
                       </div>
 
                       <Image
-                        src={item.image}
-                        alt={`Timeline ${item.year}`}
-                        width={306}
-                        height={306}
+                        src={cmsBaseUrl +　item.Title}
+                        alt={''}
+                        width={247}
+                        height={247}
                       />
                     </div>
 
@@ -226,11 +236,11 @@ export default function AboutUs() {
                       className={`w-[400px] ${idx % 2 === 0 ? "" : "ml-auto"}`}
                     >
                       <div className="py-6 mt-12">
-                        <h2 className="text-2xl font-bold text-teal-600 mb-3">
-                          {item.year}
-                        </h2>
-                        <p className="text-gray-700 text-lg">
-                          {item.description}
+                        <p className={`text-teal-500 text-4xl font-bold mb-2 ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
+                          {item.Description.substring(0, 4)}
+                        </p>
+                        <p className={`text-gray-700 text-lg ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
+                          {item.Description}
                         </p>
                       </div>
                     </div>
@@ -310,7 +320,7 @@ export default function AboutUs() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="container mx-auto py-12 bg-[#F1F1F1]">
+      <section className="container mx-auto py-12">
         <div className="flex flex-wrap justify-center gap-8 mb-16">
           <div
             className="cursor-pointer"

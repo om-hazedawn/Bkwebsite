@@ -87,17 +87,18 @@ const DynamicsFileList: React.FC<{ collections: string }> = ({ collections }) =>
       <ul className="space-y-2">
         {circulars.map((item) => (
           // File check is already done during processing
-          <li key={item.id} className="p-2 border rounded hover:bg-gray-100">
+          <li key={item.id} className="pb-2 mb-2 border-b border-gray-200 last:border-b-0">
             <a
               href={`${cmsBaseUrl}${item.File!.url}`} // File is guaranteed to exist here by the filter
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-[#0099A7] hover:underline block"
             >
               {item.Title}
-            </a>
+            
             {/* Displaying date if available, though it's not used for sorting/filtering anymore */}
-            {item.Date && <span className="text-sm text-gray-500 ml-2">({item.Date.substring(0,10)})</span>}
+            {item.Date && <span className="text-sm text-gray-500 block mt-1">{new Date(item.Date).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })} &#9656;</span>}
+            </a>
           </li>
         ))}
       </ul>

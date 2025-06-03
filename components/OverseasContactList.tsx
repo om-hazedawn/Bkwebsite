@@ -59,26 +59,26 @@ export default function OverseasContactList({ companies, onSelect }: OverseasCon
     const params = new URLSearchParams(searchParams.toString());
     params.set("overseasCompanyId", companyId.toString());
     params.delete("companyId");
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
     onSelect();
   };
 
   const selectedCompanyId = searchParams.get("overseasCompanyId");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="mb-8">
       {/* Overseas offices */}
       <div>
-        <h2 className="text-[#35b3a7] text-xl font-medium mb-4">Overseas</h2>
+        <h2 className="text-lg font-bold mb-4">Overseas</h2>
         <ul className="space-y-2 text-gray-600">
           {companies.map((company) => (
             <li
             key={company.id}
-            className={`flex items-start cursor-pointer ${selectedCompanyId === company.id.toString() ? "font-bold text-[#35b3a7]" : ""}`}
+            className={`flex items-center cursor-pointer ${selectedCompanyId === company.id.toString() ? "font-bold text-[#0099a7]" : ""}`}
             onClick={() => handleCompanyClick(company.id)}
           >
               <span>{company.CompanyNameShort}</span>
-              <span className="ml-1">»</span>
+              <span className="ml-1 text-gray-400">»</span>
             </li>
           ))}
         </ul>

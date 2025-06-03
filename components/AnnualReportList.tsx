@@ -151,12 +151,12 @@ const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
 
       <ul className="space-y-2">
         {filteredReports.map((report) => (
-          <li key={report.id} className="p-2 border rounded hover:bg-gray-100">
+          <li key={report.id}>
             <a
               href={`${cmsBaseUrl}${report.File.url}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-l font-extralight text-[#838182] hover:text-[#0099a7]"
             >
               {report.Title}
             </a>

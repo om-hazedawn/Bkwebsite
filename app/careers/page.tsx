@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useState } from "react";
+import CurrentVacanciesList from "@/components/CurrentVacanciesList";
 
 
 export default function Careers() {
@@ -128,6 +129,7 @@ export default function Careers() {
                 All information provided will be treated in strict confidence and be used only for consideration of your application for relevant / similar positions. All personal data of unsuccessful applicants will be destroyed within 12 months from the date of application.
               </p>
             </div>
+            <CurrentVacanciesList />
           </div>
         );
       case "training":

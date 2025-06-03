@@ -86,15 +86,15 @@ export default function Contact() {
 
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="lg:w-1/3">
-            <HongKongContactList companies={hkCompanies} onSelect={() => setSelectedContactType('hongkong')} />
-            <OverseasContactList companies={overseasCompanies} onSelect={() => setSelectedContactType('overseas')} />
-          </div>
-          <div className="lg:w-2/3">
-            {selectedContactType === 'hongkong' && <HongKongContactDetail companies={hkCompanies} />}
-            {selectedContactType === 'overseas' && <OverseasContactDetail companies={overseasCompanies} />}
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="md:col-span-1">
+              <HongKongContactList companies={hkCompanies} onSelect={() => setSelectedContactType('hongkong')} />
+              <OverseasContactList companies={overseasCompanies} onSelect={() => setSelectedContactType('overseas')} />
+            </div>
+            <div className="col-xs-12 col-sm-6 result_box pull-right">
+              {selectedContactType === 'hongkong' && <HongKongContactDetail companies={hkCompanies} />}
+              {selectedContactType === 'overseas' && <OverseasContactDetail companies={overseasCompanies} />}
+            </div>
           </div>
         </div>
       </section>

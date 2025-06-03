@@ -93,18 +93,18 @@ export default async function RailwayWorks({ searchParams }: RailwayWorksPagePro
         </div>
       </section>
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+        <div className="container mx-auto pl-64">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="md:col-span-1">
               {/* Railway Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Railway & Associated Works</h2>
               <Sections initialSections={railwayWorksSectionsData} basePath="/our-business/railway-works" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               {selectedCollections === '' ? (
-                <DynamicBusinessList collections="railway-infrastructure-collections" />
+                <DynamicBusinessList collections="railway-infrastructure-collections" key="railway-infrastructure-collections" />
               ) : (
-                <DynamicBusinessList collections={selectedCollections} />
+                <DynamicBusinessList collections={selectedCollections} key={selectedCollections} />
               )}
             </div>
           </div>

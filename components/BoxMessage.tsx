@@ -17,12 +17,12 @@ interface BoxMessageProps {
 export default function BoxMessage({ items }: BoxMessageProps) {
 
   return (
-    <div>
+    <div className="max-w-5xl">
       {items.map((item, index) => {
         return (
           <div key={index}>
             {item.type === "heading" && item.level === 1 && (
-              <h1 className="text-4xl font-bold mb-6 text-[#838182]">
+              <h1 className="text-4xl mb-6 text-[#838182]">
                 {item.children.map((child, childIndex) => (
                   child.text && child.text.trim() !== "" ? (
                     <span key={`${index}-${childIndex}`} className={child.bold ? "font-bold" : ""}>
