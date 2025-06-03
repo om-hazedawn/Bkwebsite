@@ -90,16 +90,17 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
       <ul className="space-y-2">
         {circulars.map((circular) => (
           // File check is already done during processing
-          <li key={circular.id} className="p-2 border rounded hover:bg-gray-100">
+          <li key={circular.id} className="pb-2 mb-2 border-b border-gray-200 last:border-b-0">
             <a
               href={`${cmsBaseUrl}${circular.File!.url}`} // File is guaranteed to exist here
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-[#0099A7] hover:underline block"
             >
               {circular.Title}
+            
+            {circular.Date && <span className="text-sm text-gray-500 block mt-1">{new Date(circular.Date).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })} &#9656;</span>}
             </a>
-            {circular.Date && <span className="text-sm text-gray-500 ml-2">({circular.Date.substring(0,10)})</span>}
           </li>
         ))}
       </ul>

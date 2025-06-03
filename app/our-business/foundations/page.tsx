@@ -90,18 +90,18 @@ export default async function Foundations({ searchParams }: FoundationsPageProps
         </div>
       </section>
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+        <div className="container mx-auto pl-64">
+          <div className="grid grid-cols-1 md:grid-cols-">
+            <div className="md:col-span-1">
               {/* Buildings section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Foundations</h2>
               <Sections initialSections={foundationsSectionsData} basePath="/our-business/foundations" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               {selectedCollections === '' ? (
-                <DynamicBusinessList collections="foundations-collections" />
+                <DynamicBusinessList collections="foundations-collections" key="foundations-collections" />
               ) : (
-                <DynamicBusinessList collections={selectedCollections} />
+                <DynamicBusinessList collections={selectedCollections} key={selectedCollections} />
               )}
             </div>
           </div>

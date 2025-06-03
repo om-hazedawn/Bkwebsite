@@ -59,7 +59,7 @@ export default function HongKongContactList({ companies, onSelect }: HongKongCon
     const params = new URLSearchParams(searchParams.toString());
     params.set("companyId", companyId.toString());
     params.delete("overseasCompanyId");
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
     onSelect();
   };
 
@@ -68,24 +68,23 @@ export default function HongKongContactList({ companies, onSelect }: HongKongCon
   const selectedCompanyId = searchParams.get("companyId");
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="mb-8">
       {/* Hong Kong offices */}
       <div>
-        <h2 className="text-[#35b3a7] text-xl font-medium mb-4">Hong Kong</h2>
+        <h2 className="text-lg font-bold mb-4">Hong Kong</h2>
         <ul className="space-y-2 text-gray-600">
           {companies.map((company) => (
             <li
               key={company.id}
-              className={`flex items-start cursor-pointer ${selectedCompanyId === company.id.toString() ? "font-bold text-[#35b3a7]" : ""}`}
+              className={`flex items-center cursor-pointer ${selectedCompanyId === company.id.toString() ? "font-bold text-[#0099a7]" : ""}`}
               onClick={() => handleCompanyClick(company.id)}
             >
               <span>{company.CompanyNameShort}</span>
-              <span className="ml-1">»</span>
+              <span className="ml-1 text-gray-400">»</span>
             </li>
           ))}
         </ul>
       </div>
-
     </div>
   );
 }

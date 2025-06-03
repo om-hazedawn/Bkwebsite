@@ -30,7 +30,7 @@ export default function HongKongContactDetail({ companies }: HongKongContactDeta
           />
         )}
       </div>
-      <h3 className="font-medium mb-2">{selectedCompany.CompanyName}</h3>
+      <h3 className="font-medium mb-2 text-[#0099a7]">{selectedCompany.CompanyName}</h3>
       {
         selectedCompany.CompanyInformation.map((infoBlock, index) => (
           <p key={index} className="text-gray-600 mb-1">

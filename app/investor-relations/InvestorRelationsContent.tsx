@@ -229,12 +229,12 @@ export default function InvestorRelations() {
                     </h3>
                   </div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
 
                   <div className="relative w-[370px] h-[370px]"></div>
 
                   {/* Third box - with bg-[#e63946] */}
-                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#35B3A7D6] text-white">
+                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#0099A7D6] text-white">
                       <h3 className="text-3xl font-normal">
                         <BoxMessage items={financialReportData.data.MessageTurquoiseArea}></BoxMessage>
                       </h3>
@@ -248,7 +248,7 @@ export default function InvestorRelations() {
                   {/* First box - with shadow */}
                   <div className="relative w-[370px] h-[370px]"></div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
                     <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#E63946D6] text-white ">
                       <h3 className="text-3xl font-normal">
                         <BoxMessage items={financialReportData.data.MessageRedArea}></BoxMessage>
@@ -262,14 +262,18 @@ export default function InvestorRelations() {
               </div>
             </div>
             <section className="py-16">
-              <div className="container mx-auto px-4">
+              <div className="container mx-auto pl-64">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {/* Year filter sidebar */}
-                  <div>
-                    <h2 className="text-2xl font-medium text-[#35b3a7] mb-6">Circulars</h2>
-                    <AnnualYearRanges yearRanges={annualReportYearRanges} basePath="/investor-relations"/>
-                    <h2 className="text-2xl font-medium text-[#35b3a7] mb-6">Notices</h2>
-                    <InteriumYearRanges yearRanges={interiumReportYearRanges} basePath="/investor-relations"/>
+                  <div className="flex flex-col space-y-8">
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Annual Report</h2>
+                      <AnnualYearRanges yearRanges={annualReportYearRanges} basePath="/investor-relations"/>
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Interim Report</h2>
+                      <InteriumYearRanges yearRanges={interiumReportYearRanges} basePath="/investor-relations"/>
+                    </div>
                   </div>
                   <div className="md:col-span-3">
                     {interiumYearRange ? null : <AnnualReportList yearRange={annualYearRange || ''} />}
@@ -304,7 +308,7 @@ export default function InvestorRelations() {
                     </h3>
                   </div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
 
                   <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#838182]/70 text-white">
                     <h3 className="text-3xl font-normal">
@@ -323,7 +327,7 @@ export default function InvestorRelations() {
                   {/* First box - with shadow */}
                   <div className="relative w-[370px] h-[370px]"></div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
                   <div className="relative w-[370px] h-[370px]"></div>
 
                   {/* Third box - with bg-[#e63946] */}
@@ -337,11 +341,11 @@ export default function InvestorRelations() {
               
             </div>
             <section className="py-16">
-              <div className="container mx-auto px-4">
+              <div className="container mx-auto pl-64">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {/* Year filter sidebar */}
                   <div>
-                    <h2 className="text-2xl font-medium text-[#35b3a7] mb-6">Announcement</h2>
+                    <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Announcement</h2>
                     <Years years={announcementYears}/>
                   </div>
                   <div className="md:col-span-3">
@@ -375,7 +379,7 @@ export default function InvestorRelations() {
                     </h3>
                   </div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
                   <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#838182]/70 text-white ">
                     <h3 className="text-3xl font-normal">
                       <BoxMessage items={circularAndNoticeData?.data?.MessageBlackArea || []}></BoxMessage>
@@ -390,13 +394,13 @@ export default function InvestorRelations() {
               <div className="absolute top-[372px] left-0 right-0 w-full">
                 <div className="flex justify-center">
                   {/* First box - with shadow */}
-                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#35B3A7D6]/80 text-white ">
+                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#0099A7D6]/80 text-white ">
                     <h3 className="text-3xl font-normal">
                       <BoxMessage items={circularAndNoticeData?.data?.MessageTurquoiseArea || []}></BoxMessage>
                     </h3>
                   </div>
 
-                  {/* Second box - with bg-[#35b3a7] */}
+                  {/* Second box - with bg-[#0099A7] */}
 
                   <div className="relative w-[370px] h-[370px]"></div>
 
@@ -406,13 +410,13 @@ export default function InvestorRelations() {
               </div>
             </div>
             <section className="py-16">
-              <div className="container mx-auto px-4">
+              <div className="container mx-auto pl-64">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {/* Year filter sidebar */}
-                  <div>
-                    <h2 className="text-2xl font-medium text-[#35b3a7] mb-6">Circulars</h2>
+                  <div className="flex flex-col space-y-8">
+                    <h2 className="text-2xl font-bold text-[#0099A7]">Circulars</h2>
                     <Years years={circularYears}/>
-                    <h2 className="text-2xl font-medium text-[#35b3a7] mb-6">Notices</h2>
+                    <h2 className="text-2xl font-bold text-[#0099A7]">Notices</h2>
                     <Sections initialSections={noticeSections} basePath="/investor-relations" />
                   </div>
                   <div className="md:col-span-3">
@@ -432,7 +436,7 @@ export default function InvestorRelations() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="container mx-auto py-12 bg-[#F1F1F1]">
+      <section className="container mx-auto py-12">
         <div className="flex flex-wrap justify-center gap-8 mb-16">
           <div
             className="cursor-pointer"

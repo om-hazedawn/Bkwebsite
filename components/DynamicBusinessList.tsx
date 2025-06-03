@@ -133,35 +133,35 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-0">
       {businesses.length === 0 && !loading && (
         <p className="text-center py-10">No business data found for {collections}.</p>
       )}
 
-      <div className="space-y-4">
+      <div>
         {expandedBusinessId !== null ? (
           // Only render the expanded item if expandedBusinessId is set
           businesses
             .filter((item) => item.id === expandedBusinessId)
             .map((item) => (
-              <div key={item.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
+              <div key={item.id} className="bg-white rounded-lg overflow-hidden">
                 <button
                   onClick={() => handleToggleDetails(item.id)}
                   className="w-full text-left p-4 focus:outline-none focus:bg-gray-100 hover:bg-gray-50"
                 >
-                  <h2 className="text-xl font-semibold text-blue-600 hover:underline">
+                  <h2 className="text-xl font-semibold text-gray-700 hover:underline">
                     {item.ProjectName}
                   </h2>
                 </button>
                 {expandedBusinessId === item.id && (
-                  <div className="p-6 border-t border-gray-200 flex flex-col gap-4">
+                  <div className="p-6 flex flex-col gap-4">
                     {/* Project Name as a title for the expanded section, matching the image's top title */}
-                    <h3 className="text-xl font-semibold text-blue-700 mb-2">
+                    <h3 className="text-2xl font-bold text-[#0099a7] mb-4">
                       {item.ProjectName}
                     </h3>
 
                     {item.MainImage && item.MainImage.url && (
-                      <div className="relative w-full h-64 md:h-80 rounded overflow-hidden mb-2">
+                      <div className="relative w-3/5 h-96 overflow-hidden mb-4">
                         <Image
                           src={`${cmsBaseUrl}${item.MainImage.formats?.small?.url || item.MainImage.url}`}
                           alt={item.MainImage.alternativeText || item.ProjectName}
@@ -171,19 +171,25 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
                       </div>
                     )}
                     
-                    <div className="space-y-3">
+                    <div className="space-y-3 text-[#838182]">
                       {/* Labeled "Project Name" as per OCR, distinct from the top title */}
-                      <p className="text-sm text-gray-800">
-                        <strong className="font-semibold text-gray-900 block md:inline">Project Name:</strong> {item.ProjectName}
+                      <p className="text-bold">
+                        <strong className="font-semibold">Project Name</strong> 
                       </p>
-                      <p className="text-sm text-gray-800">
-                        <strong className="font-semibold text-gray-900 block md:inline">Client:</strong> {item.Client}
+                      {item.ProjectName}
+                      <br />
+                      <p className="text-base">
+                        <strong className="font-semibold">Client</strong>
                       </p>
-                      <p className="text-sm text-gray-800">
-                        <strong className="font-semibold text-gray-900 block md:inline">Contract Period:</strong> {item.ContractPeriod}
+                      {item.Client}
+                      <br />
+                      <p className="text-base">
+                        <strong className="font-semibold">Contract Period</strong> 
                       </p>
-                      <div className="text-sm text-gray-800">
-                        <strong className="font-semibold text-gray-900 block mb-1">Project Summary:</strong>
+                      {item.ContractPeriod}
+                      <br />
+                      <div className="text-base">
+                        <strong className="font-semibold block mb-1">Project Summary</strong>
                         {item.ProjectSummary && item.ProjectSummary.length > 0 ? (
                           item.ProjectSummary.map((summaryItem, index) => (
                             <p key={index} className="mt-1 first:mt-0">
@@ -202,24 +208,24 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
         ) : (
           // Render all items if no item is expanded
           businesses.map((item) => (
-            <div key={item.id} className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div key={item.id}>
               <button
                 onClick={() => handleToggleDetails(item.id)}
-                className="w-full text-left p-4 focus:outline-none focus:bg-gray-100 hover:bg-gray-50"
+                className="w-full text-left p-2 focus:outline-none hover:bg-transparent group"
               >
-                <h2 className="text-xl font-semibold text-blue-600 hover:underline">
+                <h2 className="text-s text-[#838182] group-hover:text-[#0099a7]">
                   {item.ProjectName}
                 </h2>
               </button>
               {expandedBusinessId === item.id && (
                 <div className="p-6 border-t border-gray-200 flex flex-col gap-4">
                   {/* Project Name as a title for the expanded section, matching the image's top title */}
-                  <h3 className="text-xl font-semibold text-blue-700 mb-2">
+                  <h3 className="text-2xl font-bold text-blue-700 mb-4">
                     {item.ProjectName}
                   </h3>
 
                   {item.MainImage && item.MainImage.url && (
-                    <div className="relative w-full h-64 md:h-80 rounded overflow-hidden mb-2">
+                    <div className="relative w-full h-96 rounded overflow-hidden mb-4">
                       <Image
                         src={`${cmsBaseUrl}${item.MainImage.formats?.small?.url || item.MainImage.url}`}
                         alt={item.MainImage.alternativeText || item.ProjectName}
@@ -229,19 +235,19 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
                     </div>
                   )}
                   
-                  <div className="space-y-3">
+                  <div className="space-y-3 text-gray-800">
                     {/* Labeled "Project Name" as per OCR, distinct from the top title */}
-                    <p className="text-sm text-gray-800">
-                      <strong className="font-semibold text-gray-900 block md:inline">Project Name:</strong> {item.ProjectName}
+                    <p className="text-base">
+                      <strong className="font-semibold text-gray-900">Project Name</strong> {item.ProjectName}
                     </p>
-                    <p className="text-sm text-gray-800">
-                      <strong className="font-semibold text-gray-900 block md:inline">Client:</strong> {item.Client}
+                    <p className="text-base">
+                      <strong className="font-semibold text-gray-900">Client</strong> {item.Client}
                     </p>
-                    <p className="text-sm text-gray-800">
-                      <strong className="font-semibold text-gray-900 block md:inline">Contract Period:</strong> {item.ContractPeriod}
+                    <p className="text-base">
+                      <strong className="font-semibold text-gray-900">Contract Period</strong> {item.ContractPeriod}
                     </p>
-                    <div className="text-sm text-gray-800">
-                      <strong className="font-semibold text-gray-900 block mb-1">Project Summary:</strong>
+                    <div className="text-base">
+                      <strong className="font-semibold text-gray-900 block mb-1">Project Summary</strong>
                       {item.ProjectSummary && item.ProjectSummary.length > 0 ? (
                         item.ProjectSummary.map((summaryItem, index) => (
                           <p key={index} className="mt-1 first:mt-0">

@@ -32,7 +32,7 @@ const Sections: React.FC<SectionsProps> = ({ initialSections, basePath = '' }) =
         <li key={section.slug || index}>
           <Link
             href={`${basePath}?collections=${section.slug}`}
-            className={`text-gray-600 hover:text-[#35b3a7] hover:underline ${selectedCollection === section.slug ? 'font-bold text-[#35b3a7]' : ''}`}
+            className={`text-gray-600 hover:text-[#35b3a7] ${selectedCollection === section.slug ? 'font-bold text-[#35b3a7]' : ''}`}
             scroll={false}
           >
             {section.name}

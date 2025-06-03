@@ -90,18 +90,18 @@ export default async function CivilWorks({ searchParams }: CivilWorksPageProps) 
         </div>
       </section>
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+        <div className="container mx-auto pl-64">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="md:col-span-1">
               {/* Civil Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">General Civil Works</h2>
               <Sections initialSections={civilWorksSectionsData} basePath="/our-business/civil-works" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               {selectedCollections === '' ? (
-                <DynamicBusinessList collections="airport-work-collections" />
+                <DynamicBusinessList collections="airport-work-collections" key="airport-work-collections" />
               ) : (
-                <DynamicBusinessList collections={selectedCollections} />
+                <DynamicBusinessList collections={selectedCollections} key={selectedCollections} />
               )}
             </div>
           </div>

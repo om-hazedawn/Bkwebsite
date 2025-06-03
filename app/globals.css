@@ -13,7 +13,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Lato, "Microsoft JhengHei", "Microsoft Yahei", 微软雅黑, STXihei, simhei, 华文细黑, Arial, sans-serif;
+  font-family: Lato, "Microsoft JhengHei", "Microsoft Yahei", "微软雅黑", STXihei, simhei, "华文细黑", Arial, sans-serif;
 }
 
 .nav-link {
@@ -113,6 +113,6 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Microsoft JhengHei", "Microsoft Yahei", 微软雅黑, STXihei, simhei, 华文细黑, Arial, sans-serif;
+    font-family: Roboto, "Microsoft JhengHei", "Microsoft Yahei", 微软雅黑, STXihei, simhei, 华文细黑, Arial, sans-serif;
   }
 }

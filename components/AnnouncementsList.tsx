@@ -92,17 +92,17 @@ const AnnouncementsList: React.FC<{ initialYear: string }> = ({ initialYear }) =
 
       <ul className="space-y-2">
         {announcements.map((announcement) => (
-          // File check is already done during processing
-          <li key={announcement.id} className="p-2 border rounded hover:bg-gray-100">
+          <li key={announcement.id} className="pb-2 mb-2 border-b border-gray-200 last:border-b-0">
             <a
-              href={`${cmsBaseUrl}${announcement.File!.url}`} // File is guaranteed to exist here
+              href={`${cmsBaseUrl}${announcement.File!.url}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-[#0099A7] hover:underline block"
             >
               {announcement.Title}
+            
+            {announcement.Date && <span className="text-sm text-gray-500 block mt-1">{new Date(announcement.Date).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' })} &#9656;</span>}
             </a>
-            {announcement.Date && <span className="text-sm text-gray-500 ml-2">({announcement.Date.substring(0,10)})</span>}
           </li>
         ))}
       </ul>

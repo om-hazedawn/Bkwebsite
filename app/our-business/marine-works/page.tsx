@@ -90,18 +90,18 @@ export default async function MarineWorks({ searchParams }: MarineWorksPageProps
         </div>
       </section>
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+        <div className="container mx-auto pl-64">
+          <div className="grid grid-cols-1 md:grid-cols-33">
+            <div className="md:col-span-1">
               {/* Tunnels section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Tunnels</h2>
               <Sections initialSections={marineWorksSectionsData} basePath="/our-business/marine-works" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               {selectedCollections === '' ? (
-                <DynamicBusinessList collections="general-marine-works-collecitons" />
+                <DynamicBusinessList collections="general-marine-works-collecitons" key="general-marine-works-collecitons" />
               ) : (
-                <DynamicBusinessList collections={selectedCollections} />
+                <DynamicBusinessList collections={selectedCollections} key={selectedCollections} />
               )}
             </div>
           </div>

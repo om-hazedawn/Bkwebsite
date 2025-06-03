@@ -46,8 +46,8 @@ export default async function Buildings({ searchParams }: BuildingsPageProps) {
 
           {/* Overlay boxes - First Row */}
           {/* Overlay boxes - First Row */}
-          <div className="absolute top-0 left-0 right-0 w-full">
-            <div className="flex justify-center">
+          <div className="absolute top-0 left-0 right-0 w-full max-w-[1050px] mx-auto">
+            <div className="flex justify-start">
               {/* First box - Our Business */}
               <div className="w-[350px] h-[372px] pl-8 pt-8 text-white">
                 <h3 className="text-3xl font-semibold">Our Business</h3>
@@ -67,8 +67,8 @@ export default async function Buildings({ searchParams }: BuildingsPageProps) {
           </div>
 
           {/* Overlay boxes - Second Row */}
-          <div className="absolute top-[372px] left-0 right-0 w-full">
-            <div className="flex justify-center">
+          <div className="absolute top-[372px] left-0 right-0 w-full max-w-[1050px] mx-auto">
+            <div className="flex justify-start">
               {/* Fourth box - Back to Business */}
               <Link href="/our-business">
                 <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5] text-[#595957] transition-colors duration-300 hover:bg-[#D5D4D5]/60">
@@ -93,18 +93,18 @@ export default async function Buildings({ searchParams }: BuildingsPageProps) {
       </section>
 
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
+        <div className="container mx-auto pl-64">
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="md:col-span-1">
               {/* Buildings section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Buildings</h2>
               <Sections initialSections={buildingSectionsData} basePath="/our-business/buildings" />
             </div>
-            <div>
+            <div className="md:col-span-2">
               {selectedCollections === '' ? (
-                <DynamicBusinessList collections="addition-and-alteration-collections" />
+                <DynamicBusinessList collections="addition-and-alteration-collections" key="addition-and-alteration-collections" />
               ) : (
-                <DynamicBusinessList collections={selectedCollections} />
+                <DynamicBusinessList collections={selectedCollections} key={selectedCollections} />
               )}
             </div>
           </div>
