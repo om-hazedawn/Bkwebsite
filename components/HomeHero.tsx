@@ -2,35 +2,42 @@
 
 import React from "react";
 import Image from "next/image";
-import { useLanguage } from "@/contexts/language-context";
-import { locales } from "@/locales";
+// import { useLanguage } from "@/contexts/language-context";
+// import { locales } from "@/locales";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { BoxMessageItem } from "@/components/BoxMessage";
+import BoxMessage from "@/components/BoxMessage";
 
-export default function HomeHero() {
-  const { language } = useLanguage();
-  const t = locales[language];
+interface Image {
+  url: string
+}
+
+interface HomeHeroProps {
+  topMessage: BoxMessageItem[];
+  topBanner: Image[];
+  topVideoImage: Image;
+}
+
+export default function HomeHero({ topMessage, topBanner, topVideoImage }: HomeHeroProps) {
+  // const { language } = useLanguage();
+  // const t = locales[language];
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const carouselApi = React.useRef<CarouselApi>(null);
-
-  const heroImages = [
-    "/hero/1120_HSMC_1_compress.webp",
-    "/hero/1301 C3_compress.webp",
-    "/hero/SSM327 Cherry Street_compress.webp",
-  ];
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   // Auto-advance slides
   React.useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
-    }, 5000); // Change slide every 5 seconds
+      setCurrentSlide((prev) => (prev + 1) % topBanner.length);
+    }, 3500); // Change slide every 5 seconds
 
     return () => clearInterval(timer); // Cleanup on unmount
-  }, [heroImages.length]);
+  }, [topBanner.length]);
 
   // Update carousel position when slide changes
   React.useEffect(() => {
@@ -46,14 +53,15 @@ export default function HomeHero() {
         <div className="absolute left-48 bottom-[320px] z-10 text-white">
           <div className="bg-[#1aabaf]/80 text-white px-12 py-12 flex flex-col w-[307px] h-[280px]">
             <div className="mt-12">
-              <h2 className="text-3xl font-medium mb-6">
+              {/* <h2 className="text-3xl font-medium mb-6">
                 {t.hero.buildKing}
               </h2>
               <ul className="space-y-4 text-lg">
                 <li>{t.hero.integrity}</li>
                 <li>{t.hero.innovation}</li>
                 <li>{t.hero.professionalism}</li>
-              </ul>
+              </ul> */}
+              <BoxMessage items={topMessage} />  
             </div>
           </div>
         </div>
@@ -61,7 +69,7 @@ export default function HomeHero() {
         {/* Overlay Image */}
         <div className="absolute top-[280px] left-0 z-20 w-[500px] h-[320px]">
           <Image
-            src="/hero/Kai Tak School - Main Perspective_less pixel.webp"
+            src={cmsBaseUrl + topVideoImage.url}
             alt="Modern Building"
             fill
             className="object-cover"
@@ -80,7 +88,7 @@ export default function HomeHero() {
           }}
         >
           <CarouselContent className="relative h-[600px]">
-            {heroImages.map((image, index) => (
+            {topBanner.map((image, index) => (
               <CarouselItem
                 key={index}
                 className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
@@ -89,7 +97,7 @@ export default function HomeHero() {
               >
                 <div className="relative h-[600px] w-full">
                   <Image
-                    src={image}
+                    src={cmsBaseUrl + image.url}
                     alt={`Hero slide ${index + 1}`}
                     fill
                     sizes="100vw"
@@ -102,7 +110,7 @@ export default function HomeHero() {
           </CarouselContent>
           {/* Navigation dots */}
           <div className="absolute bottom-4 right-8 flex gap-2 z-40">
-            {heroImages.map((_, index) => (
+            {topBanner.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
