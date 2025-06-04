@@ -1,9 +1,9 @@
-export async function getCareerDetail() {
+export async function getCareerDetail(locale: string = 'en') {
     const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/career-detail?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/career-detail?populate=*&locale=${locale}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

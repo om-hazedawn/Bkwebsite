@@ -191,7 +191,7 @@ export default function AboutUs() {
                       className={`w-[400px] ${idx % 2 === 0 ? "" : "ml-auto"}`}
                     >
                       <div className="py-6 mt-12">
-                        <p className={`text-teal-500 text-4xl font-bold mb-2 ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
+                        <p className={`text-[#0099A7] text-4xl font-bold mb-2 ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
                           {item.Description.substring(0, 4)}
                         </p>
                         <p className={`text-gray-700 text-lg ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
