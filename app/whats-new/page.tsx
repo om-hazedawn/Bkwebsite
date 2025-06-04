@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, Suspense } from "react"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import Image from "next/image"
@@ -122,10 +122,14 @@ export default function WhatsNew() {
         <div className="container mx-auto px-8 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 justify-center">
             <div>
-              <WhatsNewList years={dummyData} onSelect={() => setSelectedType("news")} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <WhatsNewList years={dummyData} onSelect={() => setSelectedType("news")} />
+              </Suspense>
             </div>
             <div className="result_box">
-              <WhatsNewDetail years={dummyData} />
+              <Suspense fallback={<div>Loading...</div>}>
+                <WhatsNewDetail years={dummyData} />
+              </Suspense>
             </div>
           </div>
         </div>
