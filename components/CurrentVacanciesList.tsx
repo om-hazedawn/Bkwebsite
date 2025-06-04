@@ -79,7 +79,7 @@ export default function CurrentVacanciesList() {
                   </a>
                 );
               } else if (child.bold) {
-                return <strong key={childIndex}>{child.text}</strong>;
+                return <strong key={childIndex} className='text-[#009999]'>{child.text}</strong>;
               } else if (child.text === '') {
                 return <br key={childIndex} />;
               } else {
@@ -132,13 +132,13 @@ export default function CurrentVacanciesList() {
   return (
     <div className="w-full">
       {vacancies.map((vacancy) => (
-        <div key={vacancy.id} className="mb-8 border-b border-gray-200 pb-4">
+        <div key={vacancy.id} className="mb-8 border-gray-200 pb-4">
           <h2
-            className="text-[#009999] text-xl font-bold mb-4 flex items-center cursor-pointer"
+            className="text-[#0099A7] text-2xl font-bold mb-4 flex items-center cursor-pointer"
             onClick={() => handleToggle(vacancy.id)}
           >
-            <span className="mr-2">•</span> {vacancy.Title}
-            <span className="ml-2 text-gray-500">
+            <span className="mr-2 text-[#0099A7]">•</span> {vacancy.Title}
+            <span className="mr-2 ml-2 text-[#0099A7]">
               {expandedVacancyId === vacancy.id ? '▲' : '▼'}
             </span>
           </h2>

@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export interface BoxMessageItem {
   type: string;
   level?: number; // Add level for headings
@@ -8,6 +10,13 @@ export interface BoxMessageItem {
     type: string;
     bold?: boolean; // Add bold property
   }[];
+  image?: {
+    url: string;
+    name: string;
+    width: number;
+    height: number;
+    alternativeText: null | string;
+  };
 }
 
 interface BoxMessageProps {
@@ -29,7 +38,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h1>
@@ -42,7 +51,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h2>
@@ -55,7 +64,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h3>
@@ -68,7 +77,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h4>
@@ -81,7 +90,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h5>
@@ -94,7 +103,7 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </h6>
@@ -107,10 +116,21 @@ export default function BoxMessage({ items }: BoxMessageProps) {
                       {child.text}
                     </span>
                   ) : (
-                    <br key={`${index}-${childIndex}`} />
+                    <br key={`${index}-${index}`}/>
                   )
                 ))}
               </p>
+            )}
+            {item.type === "image" && item.image && (
+              <div className="my-4">
+                <Image
+                  src={item.image.url}
+                  alt={item.image.alternativeText || item.image.name}
+                  width={item.image.width}
+                  height={item.image.height}
+                  objectFit="contain"
+                />
+              </div>
             )}
           </div>
         );
