@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import Link from "next/link";
+
 import { useState } from "react";
 
 export default function Sustainability() {
@@ -17,9 +17,9 @@ export default function Sustainability() {
           <div>
             <section className="relative">
               {/* Background aerial construction site image */}
-              <div className="relative max-w-[1690px] w-full h-[744px] mx-auto">
+              <div className="relative max-w-[1690px] w-full h-[740px] mx-auto">
                 <Image
-                  src="/our-business/heroimageofbusiness.jpg"
+                  src="/sustainability/banner/top1banner.jpg"
                   alt="Aerial view of construction site"
                   fill
                   className="object-cover"
@@ -29,98 +29,63 @@ export default function Sustainability() {
 
                 {/* Overlay boxes - First Row */}
                 <div className="absolute top-0 left-0 right-0 w-full">
-                  <div className="flex justify-center">
+                  <div className="flex justify-center gap-0">
                     {/* First box - with shadow */}
-                    <div className="w-[350px] h-[372px] pl-8 pt-8 text-white transition-colors duration-300">
-                      <h3 className="text-3xl font-semibold">Our Businesses</h3>
+                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-black/80 text-white transition-colors duration-300 hover:bg-black/40">
+                      <h3 className="text-3xl font-semibold">
+                        Corporate Governance
+                      </h3>
+                      <div className="absolute top-4 right-5 w-8 h-8">
+                        <Image
+                          src="/our-business/white_co.webp"
+                          alt="Corner decoration"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
                     </div>
 
                     {/* Second box - with bg-[#35b3a7] */}
-                    <Link href="/our-business/buildings">
-                      <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
-                        <h3 className="text-3xl font-semibold">Buildings</h3>
-                        <div className="absolute top-4 right-5 w-8 h-8">
-                          <Image
-                            src="/our-business/white_co.webp"
-                            alt="Corner decoration"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                    </Link>
+                    <div className="relative w-[370px] h-[370px] bg-transparent"></div>
 
-                    {/* Third box - with bg-[#e63946] */}
-                    <Link href="/our-business/environmental">
-                      <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white transition-colors duration-300 hover:bg-[#e63946]/40">
-                        <h3 className="text-3xl font-semibold">
-                          Environmental
-                        </h3>
-                        <div className="absolute top-4 right-5 w-8 h-8">
-                          <Image
-                            src="/our-business/white_co.webp"
-                            alt="Corner decoration"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                    {/* Third box */}
+                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
+                      <h3 className="text-3xl font-semibold">Environmental</h3>
+                      <div className="absolute top-4 right-5 w-8 h-8">
+                        <Image
+                          src="/our-business/white_co.webp"
+                          alt="Corner decoration"
+                          fill
+                          className="object-contain"
+                        />
                       </div>
-                    </Link>
+                    </div>
                   </div>
                 </div>
 
                 {/* Overlay boxes - Second Row */}
-                <div className="absolute top-[372px] left-0 right-0 w-full">
-                  <div className="flex justify-center">
+                <div className="absolute top-[370px] left-0 right-0 w-full">
+                  <div className="flex justify-center gap-0">
                     {/* First box - with shadow */}
-                    <Link href="/our-business/foundations">
-                      <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start  bg-[#D5D4D5] text-black transition-colors duration-300 hover:bg-[#D5D4D5]/40">
-                        <h3 className="text-3xl font-semibold">Foundations</h3>
-                        <div className="absolute top-4 right-5 w-8 h-8">
-                          <Image
-                            src="/our-business/gray_co.webp"
-                            alt="Corner decoration"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                    </Link>
+                    <div className="relative w-[370px] h-[370px] bg-transparent"></div>
 
-                    {/* Second box - with bg-[#35b3a7] */}
-                    <Link href="/our-business/civil-works">
-                      <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start text-white transition-all duration-300 shadow-lg hover:bg-black/40 hover:shadow-none">
-                        <h3 className="text-3xl font-semibold">
-                          General Civil Works
-                        </h3>
-                        <div className="absolute top-4 right-5 w-8 h-8">
-                          <Image
-                            src="/our-business/white_co.webp"
-                            alt="Corner decoration"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
+                    {/* Second box */}
+                    <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white transition-colors duration-300 hover:bg-[#e63946]/40">
+                      <h3 className="text-3xl font-semibold">
+                        General Civil Works
+                      </h3>
+                      <div className="absolute top-4 right-5 w-8 h-8">
+                        <Image
+                          src="/our-business/white_co.webp"
+                          alt="Corner decoration"
+                          fill
+                          className="object-contain"
+                        />
                       </div>
-                    </Link>
+                    </div>
 
                     {/* Third box - with bg-[#e63946] */}
-                    <Link href="/our-business/railway-works">
-                      <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
-                        <h3 className="text-3xl font-semibold">
-                          Railway &<br />
-                          Associated Works
-                        </h3>
-                        <div className="absolute top-4 right-5 w-8 h-8">
-                          <Image
-                            src="/our-business/white_co.webp"
-                            alt="Corner decoration"
-                            fill
-                            className="object-contain"
-                          />
-                        </div>
-                      </div>
-                    </Link>
+                    <div className="relative w-[370px] h-[370px] bg-transparent"></div>
                   </div>
                 </div>
               </div>
@@ -132,7 +97,7 @@ export default function Sustainability() {
           <div>
             <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
               <Image
-                src="/sustainability/banner/banner-sustainability.png"
+                src="/sustainability/banner/Qhsbanner.jpg"
                 alt="Sustainability View"
                 fill
                 className="object-cover"
@@ -142,30 +107,32 @@ export default function Sustainability() {
 
               {/* Overlay boxes - First Row */}
               <div className="absolute top-0 left-0 right-0 w-full">
-                <div className="flex justify-center">
-                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 pt-8 flex items-start justify-start text-[#838182] transition-colors bg-transparent">
-                    <h3 className="text-3xl font-semibold">QHSE</h3>
+                <div className="flex justify-center gap-0">
+                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex flex-col justify-end bg-[#e63946]/80 text-white">
+                    <h3 className="text-3xl font-semibold">WE CARE</h3>
+                    <p className="text-lg mt-4 font-light">
+                      about our people, our <br />
+                      stakeholders, and the world
+                      <br />
+                      around us.
+                    </p>
                   </div>
-                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#838182]/70 text-white">
-                    <h3 className="text-3xl font-normal">
-                      Quality, Health, Safety <br />
-                      and Environment
-                    </h3>
-                  </div>
+                  <div className="relative w-[370px] h-[370px]"></div>
                   <div className="relative w-[370px] h-[370px]"></div>
                 </div>
               </div>
-
               {/* Overlay boxes - Second Row */}
-              <div className="absolute top-[372px] left-0 right-0 w-full">
-                <div className="flex justify-center">
-                  <div className="relative w-[370px] h-[370px]"></div>
-                  <div className="relative w-[370px] h-[370px]"></div>
-                  <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#35B3A7D6] text-white">
-                    <h3 className="text-3xl font-normal">
-                      Commitment to <strong>excellence</strong> <br />
-                      in every aspect
-                    </h3>
+              <div className="absolute top-[370px] left-0 right-0 w-full">
+                <div className="flex justify-end gap-0">
+                  <div className="relative w-[370px] h-[370px] bg-transparent"></div>
+                  <div className="w-[945px] h-[370px] bg-black/40 text-white flex flex-col items-start justify-center px-16 space-y-6">
+                    <h3 className="text-3xl font-semibold">WE COMMIT</h3>
+                    <p className="text-2xl font-light leading-relaxed text-center max-w-4xl">
+                      to be leading contractor in quality, sharing the worldwide
+                      concern towards preserving and improving the environment
+                      and providing healthy and safe working environment of the
+                      highest practical standard.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -177,7 +144,7 @@ export default function Sustainability() {
           <div>
             <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
               <Image
-                src="/sustainability/banner/banner-sustainability.png"
+                src="/sustainability/banner/Corporate_banner.jpg"
                 alt="Sustainability View"
                 fill
                 className="object-cover"
@@ -187,7 +154,7 @@ export default function Sustainability() {
 
               {/* Overlay boxes - First Row */}
               <div className="absolute top-0 left-0 right-0 w-full">
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-0">
                   <div className="relative w-[370px] h-[370px] pl-8 pb-10 pt-8 flex items-start justify-start text-[#838182] transition-colors bg-transparent">
                     <h3 className="text-3xl font-semibold">
                       Corporate
@@ -207,8 +174,8 @@ export default function Sustainability() {
               </div>
 
               {/* Overlay boxes - Second Row */}
-              <div className="absolute top-[372px] left-0 right-0 w-full">
-                <div className="flex justify-center">
+              <div className="absolute top-[370px] left-0 right-0 w-full">
+                <div className="flex justify-center gap-0">
                   <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#35B3A7D6] text-white">
                     <h3 className="text-3xl font-normal">
                       Stay updated with our
