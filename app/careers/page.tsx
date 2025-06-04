@@ -379,10 +379,10 @@ export default function Careers() {
               Training and Development
             </h2>
             <div className="text-[#838182] space-y-6">
-              <h3 className="text-2xl font-semibold mb-4">
+              <h3 className="text-2xl font-semibold mb-6">
                 Training Programmes
               </h3>
-              <p>
+              <p className="mb-8">
                 Staff are our most valuable asset. As a fast growing company, we
                 emphasize continuing investment in people through vigorous
                 training and development programmes. For professional
@@ -395,7 +395,7 @@ export default function Careers() {
             </div>
 
             {/* Training Programme Details */}
-            <div className="space-y-8">
+            <div className="space-y-12 mt-8">
               {/* First Training Section */}
               <section className="w-[1110px] h-[370px] mx-auto">
                 <div className="flex h-full">
@@ -504,7 +504,7 @@ export default function Careers() {
                   </div>
 
                   {/* Text Section */}
-                  <div className="flex-1 bg-[#33b9af] text-white p-6 flex flex-col justify-center">
+                  <div className="flex-1 bg-[#4A4A4A] text-white p-6 flex flex-col justify-center">
                     <h2 className="text-2xl font-bold mb-4">Apprenticeship Programme</h2>
                     <p className="text-base leading-relaxed">
                       Our Apprenticeship Programme provides comprehensive training for aspiring professionals.
@@ -563,7 +563,7 @@ export default function Careers() {
                   </div>
 
                   {/* Text Section */}
-                  <div className="flex-1 bg-[#33b9af] text-white p-6 flex flex-col justify-center">
+                  <div className="flex-1 bg-[#D0374C] text-white p-6 flex flex-col justify-center">
                     <h2 className="text-2xl font-bold mb-4">Quantity Surveying Programme</h2>
                     <p className="text-base leading-relaxed">
                       Our Quantity Surveying Programme develops professionals in construction cost management.
@@ -573,6 +573,26 @@ export default function Careers() {
                   </div>
                 </div>
               </section>
+            </div>
+
+            <div className="text-[#838182] mt-16">
+              <p className="mb-4">
+                If you are interested to join our Group as Graduate Engineer, Apprentice, Assistant Quantity Surveyor or other disciplines such as Environmental and Surveying, please send your full resume by email to <a href="mailto:hr@buildking.hk" className="text-[#0099a7] hover:underline">hr@buildking.hk</a>
+              </p>
+
+              <hr className="my-8 border-[#838182]" />
+
+              <h3 className="text-2xl font-semibold mb-4 text-[#838182]">
+                People Development
+              </h3>
+
+              <p className="mb-4">
+                We are committed to people development. To build and maintain a high quality workforce, the Group aims to enhance capabilities at every level, through a wide spectrum of people & development activities.
+              </p>
+
+              <p>
+                Staff are encouraged to learn on the job as well as to seek every development opportunity available for improvement and advancement. They can participate in in-house and external training courses and seminars which expose them to the latest professional expertise and management skills.
+              </p>
             </div>
           </div>
         );

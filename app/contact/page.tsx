@@ -1,28 +1,36 @@
-'use client';
+"use client";
 
-import Header from "@/components/Header"
-import Footer from "@/components/Footer"
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Image from "next/image";
-import HongKongContactList, { CompanyData } from "@/components/HongKongContactList";
+import HongKongContactList, {
+  CompanyData,
+} from "@/components/HongKongContactList";
 import HongKongContactDetail from "@/components/HongKongContactDetail";
 import { getContactHongKongCollections } from "@/lib/api/contact-hong-kong-collections";
 import { useState, useEffect } from "react";
-import OverseasContactList, { CompanyData as OverseasCompanyData } from "@/components/OverseasContactList";
+import OverseasContactList, {
+  CompanyData as OverseasCompanyData,
+} from "@/components/OverseasContactList";
 
-type ContactType = 'hongkong' | 'overseas';
+type ContactType = "hongkong" | "overseas";
 import OverseasContactDetail from "@/components/OverseasContactDetail";
 import { getContactOverseaCollections } from "@/lib/api/contact-overseas-collections";
+
 
 export default function Contact() {
   const [hkCompanies, setHkCompanies] = useState<CompanyData[]>([]);
   const [hkLoading, setHkLoading] = useState(true);
   const [hkError, setHkError] = useState<string | null>(null);
 
-  const [overseasCompanies, setOverseasCompanies] = useState<OverseasCompanyData[]>([]);
+  const [overseasCompanies, setOverseasCompanies] = useState<
+    OverseasCompanyData[]
+  >([]);
   const [overseasLoading, setOverseasLoading] = useState(true);
   const [overseasError, setOverseasError] = useState<string | null>(null);
 
-  const [selectedContactType, setSelectedContactType] = useState<ContactType>('hongkong');
+  const [selectedContactType, setSelectedContactType] =
+    useState<ContactType>("hongkong");
 
   useEffect(() => {
     async function fetchHkData() {
@@ -74,77 +82,132 @@ export default function Contact() {
 
       {/* Main contact section with full-width customer service image */}
       <section className="relative">
-        <div className="relative w-full h-[400px]">
+        {/* Background aerial construction site image */}
+        <div className="relative max-w-[1540px] w-full h-[740px] mx-auto">
           <Image
-            src="/contact/customer-service-rep.png"
-            alt="Customer service representative"
+            src="/contact/Contactus_img.png"
+            alt="Aerial view of construction site"
             fill
-            className="object-cover object-center"
+            className="object-cover"
+            priority
           />
-        </div>
-      </section>
+          <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-1">
-              <HongKongContactList companies={hkCompanies} onSelect={() => setSelectedContactType('hongkong')} />
-              <OverseasContactList companies={overseasCompanies} onSelect={() => setSelectedContactType('overseas')} />
+          {/* Overlay boxes - First Row */}
+          <div className="absolute top-0 left-0 right-0 w-full">
+            <div className="flex justify-center space-x-0">
+              {/* First box - with shadow */}
+              <div className="w-[370px] h-[370px] pl-8 pt-8 text-[#838182] transition-colors duration-300">
+                <h3 className="text-3xl font-semibold">Contact</h3>
+              </div>
+
+              {/* Second box - with bg-[#35b3a7] */}
+              <div className="w-[370px] h-[370px] pl-8 pt-8 text-[#838182] transition-colors duration-300"></div>
+              {/* Third box - with bg-[#e63946] */}
+
+              <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white transition-colors duration-300 hover:bg-[#e63946]/40">
+                <h3 className="text-3xl font-semibold">
+                  Welcome to Build King support
+                </h3>
+              </div>
             </div>
-            <div className="col-xs-12 col-sm-6 result_box pull-right">
-              {selectedContactType === 'hongkong' && <HongKongContactDetail companies={hkCompanies} />}
-              {selectedContactType === 'overseas' && <OverseasContactDetail companies={overseasCompanies} />}
+          </div>
+
+          {/* Overlay boxes - Second Row */}
+          <div className="absolute top-[370px] left-0 right-0 w-full">
+            <div className="flex justify-center space-x-0">
+              {/* First box - with shadow */}
+
+              <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start text-white bg-black/40"></div>
+
+              {/* Second box - with bg-[#35b3a7] */}
+
+              <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start "></div>
+
+              {/* Third box - with bg-[#e63946] */}
+
+              <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start"></div>
             </div>
           </div>
         </div>
       </section>
 
+      <section className="py-24">
+        <div className="container mx-auto px-8 max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 justify-center">
+            <div>
+              <HongKongContactList
+                companies={hkCompanies}
+                onSelect={() => setSelectedContactType("hongkong")}
+              />
+              <OverseasContactList
+                companies={overseasCompanies}
+                onSelect={() => setSelectedContactType("overseas")}
+              />
+            </div>
+            <div className="result_box">
+              {selectedContactType === "hongkong" && (
+                <HongKongContactDetail companies={hkCompanies} />
+              )}
+              {selectedContactType === "overseas" && (
+                <OverseasContactDetail companies={overseasCompanies} />
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Contact form section */}
-      <section className="py-12 bg-[#00a0a0]">
+      <section className="py-12 bg-[#0099A7]">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center mb-6">
-            <div className="bg-white rounded-full p-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-[#00a0a0]"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+            <div className="flex flex-col items-center">
+              <div className="relative w-full h-[100px]">
+                <Image
+                  src="/contact/Contactus.png"
+                  alt="Contact Us"
+                  fill
+                  className="object-contain"
                 />
-              </svg>
+              </div>
+              <h3 className="text-white text-4xl font-semibold mt-4">E-mail US</h3>
             </div>
-          </div>
-
-          <h2 className="text-white text-center text-2xl mb-8">E-mail Us</h2>
-
-          <div className="max-w-xl mx-auto">
+            <div>
             <form className="space-y-4">
               <div className="grid grid-cols-[100px_1fr] items-center">
                 <label htmlFor="name" className="text-white">
                   Name
                 </label>
-                <input type="text" id="name" name="name" className="w-full px-3 py-2 border border-gray-300" required />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full px-3 py-2 border border-gray-300"
+                  required
+                />
               </div>
 
               <div className="grid grid-cols-[100px_1fr] items-center">
                 <label htmlFor="phone" className="text-white">
                   Phone
                 </label>
-                <input type="tel" id="phone" name="phone" className="w-full px-3 py-2 border border-gray-300" />
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  className="w-full px-3 py-2 border border-gray-300"
+                />
               </div>
 
               <div className="grid grid-cols-[100px_1fr] items-center">
                 <label htmlFor="company" className="text-white">
                   Company
                 </label>
-                <select id="company" name="company" className="w-full px-3 py-2 border border-gray-300">
+                <select
+                  id="company"
+                  name="company"
+                  className="w-full px-3 py-2 border border-gray-300"
+                >
                   <option>Build King Holdings Limited</option>
                   <option>Build King Civil Engineering Limited</option>
                   <option>Build King Construction Limited</option>
@@ -179,16 +242,20 @@ export default function Contact() {
               </div>
 
               <div className="flex justify-center">
-                <button type="submit" className="bg-white text-[#00a0a0] px-6 py-1 text-sm">
+                <button
+                  type="submit"
+                  className="bg-white text-[#00a0a0] px-6 py-1 text-sm"
+                >
                   Send
                 </button>
               </div>
             </form>
+            </div>
           </div>
         </div>
       </section>
 
       <Footer />
     </main>
-  )
+  );
 }

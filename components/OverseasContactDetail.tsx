@@ -19,8 +19,8 @@ export default function OverseasContactDetail({ companies }: OverseasContactDeta
   }
 
   return (
-    <div className="flex flex-col">
-      <div className="mb-6">
+    <div className="flex flex-col p-6 bg-white rounded-lg shadow-sm">
+      <div className="mb-8">
         {selectedCompany.Logo && (
           <Image
             src={`${process.env.CMS_URL || 'http://52.175.21.181'}${selectedCompany.Logo.url}`}
@@ -30,10 +30,10 @@ export default function OverseasContactDetail({ companies }: OverseasContactDeta
           />
         )}
       </div>
-      <h3 className="font-medium mb-2 text-[#0099a7]">{selectedCompany.CompanyName}</h3>
+      <h3 className="text-xl font-medium mb-4 text-[#0099a7]">{selectedCompany.CompanyName}</h3>
       {
         selectedCompany.CompanyInformation.map((infoBlock, index) => (
-          <p key={index} className="text-gray-600 mb-1">
+          <p key={index} className="text-gray-600 mb-3 text-lg">
             {infoBlock.children.map((child, childIndex) => (
               child.type === "link" ? (
                 <a key={childIndex} href={child.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">

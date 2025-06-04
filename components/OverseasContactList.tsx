@@ -69,16 +69,24 @@ export default function OverseasContactList({ companies, onSelect }: OverseasCon
     <div className="mb-8">
       {/* Overseas offices */}
       <div>
-        <h2 className="text-lg font-bold mb-4">Overseas</h2>
+        <h2 className="text-2xl font-bold mb-4 text-[#0099A7]">Overseas</h2>
         <ul className="space-y-2 text-gray-600">
           {companies.map((company) => (
             <li
             key={company.id}
-            className={`flex items-center cursor-pointer ${selectedCompanyId === company.id.toString() ? "font-bold text-[#0099a7]" : ""}`}
+            className="flex items-center cursor-pointer text-lg"
             onClick={() => handleCompanyClick(company.id)}
           >
               <span>{company.CompanyNameShort}</span>
-              <span className="ml-1 text-gray-400">»</span>
+              {selectedCompanyId === company.id.toString() && (
+                <svg
+                  className="ml-1 w-6 h-6 text-gray-400"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              )}
             </li>
           ))}
         </ul>
