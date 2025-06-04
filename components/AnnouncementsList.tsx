@@ -18,7 +18,8 @@ interface AnnouncementData {
   // Add other relevant announcement properties if needed
 }
 
-const AnnouncementsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
+const AnnouncementsList: React.FC<{ initialYear: string, language: string }> = ({ initialYear, language }) => {
+
   const [announcements, setAnnouncements] = useState<AnnouncementData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +34,7 @@ const AnnouncementsList: React.FC<{ initialYear: string }> = ({ initialYear }) =
           yearToFetch = '2025';
         }
         // Always fetch all announcements, then filter based on initialYear
-        const result = await getAnnouncementCollections(yearToFetch); 
+        const result = await getAnnouncementCollections(yearToFetch, language); 
         console.log('Fetched announcements data:', result);
         if (result && Array.isArray(result.data)) {
           let processedAnnouncements = result.data.filter((c: AnnouncementData) => c.Date && c.File);
@@ -72,7 +73,7 @@ const AnnouncementsList: React.FC<{ initialYear: string }> = ({ initialYear }) =
     };
 
     fetchAnnouncements();
-  }, [initialYear]);
+  }, [initialYear, language]);
 
   if (loading) {
     return <p>Loading announcements...</p>;

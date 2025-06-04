@@ -9,7 +9,7 @@ export default function Header() {
   const { language, setLanguage } = useLanguage()
   const t = locales[language]
 
-  const handleLanguageChange = (lang: "en" | "zh-cn" | "zh-hk") => {
+  const handleLanguageChange = (lang: "en" | "zh-cn" | "zh-Hant-HK") => {
     setLanguage(lang)
   }
 
@@ -32,8 +32,8 @@ export default function Header() {
           </button>
           <span className="text-gray-300">|</span>
           <button
-            onClick={() => handleLanguageChange("zh-hk")}
-            className={`${language === "zh-hk" ? "text-primary" : ""}`}
+            onClick={() => handleLanguageChange("zh-Hant-HK")}
+            className={`${language === "zh-Hant-HK" ? "text-primary" : ""}`}
           >
             繁
           </button>

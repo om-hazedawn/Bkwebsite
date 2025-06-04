@@ -10,6 +10,7 @@ import Footer from "@/components/Footer"
 import { getHome } from "@/lib/api/home";
 import { BoxMessageItem } from "@/components/BoxMessage";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/language-context";
 
 interface Image {
   url: string
@@ -40,11 +41,12 @@ interface HomeData {
 export default function Home() {
 
   const [homeData, setHomeData] = useState<HomeData>();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const fetchHome = async () => {
       try {
-        const data = await getHome();
+        const data = await getHome(language);
         console.log("Fetched data:", data); // Log the fetched data to the console
         setHomeData(data);
       } catch (error) {
@@ -54,7 +56,7 @@ export default function Home() {
     };
 
     fetchHome();
-  }, []);
+  }, [language]);
 
   return (
     <main className="min-h-screen">
