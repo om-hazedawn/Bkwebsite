@@ -27,7 +27,7 @@ const YEAR_RANGES = {
 
 type YearRangeKey = keyof typeof YEAR_RANGES;
 
-const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
+const AnnualReportList: React.FC<{ yearRange: string, language: string }> = ({ yearRange, language }) => {
   const [allReports, setAllReports] = useState<ReportData[]>([]);
   const [filteredReports, setFilteredReports] = useState<ReportData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -51,7 +51,7 @@ const AnnualReportList: React.FC<{ yearRange: string }> = ({ yearRange }) => {
         // For this example, we'll use the local JSON data.
         // You might need to adjust the path depending on where you place the JSON file
         // relative to your public folder or how you serve static assets.
-        const result = await getAnnualReportCollections();
+        const result = await getAnnualReportCollections(language);
         console.log("Results");
         console.log(result);
         if (result && Array.isArray(result.data)) {

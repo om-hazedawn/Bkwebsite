@@ -7,6 +7,7 @@ import { getWhoWeAre } from "@/lib/api/who-we-are";
 import { BoxMessageItem } from "@/components/BoxMessage";
 import BoxMessage from "@/components/BoxMessage";
 import { getMilestone } from "@/lib/api/milestone";
+import { useLanguage } from "@/contexts/language-context";
 
 interface WhoWeAreData { 
   data: {
@@ -37,6 +38,7 @@ interface MilestoneData {
 }
 
 export default function AboutUs() {
+  const { language } = useLanguage();
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("who-we-are");
   const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
@@ -44,22 +46,22 @@ export default function AboutUs() {
 
   useEffect(() => {
     const fetchWhoWeAreData = async () => {
-      const data = await getWhoWeAre();
+      const data = await getWhoWeAre(language);
       console.log("Fetched data:", data); // Log the fetched data to the console
       setWhoWeAreData(data);
     };
     fetchWhoWeAreData();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchMilestoneData = async () => {
-      const data = await getMilestone();
+      const data = await getMilestone(language);
       console.log("Fetched milestone data:", data); // Log the fetched data to the console
       setMilestoneData(data);
     };
 
     fetchMilestoneData();
-  }, []);
+  }, [language]);
 
   if (!whoWeAreData) {
     return <div>Loading...</div>; // Or a more sophisticated loading component

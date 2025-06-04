@@ -22,6 +22,7 @@ import AnnualYearRanges from "@/components/AnnualYearRanges";
 import InteriumYearRanges from "@/components/InteriumYearRanges";
 import AnnualReportList from "@/components/AnnualReportList";
 import InteriumReportList from "@/components/InteriumReportList";
+import { useLanguage } from "@/contexts/language-context";
 
 
 interface FinancialReportData { 
@@ -74,6 +75,7 @@ interface YearRangesData {
 }
 
 export default function InvestorRelations() {
+  const { language } = useLanguage();
   const [announcementYears, setAnnouncementYears] = useState<string[]>([]);
   const [circularYears, setCircularYears] = useState<string[]>([]);
   const [noticeSections, setNoticeSections] = useState<NoticeSectionItem[]>([]);
@@ -276,8 +278,8 @@ export default function InvestorRelations() {
                     </div>
                   </div>
                   <div className="md:col-span-3">
-                    {interiumYearRange ? null : <AnnualReportList yearRange={annualYearRange || ''} />}
-                    {annualYearRange ? null : <InteriumReportList yearRange={interiumYearRange || ''} />}
+                    {interiumYearRange ? null : <AnnualReportList yearRange={annualYearRange || ''} language={language} />}
+                    {annualYearRange ? null : <InteriumReportList yearRange={interiumYearRange || ''} language={language} />}
                   </div>
                 </div>
               </div>
@@ -349,7 +351,7 @@ export default function InvestorRelations() {
                     <Years years={announcementYears}/>
                   </div>
                   <div className="md:col-span-3">
-                    <AnnouncementsList initialYear={year || ''} />
+                    <AnnouncementsList initialYear={year || ''} language={language} />
                   </div>
                 </div>
               </div>
