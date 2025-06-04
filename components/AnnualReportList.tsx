@@ -75,7 +75,7 @@ const AnnualReportList: React.FC<{ yearRange: string, language: string }> = ({ y
     };
 
     fetchReports();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (!allReports.length) return;

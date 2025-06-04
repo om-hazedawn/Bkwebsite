@@ -75,7 +75,7 @@ const InteriumReportList: React.FC<{ yearRange: string, language: string }> = ({
     };
 
     fetchReports();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (!allReports.length) return;

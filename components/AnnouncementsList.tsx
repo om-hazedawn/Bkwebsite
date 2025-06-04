@@ -73,7 +73,7 @@ const AnnouncementsList: React.FC<{ initialYear: string, language: string }> = (
     };
 
     fetchAnnouncements();
-  }, [initialYear]);
+  }, [initialYear, language]);
 
   if (loading) {
     return <p>Loading announcements...</p>;
