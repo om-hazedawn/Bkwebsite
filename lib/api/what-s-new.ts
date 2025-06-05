@@ -1,9 +1,9 @@
-export async function getWhatsNew() {
-    const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
+export async function getWhatsNew(locale: string = 'en') {
+    const CMS_URL = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/what-s-new?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/what-s-new?populate=*&locale=${locale}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

@@ -23,7 +23,7 @@ export default function OverseasContactDetail({ companies }: OverseasContactDeta
       <div className="mb-8">
         {selectedCompany.Logo && (
           <Image
-            src={`${process.env.CMS_URL || 'http://52.175.21.181'}${selectedCompany.Logo.url}`}
+            src={`${process.env.CMS_URL || 'https://bk-data-migrate.onrender.com'}${selectedCompany.Logo.url}`}
             alt={selectedCompany.Logo.alternativeText || selectedCompany.CompanyNameShort}
             width={selectedCompany.Logo.width}
             height={selectedCompany.Logo.height}

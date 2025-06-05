@@ -1,5 +1,5 @@
 export async function getQhseAndAward() {
-    const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
+    const CMS_URL = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {

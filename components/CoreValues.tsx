@@ -23,7 +23,7 @@ interface MessageIconArea {
 export default function CoreValues() {
   const { language } = useLanguage()
   const [coreValues, setCoreValues] = useState<MessageIconArea[]>([])
-  const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
 
   useEffect(() => {
     async function fetchData() {
