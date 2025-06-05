@@ -423,7 +423,7 @@ export default function InvestorRelations() {
                   </div>
                   <div className="md:col-span-3">
                     {collection ? null : <CircularList initialYear={year || ''} />}
-                    {year ? null : <DynamicFileList collections={collection || ''} />}
+                    {year ? null : <DynamicFileList collections={collection || ''} language={language} />}
                   </div>
                 </div>
               </div>

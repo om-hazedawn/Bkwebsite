@@ -1,9 +1,9 @@
-export async function getCorporateNewsletter() {
+export async function getCorporateNewsletter(locale: string = 'en') {
     const CMS_URL = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/corporate-newsletter?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/corporate-newsletter?populate=*&locale=${locale}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

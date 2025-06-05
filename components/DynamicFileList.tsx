@@ -19,7 +19,7 @@ interface DynamicData {
   // Add other relevant circular properties if needed
 }
 
-const DynamicsFileList: React.FC<{ collections: string }> = ({ collections }) => {
+const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({ collections, language }) => {
   const [circulars, setDynamics] = useState<DynamicData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -30,7 +30,7 @@ const DynamicsFileList: React.FC<{ collections: string }> = ({ collections }) =>
       setError(null);
       try {
         // Fetch data based on the provided collection
-        const result = await getDynamicCollections(collections); 
+        const result = await getDynamicCollections(collections, language); 
         console.log('Fetched dynamics data for collection:', collections, result);
         if (result && Array.isArray(result.data)) {
           // Filter out items that don't have a File, as they cannot be displayed as a link
@@ -66,7 +66,7 @@ const DynamicsFileList: React.FC<{ collections: string }> = ({ collections }) =>
     if (collections) { // Only fetch if a collection is provided
       fetchDynamics();
     }
-  }, [collections]);
+  }, [collections, language]);
 
   // if (loading) {
   //   return <p>Loading data...</p>;

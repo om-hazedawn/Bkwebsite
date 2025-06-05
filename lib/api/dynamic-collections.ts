@@ -1,9 +1,9 @@
-export async function getDynamicCollections(collection: string) {
+export async function getDynamicCollections(collection: string, locale: string = 'en') {
     const CMS_URL = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/${collection}?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/${collection}?populate=*&locale=${locale}&sort=createdAt:asc`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy
