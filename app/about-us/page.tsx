@@ -39,7 +39,7 @@ interface MilestoneData {
 
 export default function AboutUs() {
   const { language } = useLanguage();
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
   const [selectedSection, setSelectedSection] = useState("who-we-are");
   const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
   const [milestoneData, setMilestoneData] = useState<MilestoneData>();

@@ -168,7 +168,7 @@ export default function InvestorRelations() {
     fetchInteriumReportYearRanges();
   }, []);
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
   const [selectedSection, setSelectedSection] = useState("financial-reports");
   const [financialReportData, setFinancialReportData] = useState<FinancialReportData>();
   const [announcementData, setAnnouncementData] = useState<AnnouncementData>();
