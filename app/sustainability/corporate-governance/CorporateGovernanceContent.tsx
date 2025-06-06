@@ -86,16 +86,16 @@ export default function CorporateGovernance() {
                   />
                 </div>
                 <div className="relative w-[370px] h-[370px] bg-transparent"></div>
+               
               </div>
             </div>
 
             {/* Overlay boxes - Second Row */}
             <div className="absolute top-[370px] left-0 right-0 w-full">
-              <div className="flex justify-start gap-0">
+              <div className="flex justify-center gap-0">
+                <div className="relative w-[370px] h-[370px] bg-transparent"></div>
                 <div className="relative w-[370px] h-[370px]"></div>
-                <div className="relative w-[370px] h-[370px]"></div>
-                <div className="relative w-[370px] h-[370px]"></div>
-                <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white text-3xl">
+                <div className="w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white text-3xl">
                   <BoxMessage
                     items={corporateGovernanceData?.data.MessageRedArea || []}
                   />
