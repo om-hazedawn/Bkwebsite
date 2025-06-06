@@ -352,7 +352,7 @@ export default function InvestorRelations() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                   {/* Year filter sidebar */}
                   <div>
-                    <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Announcement</h2>
+                    <h2 className="text-2xl font-bold text-[#0099A7] mb-6">{announcementData?.data.PageTitle}</h2>
                     <Years years={announcementYears}/>
                   </div>
                   <div className="md:col-span-3">
