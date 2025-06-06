@@ -36,6 +36,15 @@ interface FinancialReportData {
   };
 }
 
+interface ReportData { 
+  data: {
+    PageTitle: string;
+    YearRanges: YearRangesData;
+    locale: string;
+    localizations: ReportData[];
+  };
+}
+
 interface AnnouncementData { 
   data: {
     PageTitle: string;
@@ -67,11 +76,7 @@ interface YearsData {
 }
 
 interface YearRangesData {
-  data: {
-    YearRanges: {
-      yearRanges: string[];
-    };
-  }
+  yearRanges: string[];
 }
 
 export default function InvestorRelations() {
@@ -79,8 +84,8 @@ export default function InvestorRelations() {
   const [announcementYears, setAnnouncementYears] = useState<string[]>([]);
   const [circularYears, setCircularYears] = useState<string[]>([]);
   const [noticeSections, setNoticeSections] = useState<NoticeSectionItem[]>([]);
-  const [annualReportYearRanges, setAnnualReportYearRanges] = useState<string[]>([]);
-  const [interiumReportYearRanges, setInteriumReportYearRanges] = useState<string[]>([]);
+  const [annualReportData, setAnnualReportData] = useState<ReportData>();
+  const [interiumReportData, setInteriumReportData] = useState<ReportData>();
   const searchParams = useSearchParams();
   const year = searchParams.get('year');
   const collection = searchParams.get('collections');
@@ -137,36 +142,36 @@ export default function InvestorRelations() {
   }, []);
 
   useEffect(() => {
-    const fetchAnnualReportYearRanges = async () => {
+    const fetchAnnualReportData = async () => {
       try {
-        const annualReportsData: YearRangesData = await getAnnualReport();
-        if (annualReportsData && annualReportsData.data && annualReportsData.data.YearRanges && annualReportsData.data.YearRanges.yearRanges) {
-          setAnnualReportYearRanges(annualReportsData.data.YearRanges.yearRanges);
+        const annualReportsData: ReportData = await getAnnualReport(language);
+        if (annualReportsData && annualReportsData.data) {
+          setAnnualReportData(annualReportsData);
         }
       } catch (error) {
-        console.error("Failed to load annual report year ranges:", error);
+        console.error("Failed to load annual report data:", error);
         // Optionally, set a default or show an error message to the user
       }
     };
 
-    fetchAnnualReportYearRanges();
-  }, []);
+    fetchAnnualReportData();
+  }, [language]);
 
   useEffect(() => {
-    const fetchInteriumReportYearRanges = async () => {
+    const fetchInteriumReportData = async () => {
       try {
-        const interiumReportsData: YearRangesData = await getInteriumReport();
-        if (interiumReportsData && interiumReportsData.data && interiumReportsData.data.YearRanges && interiumReportsData.data.YearRanges.yearRanges) {
-          setInteriumReportYearRanges(interiumReportsData.data.YearRanges.yearRanges);
+        const interiumReportsData: ReportData = await getInteriumReport(language);
+        if (interiumReportsData && interiumReportsData.data) {
+          setInteriumReportData(interiumReportsData);
         }
       } catch (error) {
-        console.error("Failed to load interium report year ranges:", error);
+        console.error("Failed to load interium report data:", error);
         // Optionally, set a default or show an error message to the user
       }
     };
 
-    fetchInteriumReportYearRanges();
-  }, []);
+    fetchInteriumReportData();
+  }, [language]);
 
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
   const [selectedSection, setSelectedSection] = useState("financial-reports");
@@ -176,30 +181,30 @@ export default function InvestorRelations() {
 
   useEffect(() => {
     const fetchFinancialReportData = async () => {
-      const data = await getFinancialReport();
+      const data = await getFinancialReport(language);
       console.log("Fetched data:", data); // Log the fetched data to the console
       setFinancialReportData(data);
     };
     fetchFinancialReportData();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchAnnouncementData = async () => {
-      const data = await getAnnouncementAndPressRelease();
+      const data = await getAnnouncementAndPressRelease(language);
       console.log("Fetched data:", data); // Log the fetched data to the console
       setAnnouncementData(data);
     };
     fetchAnnouncementData();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchCircularAndNoticeData = async () => {
-      const data = await getCircularAndNotice();
+      const data = await getCircularAndNotice(language);
       console.log("Fetched data:", data); // Log the fetched data to the console
       setCircularAndNoticeData(data);
     };
     fetchCircularAndNoticeData();
-  }, []);
+  }, [language]);
 
 
   if (!financialReportData) {
@@ -269,12 +274,12 @@ export default function InvestorRelations() {
                   {/* Year filter sidebar */}
                   <div className="flex flex-col space-y-8">
                     <div>
-                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Annual Report</h2>
-                      <AnnualYearRanges yearRanges={annualReportYearRanges} basePath="/investor-relations"/>
+                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">{annualReportData?.data.PageTitle}</h2>
+                      <AnnualYearRanges yearRanges={annualReportData?.data.YearRanges.yearRanges || []} basePath="/investor-relations"/>
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">Interim Report</h2>
-                      <InteriumYearRanges yearRanges={interiumReportYearRanges} basePath="/investor-relations"/>
+                      <h2 className="text-2xl font-bold text-[#0099A7] mb-6">{interiumReportData?.data.PageTitle}</h2>
+                      <InteriumYearRanges yearRanges={interiumReportData?.data.YearRanges.yearRanges || []} basePath="/investor-relations"/>
                     </div>
                   </div>
                   <div className="md:col-span-3">
@@ -362,13 +367,13 @@ export default function InvestorRelations() {
         return (
           <div>
             <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
-              <Image
+              {/* <Image
                 src={circularAndNoticeData?.data?.MainImage?.url ? cmsBaseUrl + circularAndNoticeData.data.MainImage.url : ''}
                 alt="Aerial view of construction site"
                 fill
                 className="object-cover"
                 priority
-              />
+              /> */}
               <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
               {/* Overlay boxes - First Row */}

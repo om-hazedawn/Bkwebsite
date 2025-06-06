@@ -89,7 +89,7 @@ export default function NewsSection({ whatsNewMessage, whatsNewLinkText, whatsNe
                   <p className="text-gray-500 text-lg mb-2">{item.title}</p>
                   <p className="text-gray-500 text-base mb-4">{item.date}</p>
                   <Link
-                    href="#"
+                    href="/whats-new"
                     className="border border-cyan-600 text-cyan-600 px-3 py-1 text-sm hover:bg-cyan-50"
                   >
                     {t.news.readMore}

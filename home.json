@@ -1,0 +1,1168 @@
+{
+    "data": {
+        "id": 26,
+        "documentId": "k94xnd9qy45vkz4uviw6asz2",
+        "PageTitle": "Home",
+        "TopMessage": [
+            {
+                "type": "heading",
+                "level": 2,
+                "children": [
+                    {
+                        "bold": true,
+                        "text": "Build King",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "Integrity",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "Innovation",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "Professionalism",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "createdAt": "2025-05-28T05:05:48.545Z",
+        "updatedAt": "2025-06-06T03:07:35.513Z",
+        "publishedAt": "2025-06-06T03:07:39.458Z",
+        "locale": "en",
+        "YoutubeVideo": null,
+        "Message": [
+            {
+                "type": "heading",
+                "level": 2,
+                "children": [
+                    {
+                        "bold": true,
+                        "text": "A leading",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "construction company",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "bold": true,
+                        "text": "Build King",
+                        "type": "text"
+                    },
+                    {
+                        "text": " is one of the top construction companies in Hong Kong and the preferred partner for customers, subcontractors, suppliers and joint ventures.",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "MessagRedArea": [
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "More than 300 professional",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "engineers and commercial specialists",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "MessageBlackArea": [
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "About us",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "History",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "We have over 45 years of experience in civil engineering and building construction and a proud track record of high-quality construction projects.",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "WhatsNewMessage": [
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "What's New!",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "Keep up to date with our latest information.",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            },
+            {
+                "type": "paragraph",
+                "children": [
+                    {
+                        "text": "",
+                        "type": "text"
+                    }
+                ]
+            }
+        ],
+        "WhatsNewLinkText": "Find more news ",
+        "TopBanner": [
+            {
+                "id": 3501,
+                "documentId": "pw4p3hl7bwkqqr1u910yw8yl",
+                "name": "1301 C3_compress.jpg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 1920,
+                "height": 776,
+                "formats": {
+                    "large": {
+                        "ext": ".jpg",
+                        "url": "/uploads/large_1301_C3_compress_bcd2eba2ba.jpg",
+                        "hash": "large_1301_C3_compress_bcd2eba2ba",
+                        "mime": "image/jpeg",
+                        "name": "large_1301 C3_compress.jpg",
+                        "path": null,
+                        "size": 130.83,
+                        "width": 1000,
+                        "height": 404,
+                        "sizeInBytes": 130826
+                    },
+                    "small": {
+                        "ext": ".jpg",
+                        "url": "/uploads/small_1301_C3_compress_bcd2eba2ba.jpg",
+                        "hash": "small_1301_C3_compress_bcd2eba2ba",
+                        "mime": "image/jpeg",
+                        "name": "small_1301 C3_compress.jpg",
+                        "path": null,
+                        "size": 33.29,
+                        "width": 500,
+                        "height": 202,
+                        "sizeInBytes": 33289
+                    },
+                    "medium": {
+                        "ext": ".jpg",
+                        "url": "/uploads/medium_1301_C3_compress_bcd2eba2ba.jpg",
+                        "hash": "medium_1301_C3_compress_bcd2eba2ba",
+                        "mime": "image/jpeg",
+                        "name": "medium_1301 C3_compress.jpg",
+                        "path": null,
+                        "size": 73.86,
+                        "width": 750,
+                        "height": 303,
+                        "sizeInBytes": 73864
+                    },
+                    "thumbnail": {
+                        "ext": ".jpg",
+                        "url": "/uploads/thumbnail_1301_C3_compress_bcd2eba2ba.jpg",
+                        "hash": "thumbnail_1301_C3_compress_bcd2eba2ba",
+                        "mime": "image/jpeg",
+                        "name": "thumbnail_1301 C3_compress.jpg",
+                        "path": null,
+                        "size": 8.69,
+                        "width": 245,
+                        "height": 99,
+                        "sizeInBytes": 8693
+                    }
+                },
+                "hash": "1301_C3_compress_bcd2eba2ba",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 409.74,
+                "url": "/uploads/1301_C3_compress_bcd2eba2ba.jpg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2025-06-06T02:56:48.712Z",
+                "updatedAt": "2025-06-06T02:56:48.712Z",
+                "publishedAt": "2025-06-06T02:56:48.713Z"
+            },
+            {
+                "id": 3502,
+                "documentId": "af3msiebpg9f51lfc0fdtpul",
+                "name": "1120_HSMC_1_compress.jpg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 1920,
+                "height": 776,
+                "formats": {
+                    "large": {
+                        "ext": ".jpg",
+                        "url": "/uploads/large_1120_HSMC_1_compress_600361440f.jpg",
+                        "hash": "large_1120_HSMC_1_compress_600361440f",
+                        "mime": "image/jpeg",
+                        "name": "large_1120_HSMC_1_compress.jpg",
+                        "path": null,
+                        "size": 94.36,
+                        "width": 1000,
+                        "height": 404,
+                        "sizeInBytes": 94357
+                    },
+                    "small": {
+                        "ext": ".jpg",
+                        "url": "/uploads/small_1120_HSMC_1_compress_600361440f.jpg",
+                        "hash": "small_1120_HSMC_1_compress_600361440f",
+                        "mime": "image/jpeg",
+                        "name": "small_1120_HSMC_1_compress.jpg",
+                        "path": null,
+                        "size": 24.9,
+                        "width": 500,
+                        "height": 202,
+                        "sizeInBytes": 24902
+                    },
+                    "medium": {
+                        "ext": ".jpg",
+                        "url": "/uploads/medium_1120_HSMC_1_compress_600361440f.jpg",
+                        "hash": "medium_1120_HSMC_1_compress_600361440f",
+                        "mime": "image/jpeg",
+                        "name": "medium_1120_HSMC_1_compress.jpg",
+                        "path": null,
+                        "size": 53.81,
+                        "width": 750,
+                        "height": 303,
+                        "sizeInBytes": 53814
+                    },
+                    "thumbnail": {
+                        "ext": ".jpg",
+                        "url": "/uploads/thumbnail_1120_HSMC_1_compress_600361440f.jpg",
+                        "hash": "thumbnail_1120_HSMC_1_compress_600361440f",
+                        "mime": "image/jpeg",
+                        "name": "thumbnail_1120_HSMC_1_compress.jpg",
+                        "path": null,
+                        "size": 6.75,
+                        "width": 245,
+                        "height": 99,
+                        "sizeInBytes": 6749
+                    }
+                },
+                "hash": "1120_HSMC_1_compress_600361440f",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 290.21,
+                "url": "/uploads/1120_HSMC_1_compress_600361440f.jpg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2025-06-06T02:57:40.514Z",
+                "updatedAt": "2025-06-06T02:59:25.900Z",
+                "publishedAt": "2025-06-06T02:57:40.514Z"
+            },
+            {
+                "id": 3500,
+                "documentId": "vgsw2gbu3vhdc0ne1uht4ub0",
+                "name": "SSM327 Cherry Street_compress.jpg",
+                "alternativeText": null,
+                "caption": null,
+                "width": 1920,
+                "height": 776,
+                "formats": {
+                    "large": {
+                        "ext": ".jpg",
+                        "url": "/uploads/large_SSM_327_Cherry_Street_compress_5da47c1f2e.jpg",
+                        "hash": "large_SSM_327_Cherry_Street_compress_5da47c1f2e",
+                        "mime": "image/jpeg",
+                        "name": "large_SSM327 Cherry Street_compress.jpg",
+                        "path": null,
+                        "size": 129.58,
+                        "width": 1000,
+                        "height": 404,
+                        "sizeInBytes": 129580
+                    },
+                    "small": {
+                        "ext": ".jpg",
+                        "url": "/uploads/small_SSM_327_Cherry_Street_compress_5da47c1f2e.jpg",
+                        "hash": "small_SSM_327_Cherry_Street_compress_5da47c1f2e",
+                        "mime": "image/jpeg",
+                        "name": "small_SSM327 Cherry Street_compress.jpg",
+                        "path": null,
+                        "size": 37.41,
+                        "width": 500,
+                        "height": 202,
+                        "sizeInBytes": 37406
+                    },
+                    "medium": {
+                        "ext": ".jpg",
+                        "url": "/uploads/medium_SSM_327_Cherry_Street_compress_5da47c1f2e.jpg",
+                        "hash": "medium_SSM_327_Cherry_Street_compress_5da47c1f2e",
+                        "mime": "image/jpeg",
+                        "name": "medium_SSM327 Cherry Street_compress.jpg",
+                        "path": null,
+                        "size": 78.3,
+                        "width": 750,
+                        "height": 303,
+                        "sizeInBytes": 78304
+                    },
+                    "thumbnail": {
+                        "ext": ".jpg",
+                        "url": "/uploads/thumbnail_SSM_327_Cherry_Street_compress_5da47c1f2e.jpg",
+                        "hash": "thumbnail_SSM_327_Cherry_Street_compress_5da47c1f2e",
+                        "mime": "image/jpeg",
+                        "name": "thumbnail_SSM327 Cherry Street_compress.jpg",
+                        "path": null,
+                        "size": 10.05,
+                        "width": 245,
+                        "height": 99,
+                        "sizeInBytes": 10054
+                    }
+                },
+                "hash": "SSM_327_Cherry_Street_compress_5da47c1f2e",
+                "ext": ".jpg",
+                "mime": "image/jpeg",
+                "size": 339.11,
+                "url": "/uploads/SSM_327_Cherry_Street_compress_5da47c1f2e.jpg",
+                "previewUrl": null,
+                "provider": "local",
+                "provider_metadata": null,
+                "createdAt": "2025-06-06T02:55:25.814Z",
+                "updatedAt": "2025-06-06T02:55:25.814Z",
+                "publishedAt": "2025-06-06T02:55:25.815Z"
+            }
+        ],
+        "TopVideoImage": {
+            "id": 3503,
+            "documentId": "vwovz75i39szvs2llbchl3xo",
+            "name": "Kai Tak School - Main Perspective_less pixel.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 600,
+            "height": 309,
+            "formats": {
+                "small": {
+                    "ext": ".jpg",
+                    "url": "/uploads/small_Kai_Tak_School_Main_Perspective_less_pixel_329a727e74.jpg",
+                    "hash": "small_Kai_Tak_School_Main_Perspective_less_pixel_329a727e74",
+                    "mime": "image/jpeg",
+                    "name": "small_Kai Tak School - Main Perspective_less pixel.jpg",
+                    "path": null,
+                    "size": 22.7,
+                    "width": 500,
+                    "height": 258,
+                    "sizeInBytes": 22702
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "/uploads/thumbnail_Kai_Tak_School_Main_Perspective_less_pixel_329a727e74.jpg",
+                    "hash": "thumbnail_Kai_Tak_School_Main_Perspective_less_pixel_329a727e74",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_Kai Tak School - Main Perspective_less pixel.jpg",
+                    "path": null,
+                    "size": 6.42,
+                    "width": 245,
+                    "height": 126,
+                    "sizeInBytes": 6421
+                }
+            },
+            "hash": "Kai_Tak_School_Main_Perspective_less_pixel_329a727e74",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 30.49,
+            "url": "/uploads/Kai_Tak_School_Main_Perspective_less_pixel_329a727e74.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:03:30.612Z",
+            "updatedAt": "2025-06-06T03:03:30.612Z",
+            "publishedAt": "2025-06-06T03:03:30.613Z"
+        },
+        "MessageLeftImg": {
+            "id": 3504,
+            "documentId": "idudibih3oy7sa4ta62u9nr9",
+            "name": "bk_home1_img1.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 315,
+            "height": 315,
+            "formats": {
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "/uploads/thumbnail_bk_home1_img1_116c4b9f92.jpg",
+                    "hash": "thumbnail_bk_home1_img1_116c4b9f92",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_bk_home1_img1.jpg",
+                    "path": null,
+                    "size": 8.89,
+                    "width": 156,
+                    "height": 156,
+                    "sizeInBytes": 8888
+                }
+            },
+            "hash": "bk_home1_img1_116c4b9f92",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 31.14,
+            "url": "/uploads/bk_home1_img1_116c4b9f92.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:04:04.711Z",
+            "updatedAt": "2025-06-06T03:04:04.711Z",
+            "publishedAt": "2025-06-06T03:04:04.712Z"
+        },
+        "Section2Banner": {
+            "id": 3505,
+            "documentId": "awmpk3sd1bk1ngoccawivafs",
+            "name": "1308_KTPS_2_r1_compress.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1920,
+            "height": 776,
+            "formats": {
+                "large": {
+                    "ext": ".jpg",
+                    "url": "/uploads/large_1308_KTPS_2_r1_compress_a368969a8f.jpg",
+                    "hash": "large_1308_KTPS_2_r1_compress_a368969a8f",
+                    "mime": "image/jpeg",
+                    "name": "large_1308_KTPS_2_r1_compress.jpg",
+                    "path": null,
+                    "size": 91.1,
+                    "width": 1000,
+                    "height": 404,
+                    "sizeInBytes": 91095
+                },
+                "small": {
+                    "ext": ".jpg",
+                    "url": "/uploads/small_1308_KTPS_2_r1_compress_a368969a8f.jpg",
+                    "hash": "small_1308_KTPS_2_r1_compress_a368969a8f",
+                    "mime": "image/jpeg",
+                    "name": "small_1308_KTPS_2_r1_compress.jpg",
+                    "path": null,
+                    "size": 26.17,
+                    "width": 500,
+                    "height": 202,
+                    "sizeInBytes": 26173
+                },
+                "medium": {
+                    "ext": ".jpg",
+                    "url": "/uploads/medium_1308_KTPS_2_r1_compress_a368969a8f.jpg",
+                    "hash": "medium_1308_KTPS_2_r1_compress_a368969a8f",
+                    "mime": "image/jpeg",
+                    "name": "medium_1308_KTPS_2_r1_compress.jpg",
+                    "path": null,
+                    "size": 54.02,
+                    "width": 750,
+                    "height": 303,
+                    "sizeInBytes": 54016
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "/uploads/thumbnail_1308_KTPS_2_r1_compress_a368969a8f.jpg",
+                    "hash": "thumbnail_1308_KTPS_2_r1_compress_a368969a8f",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_1308_KTPS_2_r1_compress.jpg",
+                    "path": null,
+                    "size": 7.73,
+                    "width": 245,
+                    "height": 99,
+                    "sizeInBytes": 7727
+                }
+            },
+            "hash": "1308_KTPS_2_r1_compress_a368969a8f",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 269.44,
+            "url": "/uploads/1308_KTPS_2_r1_compress_a368969a8f.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:04:45.410Z",
+            "updatedAt": "2025-06-06T03:04:45.410Z",
+            "publishedAt": "2025-06-06T03:04:45.410Z"
+        },
+        "Section2Image": {
+            "id": 3506,
+            "documentId": "ftgn90yetqs149w9z1w2o5bi",
+            "name": "K0903 TKO_1_r1.jpg",
+            "alternativeText": null,
+            "caption": null,
+            "width": 718,
+            "height": 366,
+            "formats": {
+                "small": {
+                    "ext": ".jpg",
+                    "url": "/uploads/small_K0903_TKO_1_r1_6e4d9f7a98.jpg",
+                    "hash": "small_K0903_TKO_1_r1_6e4d9f7a98",
+                    "mime": "image/jpeg",
+                    "name": "small_K0903 TKO_1_r1.jpg",
+                    "path": null,
+                    "size": 28.99,
+                    "width": 500,
+                    "height": 255,
+                    "sizeInBytes": 28993
+                },
+                "thumbnail": {
+                    "ext": ".jpg",
+                    "url": "/uploads/thumbnail_K0903_TKO_1_r1_6e4d9f7a98.jpg",
+                    "hash": "thumbnail_K0903_TKO_1_r1_6e4d9f7a98",
+                    "mime": "image/jpeg",
+                    "name": "thumbnail_K0903 TKO_1_r1.jpg",
+                    "path": null,
+                    "size": 7.12,
+                    "width": 245,
+                    "height": 125,
+                    "sizeInBytes": 7120
+                }
+            },
+            "hash": "K0903_TKO_1_r1_6e4d9f7a98",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "size": 59.12,
+            "url": "/uploads/K0903_TKO_1_r1_6e4d9f7a98.jpg",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:05:20.116Z",
+            "updatedAt": "2025-06-06T03:05:20.116Z",
+            "publishedAt": "2025-06-06T03:05:20.117Z"
+        },
+        "WhatsNewBoxImg1": {
+            "id": 3508,
+            "documentId": "y9vf92g4x9zmq2okqsk6qmi4",
+            "name": "bg_green_r1.png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1,
+            "height": 1,
+            "formats": null,
+            "hash": "bg_green_r1_e67ecf0aad",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 0.12,
+            "url": "/uploads/bg_green_r1_e67ecf0aad.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:06:41.157Z",
+            "updatedAt": "2025-06-06T03:06:41.157Z",
+            "publishedAt": "2025-06-06T03:06:41.157Z"
+        },
+        "WhatsNewBoxImg2": {
+            "id": 3509,
+            "documentId": "sj519o0eo3mtsmoe8h9retb5",
+            "name": "bg_black_r3.png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1,
+            "height": 1,
+            "formats": null,
+            "hash": "bg_black_r3_b3bcb5c4e0",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 0.12,
+            "url": "/uploads/bg_black_r3_b3bcb5c4e0.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:07:22.947Z",
+            "updatedAt": "2025-06-06T03:07:22.947Z",
+            "publishedAt": "2025-06-06T03:07:22.947Z"
+        },
+        "WhatsNewBoxImg3": {
+            "id": 3507,
+            "documentId": "gvm8y7z62ulgxzcalml0fxym",
+            "name": "bg_pink_r1.png",
+            "alternativeText": null,
+            "caption": null,
+            "width": 1,
+            "height": 1,
+            "formats": null,
+            "hash": "bg_pink_r1_c59b6fcf05",
+            "ext": ".png",
+            "mime": "image/png",
+            "size": 0.12,
+            "url": "/uploads/bg_pink_r1_c59b6fcf05.png",
+            "previewUrl": null,
+            "provider": "local",
+            "provider_metadata": null,
+            "createdAt": "2025-06-06T03:06:10.209Z",
+            "updatedAt": "2025-06-06T03:06:10.209Z",
+            "publishedAt": "2025-06-06T03:06:10.210Z"
+        },
+        "message_icon_areas": [
+            {
+                "id": 20,
+                "documentId": "xo55yp98bfqfwpofml55jey3",
+                "Title": "Integrity",
+                "Description": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "We fulfill our commitments with honesty and high moral standard",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2025-05-30T01:53:34.741Z",
+                "updatedAt": "2025-06-06T03:10:05.681Z",
+                "publishedAt": "2025-06-06T03:10:06.926Z",
+                "locale": "en"
+            },
+            {
+                "id": 19,
+                "documentId": "y4tbxs7j066apl1wje8d714i",
+                "Title": "Innovation",
+                "Description": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "Our engineering innovation and resourcefulness have always been appreciated",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2025-05-30T01:53:07.601Z",
+                "updatedAt": "2025-06-06T03:09:24.157Z",
+                "publishedAt": "2025-06-06T03:09:25.388Z",
+                "locale": "en"
+            },
+            {
+                "id": 21,
+                "documentId": "iutxbocmqqygkmp9mai85xnd",
+                "Title": "Professionalism",
+                "Description": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "Delivering an integrated range of professional, technical and commercial services",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2025-05-30T01:52:31.355Z",
+                "updatedAt": "2025-06-06T03:10:43.372Z",
+                "publishedAt": "2025-06-06T03:10:44.553Z",
+                "locale": "en"
+            }
+        ],
+        "localizations": [
+            {
+                "id": 17,
+                "documentId": "k94xnd9qy45vkz4uviw6asz2",
+                "PageTitle": "首页",
+                "TopMessage": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "利基",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "诚信 创新 专业",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2025-05-29T07:43:54.248Z",
+                "updatedAt": "2025-06-06T03:07:41.177Z",
+                "publishedAt": "2025-05-30T02:12:02.984Z",
+                "locale": "zh-CN",
+                "YoutubeVideo": null,
+                "Message": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "领先业界",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "的建筑公司",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "利基为香港顶尖的建筑公司之一及一直致力于成为客户、分判商，供货商和合资企业的首选合作伙伴。",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "MessagRedArea": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "超过 300名",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "工程师和专家",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "MessageBlackArea": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "关于我们",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "历史",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": " ",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "凭着四十五年以上土木工程及建筑工程经验，通过对管理和技术运用的不断革新，使我们得以完成大量优质的工程项目",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "WhatsNewMessage": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "最新消息",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "追踪我们的最新动态",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "WhatsNewLinkText": "查找更多更新"
+            },
+            {
+                "id": 15,
+                "documentId": "k94xnd9qy45vkz4uviw6asz2",
+                "PageTitle": "首頁",
+                "TopMessage": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "利基",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "誠信 創新 專業",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "createdAt": "2025-05-29T07:17:30.336Z",
+                "updatedAt": "2025-06-06T03:07:41.177Z",
+                "publishedAt": "2025-05-30T01:58:48.579Z",
+                "locale": "zh-Hant-HK",
+                "YoutubeVideo": null,
+                "Message": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "領先業界",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "的建築公司",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "利基為香港頂尖的建築公司之一及一直致力於成為客戶、分判商，供應商和合資企業的首選合作夥伴。",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "MessagRedArea": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "超過 300 名",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "工程師和專家",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "MessageBlackArea": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "關於我們",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "歷史",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": " ",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "憑著四十五年以上土木工程及建築工程經驗，通過對管理和技術運用的不斷革新，使我們得以完成大量優質的工程項目",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "WhatsNewMessage": [
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "最新消息",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "",
+                                "type": "text"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph",
+                        "children": [
+                            {
+                                "text": "追蹤我們的最新動態",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ],
+                "WhatsNewLinkText": "查找更多更新 "
+            }
+        ]
+    },
+    "meta": {}
+}

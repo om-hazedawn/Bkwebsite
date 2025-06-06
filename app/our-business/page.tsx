@@ -1,11 +1,42 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/language-context";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import Link from "next/link";
+import { getOurBusiness } from "@/lib/api/our-business";
+
+interface OurBusinessData { 
+  data: {
+    PageTitle: string;
+    Detail: string;
+    locale: string;
+    localizations: OurBusinessData[];
+  };
+}
 
 export default function OurBusiness() {
+
+  const [ourBusinessData, setOurBusinessData] = useState<OurBusinessData>();
+  const { language } = useLanguage();
+
+  useEffect(() => {
+    const fetchOurBusiness = async () => {
+      try {
+        const data = await getOurBusiness(language);
+        console.log("Fetched data:", data); // Log the fetched data to the console
+        setOurBusinessData(data);
+      } catch (error) {
+        console.error("Failed to load our business data:", error);
+        // Optionally, set a default or show an error message to the user
+      }
+    };
+
+    fetchOurBusiness();
+  }, [language]);
+
   return (
     <main className="min-h-screen">
       <Header />
@@ -170,7 +201,7 @@ export default function OurBusiness() {
 
       <section className="bg-[#f1f1f1] py-12">
         <div className="max-w-5xl mx-auto px-6 text-gray-600 text-xl leading-relaxed font-sans">
-          <p className="mb-6">
+          {/* <p className="mb-6">
             Build King offers a comprehensive construction and engineering
             service for a wide variety of project types.
           </p>
@@ -183,7 +214,8 @@ export default function OurBusiness() {
           <p className="mb-6">
             Supported by our competent and professional team, we have earned an
             excellent track record in construction sector.
-          </p>
+          </p> */}
+          {ourBusinessData?.data.Detail}
         </div>
       </section>
 

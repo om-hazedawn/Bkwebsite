@@ -148,7 +148,7 @@ export default function CommunityAndCharity() {
                 public. Through public service events such as paying visits to
                 the orphans, children and the singleton elders, we aim at
                 promoting the spirit of mutual care and support among the staffs
-                and to boost the staff's support and commitment in caring for
+                and to boost the staff`&apos;`s support and commitment in caring for
                 the community.
               </p>
             </div>
