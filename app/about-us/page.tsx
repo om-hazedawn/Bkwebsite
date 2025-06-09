@@ -1,7 +1,7 @@
 "use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Image, { ImageLoader } from "next/image";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { getWhoWeAre } from "@/lib/api/who-we-are";
 import { BoxMessageItem } from "@/components/BoxMessage";
