@@ -8,6 +8,7 @@ import CompanyHighlights from "@/components/CompanyHighlights"
 import NewsSection from "@/components/NewsSection"
 import Footer from "@/components/Footer"
 import { getHome } from "@/lib/api/home";
+import { getMessageIconAreas } from "@/lib/api/message-icon-areas"
 import { BoxMessageItem } from "@/components/BoxMessage";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/language-context";
@@ -38,9 +39,20 @@ interface HomeData {
   };
 }
 
+interface MessageIconAreasData { 
+  data: {
+    Image: Image;
+    Title: string;
+    Description: BoxMessageItem[],
+    locale: string;
+    localizations: MessageIconAreasData[];
+  };
+}
+
 export default function Home() {
 
   const [homeData, setHomeData] = useState<HomeData>();
+  
   const { language } = useLanguage();
 
   useEffect(() => {

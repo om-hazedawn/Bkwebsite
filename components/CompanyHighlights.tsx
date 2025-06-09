@@ -17,7 +17,7 @@ interface CompanyHighlightsProps {
 
 export default function CompanyHighlights({ messagRedArea, messagBlackArea, Section2Banner, Section2Image }: CompanyHighlightsProps) {
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   return (
     <section className="relative">

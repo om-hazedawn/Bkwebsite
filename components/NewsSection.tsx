@@ -43,7 +43,7 @@ export default function NewsSection({ whatsNewMessage, whatsNewLinkText, whatsNe
   const t = locales[language]
 
   const colorBlocks = [whatsNewBoxImg1.url, whatsNewBoxImg2.url, whatsNewBoxImg3.url];
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   return (
     <section>

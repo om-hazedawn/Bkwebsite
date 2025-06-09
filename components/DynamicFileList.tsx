@@ -76,7 +76,7 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
     return <p>Error loading data: {error}</p>;
   }
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   return (
     <div className="container mx-auto p-4">

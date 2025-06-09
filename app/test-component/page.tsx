@@ -10,7 +10,7 @@ import CurrentVacanciesList from "@/components/CurrentVacanciesList"
 
 export default function TestComponentPage() {
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   const [images, setImages] = useState<Array<{ url: string; alt?: string; width?: number; height?: number; }>>([]);
   const [loading, setLoading] = useState(true);

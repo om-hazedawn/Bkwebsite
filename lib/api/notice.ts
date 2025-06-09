@@ -32,7 +32,7 @@ export interface NoticeApiResponse {
 }
 
 export async function getNotice(): Promise<NoticeApiResponse> {
-    const CMS_URL = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com';
+    const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {

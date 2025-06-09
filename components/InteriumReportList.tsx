@@ -124,7 +124,7 @@ const InteriumReportList: React.FC<{ yearRange: string, language: string }> = ({
 
   // Assuming your CMS or backend serves files from a base URL.
   // Adjust this if your file URLs are absolute or structured differently.
-  const cmsBaseUrl = process.env.CMS_URL || 'https://bk-data-migrate.onrender.com'; // Example: http://localhost:1337
+  const cmsBaseUrl = process.env.CMS_URL || 'http://52.175.21.181'; // Example: http://localhost:1337
 
   return (
     <div className="container mx-auto p-4">

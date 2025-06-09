@@ -122,7 +122,7 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
     return <p className="text-center py-10 text-red-500">Error loading data: {error}</p>;
   }
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com'; // Default to common local Strapi URL
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181'; // Default to common local Strapi URL
 
   const handleToggleDetails = (id: number) => {
     const newExpandedId = expandedBusinessId === id ? null : id;

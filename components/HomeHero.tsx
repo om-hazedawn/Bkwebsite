@@ -28,7 +28,7 @@ export default function HomeHero({ topMessage, topBanner, topVideoImage }: HomeH
   // const t = locales[language];
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const carouselApi = React.useRef<CarouselApi>(null);
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   // Auto-advance slides
   React.useEffect(() => {

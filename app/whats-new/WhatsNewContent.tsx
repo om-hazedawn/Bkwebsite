@@ -31,7 +31,7 @@ interface NewsData {
 export default function WhatsNew() {
   const [newsData, setNewsData] = useState<NewsData>();
   const { language } = useLanguage();
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
   const year = searchParams.get('year');
 

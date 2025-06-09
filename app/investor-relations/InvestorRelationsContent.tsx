@@ -23,7 +23,24 @@ import InteriumYearRanges from "@/components/InteriumYearRanges";
 import AnnualReportList from "@/components/AnnualReportList";
 import InteriumReportList from "@/components/InteriumReportList";
 import { useLanguage } from "@/contexts/language-context";
+import { getInvestorRelation } from "@/lib/api/investor-relation";
 
+interface Image {
+  url: string
+}
+
+interface InvestorRelationsData { 
+  data: {
+    Title1ParentMenuBox: string;
+    Title1ImageParentMenuBox: Image;
+    Title2ParentMenuBox: string;
+    Title2ImageParentMenuBox: Image;
+    Title3ParentMenuBox: string;
+    Title3ImageParentMenuBox: Image;
+    locale: string;
+    localizations: InvestorRelationsData[];
+  };
+}
 
 interface FinancialReportData { 
   data: {
@@ -81,6 +98,7 @@ interface YearRangesData {
 
 export default function InvestorRelations() {
   const { language } = useLanguage();
+  const [investorRelationsData, setInvestorRelationsData] = useState<InvestorRelationsData>();
   const [announcementYears, setAnnouncementYears] = useState<string[]>([]);
   const [circularYears, setCircularYears] = useState<string[]>([]);
   const [noticeSections, setNoticeSections] = useState<NoticeSectionItem[]>([]);
@@ -91,6 +109,15 @@ export default function InvestorRelations() {
   const collection = searchParams.get('collections');
   const annualYearRange = searchParams.get('annualYearRange');
   const interiumYearRange = searchParams.get('interiumYearRange');
+
+  useEffect(() => {
+    const fetchInvestorRelationsData = async () => {
+      const data = await getInvestorRelation(language);
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setInvestorRelationsData(data);
+    };
+    fetchInvestorRelationsData();
+  }, [language]);
 
   useEffect(() => {
     const fetchAnnouncementYears = async () => {
@@ -106,7 +133,7 @@ export default function InvestorRelations() {
     };
 
     fetchAnnouncementYears();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchCircularYears = async () => {
@@ -122,7 +149,7 @@ export default function InvestorRelations() {
     };
 
     fetchCircularYears();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchNoticeSectionData = async () => {
@@ -139,7 +166,7 @@ export default function InvestorRelations() {
     };
 
     fetchNoticeSectionData();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     const fetchAnnualReportData = async () => {
@@ -173,7 +200,7 @@ export default function InvestorRelations() {
     fetchInteriumReportData();
   }, [language]);
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("financial-reports");
   const [financialReportData, setFinancialReportData] = useState<FinancialReportData>();
   const [announcementData, setAnnouncementData] = useState<AnnouncementData>();
@@ -456,10 +483,10 @@ export default function InvestorRelations() {
                   : "text-gray-600"
               }`}
             >
-              Financial Reports
+              {investorRelationsData?.data.Title1ParentMenuBox}
             </h3>
             <Image
-              src="/investor-relations/hero/financial-report.png"
+              src={cmsBaseUrl + investorRelationsData?.data.Title1ImageParentMenuBox.url}
               alt="Financial Reports"
               width={350}
               height={218}
@@ -477,10 +504,10 @@ export default function InvestorRelations() {
                   : "text-gray-600"
               }`}
             >
-              Announcements and Press Releases
+              {investorRelationsData?.data.Title2ParentMenuBox}
             </h3>
             <Image
-              src="/investor-relations/hero/reports_announcement.png"
+              src={cmsBaseUrl + investorRelationsData?.data.Title2ImageParentMenuBox.url}
               alt="Announcement and Press Released"
               width={350}
               height={218}
@@ -498,10 +525,10 @@ export default function InvestorRelations() {
                   : "text-gray-600"
               }`}
             >
-              Circular and Notice
+              {investorRelationsData?.data.Title3ParentMenuBox}
             </h3>
             <Image
-              src="/investor-relations/hero/circular-and-notice.png"
+              src={cmsBaseUrl + investorRelationsData?.data.Title3ImageParentMenuBox.url}
               alt="Circular and Notice"
               width={350}
               height={218}

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import BoxMessage, { BoxMessageItem } from "@/components/BoxMessage";
 import CurrentVacanciesList from "@/components/CurrentVacanciesList";
+import { getCareer } from "@/lib/api/career";
 import { getCareerDetail } from "@/lib/api/career-detail";
 import { getJobOpportunity } from "@/lib/api/job-opportunity";
 import { useLanguage } from "@/contexts/language-context";
@@ -19,9 +20,22 @@ interface Image {
 
 interface CareerData { 
   data: {
-    Detail: BoxMessageItem[];
+    Title1ParentMenuBox: string;
+    Title1ImageParentMenuBox: Image;
+    Title2ParentMenuBox: string;
+    Title2ImageParentMenuBox: Image;
+    Title3ParentMenuBox: string;
+    Title3ImageParentMenuBox: Image;
     locale: string;
     localizations: CareerData[];
+  };
+}
+
+interface CareerDetailData { 
+  data: {
+    Detail: BoxMessageItem[];
+    locale: string;
+    localizations: CareerDetailData[];
   };
 }
 
@@ -61,9 +75,10 @@ interface TrainingCollectionsData {
 
 export default function Careers() {
   // const [jobIsOpen, setJobIsOpen] = useState<Record<number, boolean>>({});
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("career");
-
   const [careerData, setCareerData] = useState<CareerData>();
+  const [careerDetailData, setCareerDetailData] = useState<CareerDetailData>();
   const [jobOpprtunityData, setJobOpportunityData] = useState<JobOpportunityData>();
   const [trainingData, setTrainingData] = useState<TrainingData>();
   const [trainingCollectionsData, setTrainingCollectionsData] = useState<TrainingCollectionsData>();
@@ -71,10 +86,19 @@ export default function Careers() {
 
   useEffect(() => {
     const fetchCareerData = async () => {
+      const data = await getCareer(language);
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setCareerData(data);
+    };
+    fetchCareerData();
+  }, [language]);
+
+  useEffect(() => {
+    const fetchCareerData = async () => {
       try {
         const data = await getCareerDetail(language);
         console.log("Fetched data:", data); // Log the fetched data to the console
-        setCareerData(data);
+        setCareerDetailData(data);
       } catch (error) {
         console.error("Failed to load career details:", error);
         // Optionally, set a default or show an error message to the user
@@ -132,7 +156,7 @@ export default function Careers() {
       case "career":
         return (
           <div className="max-w-[1115px] mx-auto py-6">
-            <BoxMessage items={careerData?.data.Detail || []}/>
+            <BoxMessage items={careerDetailData?.data.Detail || []}/>
           </div>
         );
       case "job-opportunities":
@@ -231,10 +255,10 @@ export default function Careers() {
                   : "text-gray-600"
               }`}
             >
-              Careers
+              {careerData?.data.Title1ParentMenuBox}
             </h3>
             <Image
-              src="/Career/Careers.jpg"
+              src={cmsBaseUrl + careerData?.data.Title1ImageParentMenuBox.url}
               alt="Career at BK"
               width={350}
               height={218}
@@ -252,10 +276,10 @@ export default function Careers() {
                   : "text-gray-600"
               }`}
             >
-              Job Opportunities
+              {careerData?.data.Title2ParentMenuBox}
             </h3>
             <Image
-              src="/Career/job_vacancy.png"
+              src={cmsBaseUrl + careerData?.data.Title2ImageParentMenuBox.url}
               alt="Job Opportunities"
               width={350}
               height={218}
@@ -273,10 +297,10 @@ export default function Careers() {
                   : "text-gray-600"
               }`}
             >
-              Training and Development
+              {careerData?.data.Title3ParentMenuBox}
             </h3>
             <Image
-              src="/Career/traning.png"
+              src={cmsBaseUrl + careerData?.data.Title3ImageParentMenuBox.url}
               alt="Training and Development"
               width={350}
               height={218}

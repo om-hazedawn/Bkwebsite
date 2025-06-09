@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import Years from "@/components/Years";
 import NewsLettersList from "@/components/NewsLettersList";
 
+import { getSustainability } from "@/lib/api/sustainability";
 import { getQhseAndAward } from "@/lib/api/qhse-and-award";
 import { getCorporateNewsletter } from "@/lib/api/corporate-newsletter";
 import { useLanguage } from "@/contexts/language-context";
@@ -31,6 +32,19 @@ interface Image {
   url: string
 }
 
+interface SustainabilityData { 
+  data: {
+    Title1ParentMenuBox: string;
+    Title1ImageParentMenuBox: Image;
+    Title2ParentMenuBox: string;
+    Title2ImageParentMenuBox: Image;
+    Title3ParentMenuBox: string;
+    Title3ImageParentMenuBox: Image;
+    locale: string;
+    localizations: SustainabilityData[];
+  };
+}
+
 interface YearsData {
   years: string[];
 }
@@ -49,14 +63,24 @@ interface NewsLetterData {
 
 export default function Sustainability() {
   const { language } = useLanguage();
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
   const year = searchParams.get('year');
+  const [sustainabilityData, setSustainabilityData] = useState<SustainabilityData>();
   const [QHSEData, setQHSEData] = useState<QHSEData>();
   const [newsLetterData, setNewsLetterData] = useState<NewsLetterData>();
   const [selectedSection, setSelectedSection] = useState(
     "corporate-responsibility"
   );
+
+  useEffect(() => {
+    const fetchSustainabilityData = async () => {
+      const data = await getSustainability(language);
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setSustainabilityData(data);
+    };
+    fetchSustainabilityData();
+  }, [language]);
 
   useEffect(() => {
     const fetchQHSEData = async () => {
@@ -304,10 +328,10 @@ export default function Sustainability() {
                   : "text-gray-600 hover:text-[#0099a7]"
               }`}
             >
-              Corporate Responsibility
+              {sustainabilityData?.data.Title1ParentMenuBox}
             </h3>
             <Image
-              src="/sustainability/thumbnail_Corporate_Responsibility.webp"
+              src={cmsBaseUrl + sustainabilityData?.data.Title1ImageParentMenuBox.url}
               alt="Corporate Responsibility"
               width={350}
               height={218}
@@ -325,10 +349,10 @@ export default function Sustainability() {
                   : "text-gray-600 hover:text-[#0099a7]"
               }`}
             >
-              QHSE
+              {sustainabilityData?.data.Title2ParentMenuBox}
             </h3>
             <Image
-              src="/sustainability/csr_cc.webp"
+              src={cmsBaseUrl + sustainabilityData?.data.Title2ImageParentMenuBox.url}
               alt="QHSE"
               width={350}
               height={218}
@@ -346,10 +370,10 @@ export default function Sustainability() {
                   : "text-gray-600 hover:text-[#0099a7]"
               }`}
             >
-              Corporate Newsletter
+              {sustainabilityData?.data.Title3ParentMenuBox}
             </h3>
             <Image
-              src="/sustainability/csr_newsletter.webp"
+              src={cmsBaseUrl + sustainabilityData?.data.Title3ImageParentMenuBox.url}
               alt="Corporate Newsletter"
               width={350}
               height={218}

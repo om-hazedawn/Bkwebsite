@@ -29,7 +29,7 @@ const backgroundColors = [
 export default function TrainingSection({ data }: TrainingSectionProps) {
   const carouselApis = useRef<Array<CarouselApi | null>>([]);
   const [currentSlides, setCurrentSlides] = useState<number[]>([]);
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   useEffect(() => {
     if (data) {

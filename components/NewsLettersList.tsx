@@ -65,7 +65,7 @@ const NewsLettersList: React.FC<{ initialYear: string, language: string }> = ({ 
     return <p>Error loading newsLetters: {error}</p>;
   }
 
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
 
   return (
     <div className="container mx-auto p-4">

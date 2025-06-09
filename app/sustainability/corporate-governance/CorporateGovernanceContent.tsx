@@ -32,7 +32,7 @@ interface CorporateGovernanceData {
 export default function CorporateGovernance() {
 
   const { language } = useLanguage();
-  // const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  // const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
   const collection = searchParams.get('collections');
   const [corporateGovernanceData, setCorporateGovernanceData] = useState<CorporateGovernanceData>();

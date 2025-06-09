@@ -1,13 +1,31 @@
 "use client";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Image from "next/image";
+import Image, { ImageLoader } from "next/image";
 import { useState, useEffect } from "react";
 import { getWhoWeAre } from "@/lib/api/who-we-are";
 import { BoxMessageItem } from "@/components/BoxMessage";
 import BoxMessage from "@/components/BoxMessage";
 import { getMilestone } from "@/lib/api/milestone";
 import { useLanguage } from "@/contexts/language-context";
+import { getAboutUs } from "@/lib/api/about-us";
+
+interface Image {
+  url: string
+}
+
+interface AboutUsData { 
+  data: {
+    Title1ParentMenuBox: string;
+    Title1ImageParentMenuBox: Image;
+    Title2ParentMenuBox: string;
+    Title2ImageParentMenuBox: Image;
+    Title3ParentMenuBox: string;
+    Title3ImageParentMenuBox: Image;
+    locale: string;
+    localizations: AboutUsData[];
+  };
+}
 
 interface WhoWeAreData { 
   data: {
@@ -39,10 +57,20 @@ interface MilestoneData {
 
 export default function AboutUs() {
   const { language } = useLanguage();
-  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'https://bk-data-migrate.onrender.com';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const [selectedSection, setSelectedSection] = useState("who-we-are");
+  const [aboutUsData, setAboutUsData] = useState<AboutUsData>();
   const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
   const [milestoneData, setMilestoneData] = useState<MilestoneData>();
+
+  useEffect(() => {
+    const fetchAboutUsData = async () => {
+      const data = await getAboutUs(language);
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setAboutUsData(data);
+    };
+    fetchAboutUsData();
+  }, [language]);
 
   useEffect(() => {
     const fetchWhoWeAreData = async () => {
@@ -288,10 +316,10 @@ export default function AboutUs() {
                   : "text-gray-600"
               }`}
             >
-              Who We Are
+              {aboutUsData?.data.Title1ParentMenuBox}
             </h3>
             <Image
-              src="/about-us/Whoweare.png"
+              src={cmsBaseUrl +　aboutUsData?.data.Title1ImageParentMenuBox.url}
               alt="Who we are"
               width={350}
               height={218}
@@ -309,10 +337,10 @@ export default function AboutUs() {
                   : "text-gray-600"
               }`}
             >
-              Milestones
+              {aboutUsData?.data.Title2ParentMenuBox}
             </h3>
             <Image
-              src="/about-us/milestone.jpg"
+              src={cmsBaseUrl +　aboutUsData?.data.Title2ImageParentMenuBox.url || ''}
               alt="Milestone"
               width={350}
               height={218}
@@ -330,10 +358,10 @@ export default function AboutUs() {
                   : "text-gray-600"
               }`}
             >
-              Our Management
+              {aboutUsData?.data.Title3ParentMenuBox}
             </h3>
             <Image
-              src="/about-us/ourmanagement.png"
+              src={cmsBaseUrl +　aboutUsData?.data.Title3ImageParentMenuBox.url}
               alt="Our management"
               width={350}
               height={218}
