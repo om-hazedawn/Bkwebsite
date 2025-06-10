@@ -1,9 +1,9 @@
-export async function getRailwayAndAssociatedWork() {
-    const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
+export async function getRailwayAndAssociatedWork(locale: string = 'en') {
+    const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/railway-and-associated-work?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/railway-and-associated-work?populate=*&locale=${locale}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

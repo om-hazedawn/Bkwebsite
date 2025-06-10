@@ -1,9 +1,9 @@
-export async function getBuilding() {
-    const CMS_URL = process.env.CMS_URL || 'http://52.175.21.181';
+export async function getBuilding(locale: string = 'en') {
+    const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/building?populate=*`, {
+      const res = await fetch(`${CMS_URL}/api/building?populate=*&locale=${locale}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

@@ -394,13 +394,13 @@ export default function InvestorRelations() {
         return (
           <div>
             <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
-              {/* <Image
+              <Image
                 src={circularAndNoticeData?.data?.MainImage?.url ? cmsBaseUrl + circularAndNoticeData.data.MainImage.url : ''}
                 alt="Aerial view of construction site"
                 fill
                 className="object-cover"
                 priority
-              /> */}
+              />
               <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
               {/* Overlay boxes - First Row */}
@@ -454,8 +454,15 @@ export default function InvestorRelations() {
                     <Sections initialSections={noticeSections} basePath="/investor-relations" />
                   </div>
                   <div className="md:col-span-3">
-                    {collection ? null : <CircularList initialYear={year || ''} />}
-                    {year ? null : <DynamicFileList collections={collection || ''} language={language} />}
+                    {collection || year ? (
+                      collection ? (
+                        <DynamicFileList collections={collection || ''} language={language} />
+                      ) : (
+                        <CircularList initialYear={year || ''} />
+                      )
+                    ) : (
+                      <CircularList initialYear={year || ''} />
+                    )}
                   </div>
                 </div>
               </div>

@@ -70,10 +70,11 @@ interface BusinessData {
 // Props for the component
 interface DynamicBusinessListProps {
   collections: string; // Identifier for the data collection to fetch
+  language: string; // Language identifier
   onItemExpandChange?: (isExpanded: boolean) => void; // New prop
 }
 
-const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, onItemExpandChange }) => {
+const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, language, onItemExpandChange }) => {
   const [expandedBusinessId, setExpandedBusinessId] = useState<number | null>(null);
   const [businesses, setBusinesses] = useState<BusinessData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -86,7 +87,7 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
       try {
         // Assuming getDynamicCollections can fetch the business data based on the 'collections' prop
         // Or replace with a specific function e.g., getBusinessData(collections)
-        const result = await getDynamicCollections(collections);
+        const result = await getDynamicCollections(collections, language);
         console.log('Fetched business data for collection:', collections, result);
 
         if (result && Array.isArray(result.data)) {
@@ -112,7 +113,7 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
     if (collections) {
       fetchBusinessData();
     }
-  }, [collections]);
+  }, [collections, language]);
 
   if (loading) {
     return <p className="text-center py-10">Loading business data...</p>;
