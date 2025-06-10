@@ -32,7 +32,7 @@ interface ESGData {
 export default function EnvironmentalSocialGovernance() {
 
   const { language } = useLanguage();
-  // const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
   const collection = searchParams.get('collections');
   const [ESGData, setESGData] = useState<ESGData>();
@@ -64,13 +64,13 @@ export default function EnvironmentalSocialGovernance() {
       <Header />
       <section className="container mx-auto py-12 bg-[#F1F1F1]">
           <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
-            {/* <Image
-              src=""
+            <Image
+              src={cmsBaseUrl + ESGData?.data.MainImage.url}
               alt="Sustainability View"
               fill
               className="object-cover"
               priority
-            /> */}
+            />
             <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
             {/* Overlay boxes - First Row */}

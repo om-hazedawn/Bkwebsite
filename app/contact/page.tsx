@@ -3,6 +3,9 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { getContact } from "@/lib/api/contact";
+import { BoxMessageItem } from "@/components/BoxMessage";
+import BoxMessage from "@/components/BoxMessage";
 import HongKongContactList, {
   CompanyData,
 } from "@/components/HongKongContactList";
@@ -16,9 +19,27 @@ import OverseasContactList, {
 type ContactType = "hongkong" | "overseas";
 import OverseasContactDetail from "@/components/OverseasContactDetail";
 import { getContactOverseaCollections } from "@/lib/api/contact-overseas-collections";
+import { useLanguage } from "@/contexts/language-context";
 
+interface Image {
+  url: string
+}
+
+interface ContactData { 
+  data: {
+    PageTitle: string;
+    TopMessage: BoxMessageItem[];
+    MainImage: Image;
+    locale: string;
+    localizations: ContactData[];
+  };
+}
 
 export default function Contact() {
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const { language } = useLanguage();
+  const [contactData, setContactData] = useState<ContactData>();
+
   const [hkCompanies, setHkCompanies] = useState<CompanyData[]>([]);
   const [hkLoading, setHkLoading] = useState(true);
   const [hkError, setHkError] = useState<string | null>(null);
@@ -33,9 +54,24 @@ export default function Contact() {
     useState<ContactType>("hongkong");
 
   useEffect(() => {
+    async function fetchContact() {
+      try {
+        const data = await getContact(language);
+        if (data && data.data) {
+          setContactData(data);
+        }
+      } catch (err) {
+        console.error("Error fetching contact data:", err);
+      } finally {
+      }
+    };
+    fetchContact();
+  }, [language]);
+
+  useEffect(() => {
     async function fetchHkData() {
       try {
-        const data = await getContactHongKongCollections();
+        const data = await getContactHongKongCollections(language);
         if (data && data.data) {
           setHkCompanies(data.data);
         }
@@ -45,11 +81,14 @@ export default function Contact() {
       } finally {
         setHkLoading(false);
       }
-    }
+    };
+    fetchHkData();
+  }, [language]);
 
+  useEffect(() => {
     async function fetchOverseasData() {
       try {
-        const data = await getContactOverseaCollections();
+        const data = await getContactOverseaCollections(language);
         if (data && data.data) {
           setOverseasCompanies(data.data);
         }
@@ -59,11 +98,9 @@ export default function Contact() {
       } finally {
         setOverseasLoading(false);
       }
-    }
-
-    fetchHkData();
+    };
     fetchOverseasData();
-  }, []);
+  }, [language]);
 
   if (hkLoading || overseasLoading) {
     return <div>Loading contact information...</div>;
@@ -85,7 +122,7 @@ export default function Contact() {
         {/* Background aerial construction site image */}
         <div className="relative max-w-[1540px] w-full h-[740px] mx-auto">
           <Image
-            src="/contact/Contactus_img.png"
+            src={cmsBaseUrl + contactData?.data.MainImage.url}
             alt="Aerial view of construction site"
             fill
             className="object-cover"
@@ -98,7 +135,7 @@ export default function Contact() {
             <div className="flex justify-center space-x-0">
               {/* First box - with shadow */}
               <div className="w-[370px] h-[370px] pl-8 pt-8 text-[#838182] transition-colors duration-300">
-                <h3 className="text-3xl font-semibold">Contact</h3>
+                <h3 className="text-3xl font-semibold">{contactData?.data.PageTitle}</h3>
               </div>
 
               {/* Second box - with bg-[#35b3a7] */}
@@ -107,7 +144,7 @@ export default function Contact() {
 
               <div className="relative w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white transition-colors duration-300 hover:bg-[#e63946]/40">
                 <h3 className="text-3xl font-semibold">
-                  Welcome to Build King support
+                  <BoxMessage items={contactData?.data.TopMessage || []} />
                 </h3>
               </div>
             </div>

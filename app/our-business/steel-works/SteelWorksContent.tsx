@@ -99,7 +99,7 @@ export default function SteelWorks() {
               <Sections initialSections={steelWorksSectionsData} basePath="/our-business/steel-works" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="structural-steel-work-collections" language={language} key="structural-steel-work-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language}  key={selectedCollections} />

@@ -98,7 +98,7 @@ export default function Tunnels() {
               <Sections initialSections={tunnelSectionData} basePath="/our-business/tunnels" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="addition-and-alteration-collections" language={language} key="addition-and-alteration-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />

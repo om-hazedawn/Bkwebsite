@@ -55,7 +55,6 @@ export default function Home() {
         // Optionally, set a default or show an error message to the user
       }
     };
-
     fetchHome();
   }, [language]);
 

@@ -98,7 +98,7 @@ export default function Foundations() {
               <Sections initialSections={foundationsSectionsData} basePath="/our-business/foundations" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="foundations-collections" language={language} key="foundations-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />

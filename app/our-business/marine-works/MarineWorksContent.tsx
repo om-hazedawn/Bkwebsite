@@ -98,7 +98,7 @@ export default function MarineWorks() {
               <Sections initialSections={marineWorksSectionsData} basePath="/our-business/marine-works" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="general-marine-works-collecitons" language={language} key="general-marine-works-collecitons" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />

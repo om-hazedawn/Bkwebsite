@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { getWhoWeAre } from "@/lib/api/who-we-are";
 import { BoxMessageItem } from "@/components/BoxMessage";
 import BoxMessage from "@/components/BoxMessage";
-import { getMilestone } from "@/lib/api/milestone";
+import { getMilestonesCollections } from "@/lib/api/milestones-collections";
 import { useLanguage } from "@/contexts/language-context";
 import { getAboutUs } from "@/lib/api/about-us";
 
@@ -45,14 +45,13 @@ interface WhoWeAreData {
 interface MileStone {
   Title: string;
   Description: string;
+  Image: Image;
 }
 
-interface MilestoneData { 
-  data: {
-    PageTitle: string;
-    Milestones: MileStone[];
-    localizations: MilestoneData[];
-  };
+interface MilestonesCollectionsData { 
+  data: [
+    MileStone
+  ];
 }
 
 export default function AboutUs() {
@@ -61,7 +60,7 @@ export default function AboutUs() {
   const [selectedSection, setSelectedSection] = useState("who-we-are");
   const [aboutUsData, setAboutUsData] = useState<AboutUsData>();
   const [whoWeAreData, setWhoWeAreData] = useState<WhoWeAreData>();
-  const [milestoneData, setMilestoneData] = useState<MilestoneData>();
+  const [milestonesCollectionsData, setMilestonesCollectionsData] = useState<MilestonesCollectionsData>();
 
   useEffect(() => {
     const fetchAboutUsData = async () => {
@@ -82,13 +81,13 @@ export default function AboutUs() {
   }, [language]);
 
   useEffect(() => {
-    const fetchMilestoneData = async () => {
-      const data = await getMilestone(language);
-      console.log("Fetched milestone data:", data); // Log the fetched data to the console
-      setMilestoneData(data);
+    const fetchMilestonesCollectionsData = async () => {
+      const data = await getMilestonesCollections(language);
+      console.log("Fetched milestones collections data:", data); // Log the fetched data to the console
+      setMilestonesCollectionsData(data);
     };
 
-    fetchMilestoneData();
+    fetchMilestonesCollectionsData();
   }, [language]);
 
   if (!whoWeAreData) {
@@ -183,7 +182,7 @@ export default function AboutUs() {
               className="absolute w-[1px] bg-black left-1/2 -translate-x-1/2"
               style={{ top: "-8rem", bottom: "-8rem" }}
             />
-            {milestoneData?.data.Milestones.map((item, idx) => (
+            {milestonesCollectionsData?.data.map((item, idx) => (
               <div key={idx} className="relative mb-60">
                 <div className="flex justify-center">
                   <div className="flex justify-between items-center w-full max-w-[900px]">
@@ -207,7 +206,7 @@ export default function AboutUs() {
                       </div>
 
                       <Image
-                        src={cmsBaseUrl +　item.Title}
+                        src={cmsBaseUrl +　item.Image.url}
                         alt={''}
                         width={247}
                         height={247}
@@ -220,7 +219,7 @@ export default function AboutUs() {
                     >
                       <div className="py-6 mt-12">
                         <p className={`text-[#0099A7] text-4xl font-bold mb-2 ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
-                          {item.Description.substring(0, 4)}
+                          {item.Title}
                         </p>
                         <p className={`text-gray-700 text-lg ${idx % 2 === 0 ? "text-right" : "text-left"}`}>
                           {item.Description}

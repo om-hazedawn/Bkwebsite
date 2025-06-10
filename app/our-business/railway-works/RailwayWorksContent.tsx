@@ -101,7 +101,7 @@ export default function RailwayWorks() {
               <Sections initialSections={railwayWorksSectionsData} basePath="/our-business/railway-works" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="railway-infrastructure-collections" language={language} key="railway-infrastructure-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language}  key={selectedCollections} />

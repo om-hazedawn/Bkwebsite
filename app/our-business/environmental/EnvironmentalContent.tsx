@@ -98,7 +98,7 @@ export default function Environmental() {
               <Sections initialSections={environmentalSectionsData} basePath="/our-business/environmental" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="environmental-collections" language={language} key="environmental-collections"/>
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />

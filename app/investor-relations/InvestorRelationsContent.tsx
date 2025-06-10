@@ -310,8 +310,14 @@ export default function InvestorRelations() {
                     </div>
                   </div>
                   <div className="md:col-span-3">
-                    {interiumYearRange ? null : <AnnualReportList yearRange={annualYearRange || ''} language={language} />}
-                    {annualYearRange ? null : <InteriumReportList yearRange={interiumYearRange || ''} language={language} />}
+                    {interiumYearRange === null && annualYearRange === null ? (
+                      <AnnualReportList yearRange={annualYearRange || ''} language={language} />
+                    ) : (
+                      <>
+                        {interiumYearRange ? null : <AnnualReportList yearRange={annualYearRange || ''} language={language} />}
+                        {annualYearRange ? null : <InteriumReportList yearRange={interiumYearRange || ''} language={language} />}
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

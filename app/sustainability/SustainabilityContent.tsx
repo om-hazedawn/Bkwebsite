@@ -65,7 +65,27 @@ export default function Sustainability() {
   const { language } = useLanguage();
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
+  const convertToChineseNumerals = (year: string): string => {
+    const numerals: { [key: string]: string } = {
+      '0': '零',
+      '1': '一',
+      '2': '二',
+      '3': '三',
+      '4': '四',
+      '5': '五',
+      '6': '六',
+      '7': '七',
+      '8': '八',
+      '9': '九',
+    };
+    return year.split('').map(digit => numerals[digit]).join('');
+  };
+
   const year = searchParams.get('year');
+  const displayYear = (language === "zh-cn" || language === "zh-Hant-HK") && year
+    ? convertToChineseNumerals(year)
+    : year;
+
   const [sustainabilityData, setSustainabilityData] = useState<SustainabilityData>();
   const [QHSEData, setQHSEData] = useState<QHSEData>();
   const [newsLetterData, setNewsLetterData] = useState<NewsLetterData>();
@@ -299,7 +319,7 @@ export default function Sustainability() {
                   <Years years={newsLetterData?.data.Years.years || []}/>
                   <div>
                     <NewsLettersList
-                      initialYear={year || ''} language={language}
+                      initialYear={displayYear || '2021'} language={language}
                     />
                   </div>
                 </div>

@@ -102,7 +102,7 @@ export default function Buildings() {
               <Sections initialSections={buildingSectionsData} basePath="/our-business/buildings" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="addition-and-alteration-collections" language={language} key="addition-and-alteration-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />

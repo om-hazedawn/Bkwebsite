@@ -3,6 +3,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useLanguage } from "@/contexts/language-context";
+import { BoxMessageItem } from "@/components/BoxMessage";
+import BoxMessage from "@/components/BoxMessage";
+import { getCommunityAndCharity } from "@/lib/api/community-and-charity";
 import React from "react";
 import {
   Carousel,
@@ -11,14 +16,36 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 
+interface Image {
+  url: string
+}
+
+interface CommunityAndCharityData { 
+  data: {
+    PageTitle: string;
+    MainImage: Image;
+    MessageRedArea: BoxMessageItem[];
+    MessageBlackArea: BoxMessageItem[];
+    Detail: BoxMessageItem[];
+    Images: Image[];
+    locale: string;
+    localizations: CommunityAndCharityData[];
+  };
+}
 /**
  * Community and Charity Page Component
  * Displays community engagement and charitable activities
  */
 export default function CommunityAndCharity() {
+
+  const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
+  const [communityAndCharityData, setCommunityAndCharityData] = useState<CommunityAndCharityData>();
+
   const router = useRouter();
   const [currentSlide, setCurrentSlide] = React.useState(0);
   const carouselApi = React.useRef<CarouselApi>(null);
+
+  const { language } = useLanguage();
 
   // Mock images array - replace with your actual images
   const carouselImages = [
@@ -26,6 +53,15 @@ export default function CommunityAndCharity() {
     "/sustainability/banner/Qhsbanner.jpg",
     "/sustainability/banner/top1banner.jpg",
   ];
+
+  useEffect(() => {
+    const fetchCommunityAndCharityData = async () => {
+      const data = await getCommunityAndCharity(language);
+      console.log("Fetched data:", data); // Log the fetched data to the console
+      setCommunityAndCharityData(data);
+    };
+    fetchCommunityAndCharityData();
+  }, [language]);
 
   // Auto-advance slides
   React.useEffect(() => {
@@ -47,13 +83,13 @@ export default function CommunityAndCharity() {
       <Header />
       <section className="container mx-auto py-12 bg-[#F1F1F1]">
         <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
-          {/* <Image
-              src=""
+            <Image
+              src={cmsBaseUrl +　communityAndCharityData?.data.MainImage.url}
               alt="Sustainability View"
               fill
               className="object-cover"
               priority
-            /> */}
+            />
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
           {/* Overlay boxes - First Row */}
@@ -62,7 +98,7 @@ export default function CommunityAndCharity() {
               <div className="relative w-[370px] h-[370px] bg-transparent"></div>
               <div className="relative w-[370px] h-[370px]"></div>
               <div className="w-[370px] h-[370px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white text-3xl">
-                {/* Placeholder for future message content */}
+                <BoxMessage items={communityAndCharityData?.data.MessageRedArea || []} />
               </div>
             </div>
           </div>
@@ -71,7 +107,7 @@ export default function CommunityAndCharity() {
           <div className="absolute top-[370px] left-0 right-0 w-full">
             <div className="flex justify-start gap-0">
               <div className="w-[945px] h-[370px] bg-black/40 text-white text-2xl flex flex-col items-start justify-center px-16 space-y-6">
-                {/* Placeholder for future message content */}
+                <BoxMessage items={communityAndCharityData?.data.MessageBlackArea || []} />
               </div>
               <div className="relative w-[370px] h-[370px] bg-transparent"></div>
             </div>
@@ -97,7 +133,7 @@ export default function CommunityAndCharity() {
                 }}
               >
                 <CarouselContent className="relative h-[600px] w-full [&>*]:w-full !p-0 !m-0">
-                  {carouselImages.map((image, index) => (
+                  {communityAndCharityData?.data.Images.map((image, index) => (
                     <CarouselItem
                       key={index}
                       className={`absolute inset-0 transition-opacity duration-700 ease-in-out w-full ${
@@ -106,7 +142,7 @@ export default function CommunityAndCharity() {
                     >
                       <div className="relative h-[600px] w-full">
                         <Image
-                          src={image}
+                          src={cmsBaseUrl +　image.url}
                           alt={`Carousel slide ${index + 1}`}
                           fill
                           sizes="100vw"
@@ -119,7 +155,7 @@ export default function CommunityAndCharity() {
                 </CarouselContent>
                 {/* Navigation dots */}
                 <div className="absolute bottom-4 right-8 flex gap-2 z-40">
-                  {carouselImages.map((_, index) => (
+                  {communityAndCharityData?.data.Images.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentSlide(index)}
@@ -133,24 +169,9 @@ export default function CommunityAndCharity() {
               </Carousel>
             </div>
             <div className="grid grid-cols-1 justify-center mt-8">
-              <p className="text-gray-600 leading-relaxed">
-                Build King has been keen and dedicated in caring of the
-                community and participating actively in charity work. In the
-                past years we took part and contributed in many charity fund
-                raising programs organized by various charity organizations,
-                educational programs organized for students by local
-                universities and territory institutions, on-job-training
-                programs tailor-made for the graduated engineers, quantity
-                surveyors and construction apprentices etc. In addition, we have
-                set up a Recreational Committee since early 2008 to organise
-                recreational activities for the staffs as well as participating
-                in charity events and providing voluntary services to the
-                public. Through public service events such as paying visits to
-                the orphans, children and the singleton elders, we aim at
-                promoting the spirit of mutual care and support among the staffs
-                and to boost the staff`&apos;`s support and commitment in caring for
-                the community.
-              </p>
+              <div className="text-gray-600 leading-relaxed">
+                <BoxMessage items={communityAndCharityData?.data.Detail || []} />
+              </div>
             </div>
           </div>
         </div>

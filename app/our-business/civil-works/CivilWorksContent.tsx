@@ -99,7 +99,7 @@ export default function CivilWorks() {
               <Sections initialSections={civilWorksSectionsData} basePath="/our-business/civil-works" />
             </div>
             <div className="md:col-span-2">
-              {selectedCollections === '' ? (
+              {selectedCollections === null ? (
                 <DynamicBusinessList collections="airport-work-collections" language={language} key="airport-work-collections" />
               ) : (
                 <DynamicBusinessList collections={selectedCollections || ''} language={language} key={selectedCollections} />
