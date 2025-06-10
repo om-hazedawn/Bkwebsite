@@ -92,7 +92,7 @@ export default function CivilWorks() {
       </section>
       <section className="py-16">
         <div className="container mx-auto pl-64">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="md:col-span-1">
               {/* Civil Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">General Civil Works</h2>

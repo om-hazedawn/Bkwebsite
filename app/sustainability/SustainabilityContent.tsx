@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from 'next/navigation';
 
 import Years from "@/components/Years";
+import Sections from "@/components/Sections";
 import NewsLettersList from "@/components/NewsLettersList";
 
 import { getSustainability } from "@/lib/api/sustainability";
@@ -65,6 +66,7 @@ export default function Sustainability() {
   const { language } = useLanguage();
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
+  const selectedCollections = searchParams.get('collections');
   const convertToChineseNumerals = (year: string): string => {
     const numerals: { [key: string]: string } = {
       '0': '零',
@@ -257,15 +259,65 @@ export default function Sustainability() {
                 </div>
               </div>
             </div>
-            <div className="mt-20">
-              <div className="container mx-auto max-w-6xl">
-                <h3
-                  className="text-2xl font-bold mb-3 text-[#0099a7]"
-                >
-                  {QHSEData?.data.PageTitle}
-                </h3>
+            <section className="py-16">
+              <div className="container mx-auto pl-64">
+                <div className="grid grid-cols-1 md:grid-cols-3">
+                  <div className="md:col-span-1">
+                    <h3
+                      className="text-2xl font-bold mb-3 text-[#0099a7]"
+                    >
+                      {QHSEData?.data.PageTitle}
+                    </h3>
+                    <Sections initialSections={[{name: "Quality, Environmental and Safety and Health", slug: 'qhse'}]} basePath="/sustainability" />
+                  </div>
+                  <div className="md:col-span-2">
+                    {selectedCollections === null ? (
+                      <div className="text-[#838182] pr-48">
+                      <h3 className="text-2xl font-bold">Quality</h3>
+                      <br/>
+                      <br/>
+                      <p className="text-xl font-thin">Build King commits to being leading contractors in quality.</p>
+                      <br/>
+                      <p className="text-xl font-thin">We believe that we have earned a social recognition and become the preferred partner with each of our valued clients only by consistently providing products and services of the highest quality through a process of continuous improvement.</p>
+                      <br/>
+                      <br/>
+                      <h3 className="text-2xl font-bold">Safety</h3>
+                      <br/>
+                      <p className="text-xl font-thin">Build King's first priority is always on Safety and Health consideration, over all other matters.</p>
+                      <br/>
+                      <p className="text-xl font-thin">Cultivating a top-class safety culture is vital to our business, and we always strive to make continuous improvement. Our company aim is to provide a healthy and safe working environment of the highest practical standard for its employees, subcontractors, customers, public and other people who may be affected by our operations.</p>
+                      <br/>
+                      <br/>
+                      <h3 className="text-2xl font-bold">Environmental</h3>
+                      <br/>
+                      <p className="text-xl font-thin">Build King shares the worldwide concern towards preserving and improving the environment. We aim to prevent environmental harm in all our activities, and are committed to operating in an environmentally responsible manner. We strive continuously to improve our environmental performance.</p>
+                    </div>
+                    ) : (
+                      <div className="text-[#838182] pr-48">
+                        <h3 className="text-2xl font-bold">Quality</h3>
+                        <br/>
+                        <br/>
+                        <p className="text-xl font-thin">Build King commits to being leading contractors in quality.</p>
+                        <br/>
+                        <p className="text-xl font-thin">We believe that we have earned a social recognition and become the preferred partner with each of our valued clients only by consistently providing products and services of the highest quality through a process of continuous improvement.</p>
+                        <br/>
+                        <br/>
+                        <h3 className="text-2xl font-bold">Safety</h3>
+                        <br/>
+                        <p className="text-xl font-thin">Build King's first priority is always on Safety and Health consideration, over all other matters.</p>
+                        <br/>
+                        <p className="text-xl font-thin">Cultivating a top-class safety culture is vital to our business, and we always strive to make continuous improvement. Our company aim is to provide a healthy and safe working environment of the highest practical standard for its employees, subcontractors, customers, public and other people who may be affected by our operations.</p>
+                        <br/>
+                        <br/>
+                        <h3 className="text-2xl font-bold">Environmental</h3>
+                        <br/>
+                        <p className="text-xl font-thin">Build King shares the worldwide concern towards preserving and improving the environment. We aim to prevent environmental harm in all our activities, and are committed to operating in an environmentally responsible manner. We strive continuously to improve our environmental performance.</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
+            </section>
           </div>
         );
       case "corporate-newsletter":
