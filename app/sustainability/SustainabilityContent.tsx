@@ -283,7 +283,7 @@ export default function Sustainability() {
                       <br/>
                       <h3 className="text-2xl font-bold">Safety</h3>
                       <br/>
-                      <p className="text-xl font-thin">Build King's first priority is always on Safety and Health consideration, over all other matters.</p>
+                      <p className="text-xl font-thin">Build King&apos;s first priority is always on Safety and Health consideration, over all other matters.</p>
                       <br/>
                       <p className="text-xl font-thin">Cultivating a top-class safety culture is vital to our business, and we always strive to make continuous improvement. Our company aim is to provide a healthy and safe working environment of the highest practical standard for its employees, subcontractors, customers, public and other people who may be affected by our operations.</p>
                       <br/>
@@ -304,7 +304,7 @@ export default function Sustainability() {
                         <br/>
                         <h3 className="text-2xl font-bold">Safety</h3>
                         <br/>
-                        <p className="text-xl font-thin">Build King's first priority is always on Safety and Health consideration, over all other matters.</p>
+                        <p className="text-xl font-thin">Build King&apos;s first priority is always on Safety and Health consideration, over all other matters.</p>
                         <br/>
                         <p className="text-xl font-thin">Cultivating a top-class safety culture is vital to our business, and we always strive to make continuous improvement. Our company aim is to provide a healthy and safe working environment of the highest practical standard for its employees, subcontractors, customers, public and other people who may be affected by our operations.</p>
                         <br/>
