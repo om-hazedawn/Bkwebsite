@@ -95,7 +95,7 @@ export default function Tunnels() {
             <div className="md:col-span-1">
               {/* Tunnels section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Tunnels</h2>
-              <Sections initialSections={tunnelSectionData} basePath="/our-business/tunnels" />
+              <Sections initialSections={tunnelSectionData} basePath="/our-business/tunnels?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

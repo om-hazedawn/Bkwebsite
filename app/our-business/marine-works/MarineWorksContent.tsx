@@ -95,7 +95,7 @@ export default function MarineWorks() {
             <div className="md:col-span-1">
               {/* Tunnels section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Tunnels</h2>
-              <Sections initialSections={marineWorksSectionsData} basePath="/our-business/marine-works" />
+              <Sections initialSections={marineWorksSectionsData} basePath="/our-business/marine-works?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

@@ -112,7 +112,7 @@ export default function CorporateGovernance() {
                 {corporateGovernanceData?.data.PageTitle}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] justify-center">
-                <Sections initialSections={sections} basePath="/sustainability/corporate-governance" />
+                <Sections initialSections={sections} basePath="/sustainability/corporate-governance?" />
                 <div>
                   <DynamicFileList collections={collection || 'corporate-governance-report-collections'} language={language} />
                 </div>

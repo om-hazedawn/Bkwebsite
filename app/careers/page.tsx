@@ -242,8 +242,8 @@ export default function Careers() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="container mx-auto py-12 bg-[#F1F1F1]">
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+      <section className="container mx-auto py-12 bg-white">
+        <div className="flex flex-wrap justify-center gap-8 py-20 mb-16 bg-[#F1F1F1]">
           <div
             className="cursor-pointer"
             onClick={() => setSelectedSection("career")}

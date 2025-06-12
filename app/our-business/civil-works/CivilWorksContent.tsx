@@ -96,7 +96,7 @@ export default function CivilWorks() {
             <div className="md:col-span-1">
               {/* Civil Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">General Civil Works</h2>
-              <Sections initialSections={civilWorksSectionsData} basePath="/our-business/civil-works" />
+              <Sections initialSections={civilWorksSectionsData} basePath="/our-business/civil-works?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

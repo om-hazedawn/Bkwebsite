@@ -22,7 +22,6 @@ export default function Header() {
     <header className="w-full relative overflow-x-hidden max-w-full z-40">
       <div className="container mx-auto px-4 py-2 max-[750px]:hidden flex justify-end">
         <div className="text-base text-gray-500 flex items-center">
-          <span className="mr-3 font-medium text-lg">Language:</span>
           <div className="space-x-3 text-lg">
           <button
             onClick={() => handleLanguageChange("en")}

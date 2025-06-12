@@ -31,11 +31,17 @@ const Sections: React.FC<SectionsProps> = ({ initialSections, basePath = '' }) =
       {initialSections.map((section, index) => (
         <li key={section.slug || index}>
           <Link
-            href={`${basePath}?collections=${section.slug}`}
-            className={`text-gray-600 hover:text-[#35b3a7] ${selectedCollection === section.slug ? 'font-bold text-[#35b3a7]' : ''}`}
+            href={`${basePath}collections=${section.slug}`}
+            className={`text-xl text-[#818182] ${selectedCollection === section.slug ? 'font-black flex items-center' : 'font-extralight hover:font-black'}`}
             scroll={false}
           >
-            {section.name}
+            <div>
+              {section.name}
+              {selectedCollection === section.slug && (
+                <span className="text-3xl font-black">&#9656;</span> // Unicode right-pointing triangle
+              )}
+            </div>
+            
           </Link>
         </li>
       ))}

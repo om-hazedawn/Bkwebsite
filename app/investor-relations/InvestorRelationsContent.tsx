@@ -391,7 +391,7 @@ export default function InvestorRelations() {
                   {/* Year filter sidebar */}
                   <div>
                     <h2 className="text-2xl font-bold text-[#0099A7] mb-6">{announcementData?.data.PageTitle}</h2>
-                    <Years years={announcementYears}/>
+                    <Years years={announcementYears} basePath="/investor-relations?section=announcements"/>
                   </div>
                   <div className="md:col-span-3">
                     <AnnouncementsList initialYear={year || ''} language={language} />
@@ -460,9 +460,9 @@ export default function InvestorRelations() {
                   {/* Year filter sidebar */}
                   <div className="flex flex-col space-y-8">
                     <h2 className="text-2xl font-bold text-[#0099A7]">Circulars</h2>
-                    <Years years={circularYears}/>
+                    <Years years={circularYears} basePath="/investor-relations?section=circulars"/>
                     <h2 className="text-2xl font-bold text-[#0099A7]">Notices</h2>
-                    <Sections initialSections={noticeSections} basePath="/investor-relations" />
+                    <Sections initialSections={noticeSections} basePath="/investor-relations?section=circulars&" />
                   </div>
                   <div className="md:col-span-3">
                     {collection || year ? (

@@ -75,7 +75,9 @@ export default function CurrentVacanciesList() {
               if (child.type === 'link' && child.url) {
                 return (
                   <a key={childIndex} href={child.url} className="text-[#009999] hover:underline" target="_blank" rel="noopener noreferrer">
-                    {child.text || child.url}
+                    {child.children && child.children.map((grandchild, grandchildIndex) => (
+                      <span key={grandchildIndex}>{grandchild.text}</span>
+                    ))}
                   </a>
                 );
               } else if (child.bold) {
@@ -97,7 +99,7 @@ export default function CurrentVacanciesList() {
                   if (child.type === 'link' && child.url) {
                     return (
                       <a key={childIndex} href={child.url} className="text-[#009999] hover:underline" target="_blank" rel="noopener noreferrer">
-                        {child.text || child.url}
+                          <span >{child.text}</span>
                       </a>
                     );
                   } else if (child.bold) {

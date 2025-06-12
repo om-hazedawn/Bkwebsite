@@ -273,7 +273,7 @@ export default function Sustainability() {
                     >
                       {QHSEData?.data.PageTitle}
                     </h3>
-                    <Sections initialSections={[{name: "Quality, Environmental and Safety and Health", slug: 'qhse'}]} basePath="/sustainability" />
+                    <Sections initialSections={[{name: "Quality, Environmental and Safety and Health", slug: 'qhse'}]} basePath="/sustainability?section=qhse&" />
                   </div>
                   <div className="md:col-span-2">
                     {selectedCollections === null ? (
@@ -373,7 +373,7 @@ export default function Sustainability() {
                   {newsLetterData?.data.PageTitle}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] justify-center">
-                  <Years years={newsLetterData?.data.Years.years || []}/>
+                  <Years years={newsLetterData?.data.Years.years || []} basePath="/sustainability?section=corporate-newsletter" />
                   <div>
                     <NewsLettersList
                       initialYear={displayYear || '2021'} language={language}
@@ -392,8 +392,8 @@ export default function Sustainability() {
   return (
     <main className="min-h-screen">
       <Header />
-      <section className="container mx-auto py-12 bg-[#F1F1F1]">
-        <div className="flex flex-wrap justify-center gap-8 mb-16">
+      <section className="container mx-auto py-12 bg-white">
+        <div className="flex flex-wrap justify-center gap-8 py-20 bg-[#F1F1F1]">
           <div
             className="cursor-pointer"
             onClick={() => setSelectedSection("corporate-responsibility")}
@@ -458,7 +458,7 @@ export default function Sustainability() {
             />
           </div>
         </div>
-        <div className="container mx-auto mb-20">{renderContent()}</div>
+        <div className="container mx-auto">{renderContent()}</div>
       </section>
       <Footer />
     </main>

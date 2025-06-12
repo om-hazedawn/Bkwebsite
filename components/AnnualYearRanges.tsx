@@ -22,7 +22,7 @@ const AnnualYearRanges: React.FC<YearRangesProps> = ({ yearRanges, basePath = ''
         <li key={yearRange || index}>
           <Link
             href={`${basePath}?annualYearRange=${yearRange}`}
-            className={`text-xl text-[#818182] hover:font-black ${selectedYearRange === yearRange ? 'text-[#818182] font-black flex items-center' : ''}`}
+            className={`text-xl text-[#818182] ${selectedYearRange === yearRange ? 'font-black flex items-center' : 'font-extralight hover:font-black'}`}
             scroll={false}
           >
             {yearRange}

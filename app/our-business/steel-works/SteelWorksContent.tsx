@@ -96,7 +96,7 @@ export default function SteelWorks() {
             <div className="md:col-span-1">
               {/* Steel Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Structural Steel Works</h2>
-              <Sections initialSections={steelWorksSectionsData} basePath="/our-business/steel-works" />
+              <Sections initialSections={steelWorksSectionsData} basePath="/our-business/steel-works?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

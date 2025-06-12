@@ -99,7 +99,7 @@ export default function Buildings() {
             <div className="md:col-span-1">
               {/* Buildings section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Buildings</h2>
-              <Sections initialSections={buildingSectionsData} basePath="/our-business/buildings" />
+              <Sections initialSections={buildingSectionsData} basePath="/our-business/buildings?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

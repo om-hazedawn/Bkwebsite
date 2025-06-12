@@ -95,7 +95,7 @@ export default function Environmental() {
             <div className="md:col-span-1">
               {/* Buildings section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Environmental</h2>
-              <Sections initialSections={environmentalSectionsData} basePath="/our-business/environmental" />
+              <Sections initialSections={environmentalSectionsData} basePath="/our-business/environmental?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

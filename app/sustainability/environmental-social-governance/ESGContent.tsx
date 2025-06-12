@@ -108,7 +108,7 @@ export default function EnvironmentalSocialGovernance() {
                 {ESGData?.data.PageTitle}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] justify-center">
-                <Sections initialSections={sections} basePath="/sustainability/environmental-social-governance" />
+                <Sections initialSections={sections} basePath="/sustainability/environmental-social-governance?" />
                 <div>
                   <DynamicFileList collections={collection || 'environmental-social-and-governance-report-collections'} language={language} />
                 </div>

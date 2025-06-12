@@ -95,7 +95,7 @@ export default function Foundations() {
             <div className="md:col-span-1">
               {/* Foundations section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Foundations</h2>
-              <Sections initialSections={foundationsSectionsData} basePath="/our-business/foundations" />
+              <Sections initialSections={foundationsSectionsData} basePath="/our-business/foundations?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (

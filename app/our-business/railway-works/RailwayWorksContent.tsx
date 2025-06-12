@@ -98,7 +98,7 @@ export default function RailwayWorks() {
             <div className="md:col-span-1">
               {/* Railway Works section */}
               <h2 className="text-2xl font-medium text-gray-700 mb-6">Railway & Associated Works</h2>
-              <Sections initialSections={railwayWorksSectionsData} basePath="/our-business/railway-works" />
+              <Sections initialSections={railwayWorksSectionsData} basePath="/our-business/railway-works?" />
             </div>
             <div className="md:col-span-2">
               {selectedCollections === null ? (
