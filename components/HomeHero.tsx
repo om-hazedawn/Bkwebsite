@@ -11,7 +11,7 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { BoxMessageItem } from "@/components/BoxMessage";
-import BoxMessage from "@/components/BoxMessage";
+import ColorBoxMessage from "@/components/ColorBoxMessage";
 
 interface Image {
   url: string
@@ -61,7 +61,7 @@ export default function HomeHero({ topMessage, topBanner, topVideoImage }: HomeH
                 <li>{t.hero.innovation}</li>
                 <li>{t.hero.professionalism}</li>
               </ul> */}
-              <BoxMessage items={topMessage} />  
+              <ColorBoxMessage items={topMessage} />  
             </div>
           </div>
         </div>

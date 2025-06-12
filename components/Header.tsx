@@ -1,8 +1,9 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
-import { useLanguage } from "@/contexts/language-context"
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useLanguage } from '@/contexts/language-context'
 import { locales } from "@/locales"
 
 export default function Header() {
@@ -13,8 +14,10 @@ export default function Header() {
     setLanguage(lang)
   }
 
+  const pathname = usePathname()
+
   return (
-    <header className="w-full">
+    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
       <div className="container mx-auto px-4 py-2 flex justify-end">
         <div className="text-sm space-x-2 text-gray-500">
           <button
@@ -43,26 +46,56 @@ export default function Header() {
         <Link href="/" className="flex-shrink-0 -ml-20">
           <Image src="/logo.png" alt="Build King Logo" width={200} height={84} priority />
         </Link>
-        <nav className="hidden md:flex space-x-8">
-          <Link href="/about-us" className="nav-link text-xl text-gray-400">
-            {t.header.aboutUs}
-          </Link>
-          <Link href="/our-business" className="nav-link text-xl text-gray-400">
-            {t.header.ourBusiness}
-          </Link>
-          <Link href="/investor-relations" className="nav-link text-xl text-gray-400">
-            {t.header.investorRelations}
-          </Link>
-          <Link href="/sustainability" className="nav-link text-xl text-gray-400">
-            {t.header.sustainability}
-          </Link>
-          <Link href="/careers" className="nav-link text-xl text-gray-400">
-            {t.header.careers}
-          </Link>
-          <Link href="/contact" className="nav-link text-xl text-gray-400">
-            {t.header.contact}
-          </Link>
-        </nav>
+        <ul className="hidden md:flex space-x-8">
+          <li>
+            <Link
+              href="/about-us"
+              className={`text-xl ${pathname === '/about-us' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.aboutUs}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/our-business"
+              className={`text-xl ${pathname === '/our-business' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.ourBusiness}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/investor-relations"
+              className={`text-xl ${pathname === '/investor-relations' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.investorRelations}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/sustainability"
+              className={`text-xl ${pathname === '/sustainability' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.sustainability}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/careers"
+              className={`text-xl ${pathname === '/careers' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.careers}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/contact"
+              className={`text-xl ${pathname === '/contact' ? 'text-[#0099A7]' : 'text-[#838182]'} hover:text-[#0099A7]`}
+            >
+              {t.header.contact}
+            </Link>
+          </li>
+        </ul>
           <button className="md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -78,3 +111,4 @@ export default function Header() {
     </header>
   )
 }
+

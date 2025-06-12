@@ -22,10 +22,13 @@ const AnnualYearRanges: React.FC<YearRangesProps> = ({ yearRanges, basePath = ''
         <li key={yearRange || index}>
           <Link
             href={`${basePath}?annualYearRange=${yearRange}`}
-            className={`text-gray-600 hover:text-[#35b3a7] hover:underline ${selectedYearRange === yearRange ? 'font-bold text-[#35b3a7]' : ''}`}
+            className={`text-xl text-[#818182] hover:font-black ${selectedYearRange === yearRange ? 'text-[#818182] font-black flex items-center' : ''}`}
             scroll={false}
           >
             {yearRange}
+            {selectedYearRange === yearRange && (
+              <span className="text-3xl font-black">&#9656;</span> // Unicode right-pointing triangle
+            )}
           </Link>
         </li>
       ))}

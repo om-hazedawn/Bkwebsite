@@ -54,7 +54,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/financial-reports?section=financial-reports" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/investor-relations?section=financial-reports" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Financial Reports" : language === "zh-cn" ? "财务报告" : "財務報告"}
                   </Link>
                 </li>

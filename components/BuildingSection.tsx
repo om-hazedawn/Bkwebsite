@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { BoxMessageItem } from "@/components/BoxMessage";
-import BoxMessage from "@/components/BoxMessage";
+import ColorBoxMessage from "@/components/ColorBoxMessage";
 
 interface Image {
   url: string
@@ -41,7 +41,7 @@ export default function BuildingSection({ message, messageLeftImage }: BuildingS
         <p className="text-lg">
           <strong>Build King</strong> is one of the top construction companies in Hong Kong and the preferred partner for customers, subcontractors, suppliers and joint ventures.
         </p> */}
-        <BoxMessage items={message} />
+        <ColorBoxMessage items={message} />
       </div>
       </div>
     </div>
