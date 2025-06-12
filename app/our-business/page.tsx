@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getOurBusiness } from "@/lib/api/our-business";
 
-interface OurBusinessData { 
+interface OurBusinessData {
   data: {
     PageTitle: string;
     Detail: string;
@@ -18,7 +18,6 @@ interface OurBusinessData {
 }
 
 export default function OurBusiness() {
-
   const [ourBusinessData, setOurBusinessData] = useState<OurBusinessData>();
   const { language } = useLanguage();
 
@@ -43,29 +42,28 @@ export default function OurBusiness() {
 
       <section className="relative">
         {/* Background aerial construction site image */}
-        <div className="relative max-w-[1690px] w-full h-[744px] mx-auto">
+        <div className="relative max-w-[1690px] w-full h-[400px] sm:h-[500px] md:h-[640px] lg:h-[740px] mx-auto overflow-hidden">
           <Image
             src="/our-business/heroimageofbusiness.jpg"
             alt="Aerial view of construction site"
             fill
-            className="object-cover"
+            sizes="100vw"
+            className="object-cover object-center transition-all duration-300"
             priority
           />
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
-          {/* Overlay boxes - First Row */}
-          <div className="absolute top-0 left-0 right-0 w-full">
-            <div className="flex justify-center">
-              {/* First box - with shadow */}
-              <div className="w-[350px] h-[372px] pl-8 pt-8 text-white transition-colors duration-300">
-                <h3 className="text-3xl font-semibold">Our Businesses</h3>
+          {/* All boxes in one grid */}
+          <div className="absolute inset-0">
+            <div className="hidden min-[750px]:grid grid-cols-3 grid-rows-2 gap-0 w-full h-full max-w-[1110px] mx-auto">
+              {/* First Row */}
+              <div className="w-full h-full flex items-center pl-8 text-white transition-all duration-300">
+                <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Our Businesses</h3>
               </div>
-
-              {/* Second box - with bg-[#35b3a7] */}
               <Link href="/our-business/buildings">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
-                  <h3 className="text-3xl font-semibold">Buildings</h3>
-                  <div className="absolute top-4 right-5 w-8 h-8">
+                <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#1aabaf]/80 text-white transition-all duration-300 hover:bg-[#1aabaf]/40">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Buildings</h3>
+                  <div className="absolute top-4 right-4 w-8 h-8">
                     <Image
                       src="/our-business/white_co.webp"
                       alt="Corner decoration"
@@ -75,12 +73,10 @@ export default function OurBusiness() {
                   </div>
                 </div>
               </Link>
-
-              {/* Third box - with bg-[#e63946] */}
               <Link href="/our-business/environmental">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#e63946]/80 text-white transition-colors duration-300 hover:bg-[#e63946]/40">
-                  <h3 className="text-3xl font-semibold">Environmental</h3>
-                  <div className="absolute top-4 right-5 w-8 h-8">
+                <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#e63946]/80 text-white transition-all duration-300 hover:bg-[#e63946]/40">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Environmental</h3>
+                  <div className="absolute top-4 right-4 w-8 h-8">
                     <Image
                       src="/our-business/white_co.webp"
                       alt="Corner decoration"
@@ -90,17 +86,12 @@ export default function OurBusiness() {
                   </div>
                 </div>
               </Link>
-            </div>
-          </div>
 
-          {/* Overlay boxes - Second Row */}
-          <div className="absolute top-[372px] left-0 right-0 w-full">
-            <div className="flex justify-center">
-              {/* First box - with shadow */}
+              {/* Second Row */}
               <Link href="/our-business/foundations">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start  bg-[#D5D4D5] text-black transition-colors duration-300 hover:bg-[#D5D4D5]/40">
-                  <h3 className="text-3xl font-semibold">Foundations</h3>
-                  <div className="absolute top-4 right-5 w-8 h-8">
+                <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#D5D4D5] text-black transition-all duration-300 hover:bg-[#D5D4D5]/40">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Foundations</h3>
+                  <div className="absolute top-4 right-4 w-8 h-8">
                     <Image
                       src="/our-business/gray_co.webp"
                       alt="Corner decoration"
@@ -110,14 +101,13 @@ export default function OurBusiness() {
                   </div>
                 </div>
               </Link>
-
               {/* Second box - with bg-[#35b3a7] */}
               <Link href="/our-business/civil-works">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start text-white transition-all duration-300 shadow-lg hover:bg-black/40 hover:shadow-none">
-                  <h3 className="text-3xl font-semibold">
+                <div className="relative w-full h-full flex items-end pl-8 pb-6 text-white transition-all duration-300 shadow-lg hover:bg-black/40 hover:shadow-none">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">
                     General Civil Works
                   </h3>
-                  <div className="absolute top-4 right-5 w-8 h-8">
+                  <div className="absolute top-4 right-4 w-8 h-8">
                     <Image
                       src="/our-business/white_co.webp"
                       alt="Corner decoration"
@@ -127,14 +117,14 @@ export default function OurBusiness() {
                   </div>
                 </div>
               </Link>
-
               {/* Third box - with bg-[#e63946] */}
               <Link href="/our-business/railway-works">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#1aabaf]/80 text-white transition-colors duration-300 hover:bg-[#1aabaf]/40">
-                  <h3 className="text-3xl font-semibold">
-                   Railway &<br/>Associated Works
-                 </h3>
-                  <div className="absolute top-4 right-5 w-8 h-8">
+                <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#1aabaf]/80 text-white transition-all duration-300 hover:bg-[#1aabaf]/40">
+                  <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">
+                    Railway &<br />
+                    Associated Works
+                  </h3>
+                  <div className="absolute top-4 right-4 w-8 h-8">
                     <Image
                       src="/our-business/white_co.webp"
                       alt="Corner decoration"
@@ -150,13 +140,15 @@ export default function OurBusiness() {
       </section>
 
       {/* Additional blocks section */}
-      <section>
-        <div className="flex justify-center">
+      <section className="relative">
+        <div className="relative max-w-[1690px] w-full h-[200px] sm:h-[250px] md:h-[320px] lg:h-[370px] mx-auto overflow-hidden">
+          <div className="absolute inset-0">
+            <div className="hidden min-[750px]:grid grid-cols-3 grid-rows-1 gap-0 w-full h-full max-w-[1110px] mx-auto">
           {/* First box - with shadow */}
           <Link href="/our-business/steel-works">
-            <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D94055] text-white transition-colors duration-300 hover:bg-[#e63946]/80">
-              <h3 className="text-3xl font-semibold">Structural Steel Works</h3>
-              <div className="absolute top-4 right-5 w-8 h-8">
+            <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#D94055] text-white transition-all duration-300 hover:bg-[#e63946]/80">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Structural Steel Works</h3>
+              <div className="absolute top-4 right-4 w-8 h-8">
                 <Image
                   src="/our-business/white_co.webp"
                   alt="Corner decoration"
@@ -166,12 +158,11 @@ export default function OurBusiness() {
               </div>
             </div>
           </Link>
-
           {/* Second box - with bg-[#1aabaf] */}
           <Link href="/our-business/tunnels">
-            <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-white text-black transition-colors duration-300 hover:bg-white/80">
-              <h3 className="text-3xl font-semibold">Tunnels</h3>
-              <div className="absolute top-4 right-5 w-8 h-8">
+            <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-white text-black transition-all duration-300 hover:bg-white/80">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Tunnels</h3>
+              <div className="absolute top-4 right-4 w-8 h-8">
                 <Image
                   src="/our-business/gray_co.webp"
                   alt="Corner decoration"
@@ -181,12 +172,11 @@ export default function OurBusiness() {
               </div>
             </div>
           </Link>
-
           {/* Third box - with bg-[#e63946] */}
           <Link href="/our-business/marine-works">
-            <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#B0B0B1] text-white transition-colors duration-300 hover:bg-[#b1b1b1]/80">
-              <h3 className="text-3xl font-semibold">Marine Works</h3>
-              <div className="absolute top-4 right-5 w-8 h-8">
+            <div className="relative w-full h-full flex items-end pl-8 pb-6 bg-[#B0B0B1] text-white transition-all duration-300 hover:bg-[#b1b1b1]/80">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold">Marine Works</h3>
+              <div className="absolute top-4 right-4 w-8 h-8">
                 <Image
                   src="/our-business/white_co.webp"
                   alt="Corner decoration"
@@ -196,6 +186,8 @@ export default function OurBusiness() {
               </div>
             </div>
           </Link>
+            </div>
+          </div>
         </div>
       </section>
 
