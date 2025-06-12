@@ -72,13 +72,23 @@ interface DynamicBusinessListProps {
   collections: string; // Identifier for the data collection to fetch
   language: string; // Language identifier
   onItemExpandChange?: (isExpanded: boolean) => void; // New prop
+  pageSize?: number; // Number of items per page
 }
 
-const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, language, onItemExpandChange }) => {
+interface PaginationMeta {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, language, onItemExpandChange, pageSize = 10 }) => {
   const [expandedBusinessId, setExpandedBusinessId] = useState<number | null>(null);
   const [businesses, setBusinesses] = useState<BusinessData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [paginationMeta, setPaginationMeta] = useState<PaginationMeta | null>(null);
 
   useEffect(() => {
     const fetchBusinessData = async () => {
@@ -87,10 +97,11 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
       try {
         // Assuming getDynamicCollections can fetch the business data based on the 'collections' prop
         // Or replace with a specific function e.g., getBusinessData(collections)
-        const result = await getDynamicCollections(collections, language);
+        const result = await getDynamicCollections(collections, language, currentPage, pageSize);
         console.log('Fetched business data for collection:', collections, result);
 
         if (result && Array.isArray(result.data)) {
+          setPaginationMeta(result.meta?.pagination || null);
           // No specific filtering needed here unless business rules dictate it
           // (e.g., filter out items without a MainImage if it's essential for display)
           setBusinesses(result.data as BusinessData[]);
@@ -113,7 +124,7 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
     if (collections) {
       fetchBusinessData();
     }
-  }, [collections, language]);
+  }, [collections, language, currentPage, pageSize]);
 
   if (loading) {
     return <p className="text-center py-10">Loading business data...</p>;
@@ -131,6 +142,11 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
     if (onItemExpandChange) {
       onItemExpandChange(newExpandedId !== null);
     }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+    setExpandedBusinessId(null);
   };
 
   return (
@@ -266,6 +282,50 @@ const DynamicBusinessList: React.FC<DynamicBusinessListProps> = ({ collections, 
           ))
         )}
       </div>
+
+      {/* Pagination Controls */}
+      {paginationMeta && paginationMeta.pageCount > 1 && (
+        <div className="flex items-center space-x-4 mt-6 mb-4">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`p-2 rounded-full ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Previous page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+          
+          <div className="flex items-center space-x-1">
+            {Array.from({ length: paginationMeta.pageCount }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm
+                  ${currentPage === page 
+                    ? ' text-[#0099a7]' 
+                    : 'text-gray-600 hover:text-[#0099a7]'}`}
+                aria-label={`Go to page ${page}`}
+                aria-current={currentPage === page ? 'page' : undefined}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === paginationMeta.pageCount}
+            className={`p-2 rounded-full ${currentPage === paginationMeta.pageCount ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Next page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

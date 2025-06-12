@@ -1,9 +1,9 @@
-export async function getAnnouncementCollections(year: string, locale: string = 'en') {
+export async function getAnnouncementCollections(year: string, locale: string = 'en', page: number = 1, pageSize: number = 10) {
     const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
     const API_TOKEN = process.env.STRAPI_API_TOKEN;
   
     try {
-      const res = await fetch(`${CMS_URL}/api/announcement-collections?populate=*&filters[Date][$gte]=${year}-01-01&filters[Date][$lte]=${year}-12-31&locale=${locale}`, {
+      const res = await fetch(`${CMS_URL}/api/announcement-collections?populate=*&filters[Date][$gte]=${year}-01-01&filters[Date][$lte]=${year}-12-31&locale=${locale}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`, {
         method: 'GET',
         headers: API_TOKEN ? { Authorization: `Bearer ${API_TOKEN}` } : {},
         cache: 'no-store', // Or 'force-cache' or 'default' depending on caching strategy

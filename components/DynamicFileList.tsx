@@ -19,10 +19,19 @@ interface DynamicData {
   // Add other relevant circular properties if needed
 }
 
-const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({ collections, language }) => {
-  const [circulars, setDynamics] = useState<DynamicData[]>([]);
+interface PaginationMeta {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+const DynamicsFileList: React.FC<{ collections: string, language: string, pageSize?: number }> = ({ collections, language, pageSize = 10 }) => {
+  const [dynamics, setDynamics] = useState<DynamicData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [paginationMeta, setPaginationMeta] = useState<PaginationMeta | null>(null);
 
   useEffect(() => {
     const fetchDynamics = async () => {
@@ -30,7 +39,7 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
       setError(null);
       try {
         // Fetch data based on the provided collection
-        const result = await getDynamicCollections(collections, language); 
+        const result = await getDynamicCollections(collections, language, currentPage, pageSize); 
         console.log('Fetched dynamics data for collection:', collections, result);
         if (result && Array.isArray(result.data)) {
           // Filter out items that don't have a File, as they cannot be displayed as a link
@@ -47,6 +56,7 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
             });
 
           setDynamics(processedDynamics);
+          setPaginationMeta(result.meta?.pagination || null);
         } else {
           console.error('Fetched dynamics data is not an array or is undefined:', result);
           setDynamics([]);
@@ -66,7 +76,7 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
     if (collections) { // Only fetch if a collection is provided
       fetchDynamics();
     }
-  }, [collections, language]);
+  }, [collections, language, currentPage, pageSize]);
 
   // if (loading) {
   //   return <p>Loading data...</p>;
@@ -80,12 +90,12 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
 
   return (
     <div className="container mx-auto p-4">
-      {circulars.length === 0 && !loading && (
+      {dynamics.length === 0 && !loading && (
         <p>No data found for {collections}.</p>
       )}
 
       <ul className="space-y-2">
-        {circulars.map((item) => (
+        {dynamics.map((item) => (
           // File check is already done during processing
           <li key={item.id} className="pb-2 mb-2 border-b border-gray-200 last:border-b-0">
             <a
@@ -102,6 +112,50 @@ const DynamicsFileList: React.FC<{ collections: string, language: string }> = ({
           </li>
         ))}
       </ul>
+
+      {/* Pagination Controls */}
+      {paginationMeta && paginationMeta.pageCount > 1 && (
+        <div className="flex items-center space-x-4 mt-6 mb-4">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`p-2 rounded-full ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Previous page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+          
+          <div className="flex items-center space-x-1">
+            {Array.from({ length: paginationMeta.pageCount }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm
+                  ${currentPage === page 
+                    ? ' text-[#0099a7]' 
+                    : 'text-gray-600 hover:text-[#0099a7]'}`}
+                aria-label={`Go to page ${page}`}
+                aria-current={currentPage === page ? 'page' : undefined}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === paginationMeta.pageCount}
+            className={`p-2 rounded-full ${currentPage === paginationMeta.pageCount ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Next page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

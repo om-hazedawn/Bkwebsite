@@ -18,10 +18,29 @@ interface CircularData {
   // Add other relevant circular properties if needed
 }
 
-const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
+interface PaginationMeta {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+interface CircularsListProps {
+  initialYear: string;
+  language?: string;
+  pageSize?: number;
+}
+
+const CircularsList: React.FC<CircularsListProps> = ({ initialYear, language = 'en', pageSize = 10 }) => {
   const [circulars, setCirculars] = useState<CircularData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [paginationMeta, setPaginationMeta] = useState<PaginationMeta | null>(null);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [initialYear]);
 
   useEffect(() => {
     const fetchCirculars = async () => {
@@ -30,7 +49,7 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
       try {
         const yearToFetch = initialYear === '' ? '2025' : initialYear;
         // Always fetch all circulars, then filter based on initialYear
-        const result = await getCircularsCollections(yearToFetch); 
+        const result = await getCircularsCollections(yearToFetch, language, currentPage, pageSize); 
         console.log('Fetched circulars data:', result);
         if (result && Array.isArray(result.data)) {
           let processedCirculars = result.data.filter((c: CircularData) => c.Date && c.File);
@@ -52,6 +71,7 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
           });
 
           setCirculars(processedCirculars);
+          setPaginationMeta(result.meta?.pagination || null);
         } else {
           console.error('Fetched circulars data is not an array or is undefined:', result);
           setCirculars([]);
@@ -69,7 +89,7 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
     };
 
     fetchCirculars();
-  }, [initialYear]);
+  }, [initialYear, language, currentPage, pageSize]);
 
   if (loading) {
     return <p>Loading circulars...</p>;
@@ -104,6 +124,50 @@ const CircularsList: React.FC<{ initialYear: string }> = ({ initialYear }) => {
           </li>
         ))}
       </ul>
+
+      {/* Pagination Controls */}
+      {paginationMeta && paginationMeta.pageCount > 1 && (
+        <div className="flex items-center space-x-4 mt-6 mb-4">
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            disabled={currentPage === 1}
+            className={`p-2 rounded-full ${currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Previous page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+          
+          <div className="flex items-center space-x-1">
+            {Array.from({ length: paginationMeta.pageCount }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => setCurrentPage(page)}
+                className={`w-8 h-8 flex items-center justify-center rounded-full text-sm
+                  ${currentPage === page 
+                    ? ' text-[#0099a7]' 
+                    : 'text-gray-600 hover:text-[#0099a7]'}`}
+                aria-label={`Go to page ${page}`}
+                aria-current={currentPage === page ? 'page' : undefined}
+              >
+                {page}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            disabled={currentPage === paginationMeta.pageCount}
+            className={`p-2 rounded-full ${currentPage === paginationMeta.pageCount ? 'text-gray-400 cursor-not-allowed' : ' hover:text-[#0099a7]'}`}
+            aria-label="Next page"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
