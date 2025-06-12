@@ -4,10 +4,10 @@ import React from 'react'
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import Link from "next/link"
-import { useLanguage } from "@/contexts/language-context"
+// import { useLanguage } from "@/contexts/language-context"
 
 export default function PrivacyPolicy() {
-  const { language } = useLanguage()
+  // const { language } = useLanguage()
 
   return (
     <main className="min-h-screen bg-white">

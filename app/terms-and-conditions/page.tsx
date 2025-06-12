@@ -3,7 +3,7 @@
 import React from 'react'
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
-import { useLanguage } from "@/contexts/language-context"
+// import { useLanguage } from "@/contexts/language-context"
 
 interface Definition {
   description: string;
@@ -90,16 +90,16 @@ const termsData: TermsSection[] = [
 ];
 
 export default function TermsAndConditions() {
-  const { language } = useLanguage()
+  // const { language } = useLanguage()
 
   const isSubSectionWithDefinitions = (
-    content: any
+    content: SubSectionWithDefinitions | SubSectionWithPoints
   ): content is SubSectionWithDefinitions => {
     return 'definitions' in content;
   }
 
   const isSubSectionWithPoints = (
-    content: any
+    content: SubSectionWithDefinitions | SubSectionWithPoints
   ): content is SubSectionWithPoints => {
     return 'points' in content;
   }
