@@ -130,10 +130,10 @@ export default function Footer() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
-              <Link href="/terms" className="text-gray-600 text-sm hover:text-gray-800 cursor-pointer">
+              <Link href="/terms-and-conditions" className="text-gray-600 text-sm hover:text-gray-800 cursor-pointer">
                 {language === "en" ? "Terms and Conditions" : language === "zh-cn" ? "条款和条件" : "條款和條件"}
               </Link>
-              <Link href="/privacy" className="text-gray-600 text-sm hover:text-gray-800 cursor-pointer">
+              <Link href="/privacy-policy" className="text-gray-600 text-sm hover:text-gray-800 cursor-pointer">
                 {language === "en" ? "Privacy Policy" : language === "zh-cn" ? "隐私政策" : "隱私政策"}
               </Link>
             </div>
