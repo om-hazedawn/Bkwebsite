@@ -16,20 +16,24 @@ export default function Footer() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
             {/* About Us Column */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold mb-6 text-gray-300 hover:text-white cursor-pointer transition-colors duration-200">{t.header.aboutUs}</h4>
               <ul className="space-y-4 flex flex-col items-center text-center">
                 <li>
-                  <Link href="/about-us/who-we-are" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/about-us" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
+                    {t.header.aboutUs}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about-us?section=who-we-are" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Who We Are" : language === "zh-cn" ? "我们是谁" : "我們是誰"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about-us/milestones" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/about-us?section=milestones" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Milestones" : language === "zh-cn" ? "里程碑" : "里程碑"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about-us/our-management" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/about-us?section=management" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Our Management" : language === "zh-cn" ? "我们的管理团队" : "我們的管理團隊"}
                   </Link>
                 </li>
@@ -38,20 +42,24 @@ export default function Footer() {
 
             {/* Our Business Column */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold mb-6 text-gray-300 hover:text-white cursor-pointer transition-colors duration-200">{t.header.ourBusiness}</h4>
               <ul className="space-y-4 flex flex-col items-center text-center">
+                <li>
+                  <Link href="/our-business" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
+                  { t.header.ourBusiness}
+                  </Link>
+                </li>
                 <li>
                   <Link href="/investor-relations" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
                     {t.header.investorRelations}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/financial-reports" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/financial-reports?section=financial-reports" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Financial Reports" : language === "zh-cn" ? "财务报告" : "財務報告"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/investor-relations/announcements" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/investor-relations?section=announcements" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en"
                       ? "Announcements and Press Releases"
                       : language === "zh-cn"
@@ -60,7 +68,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/investor-relations/circulars" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/investor-relations?section=circulars" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Circulars and Notices" : language === "zh-cn" ? "通函和通知" : "通函和通知"}
                   </Link>
                 </li>
@@ -69,20 +77,24 @@ export default function Footer() {
 
             {/* Sustainability Column */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold mb-6 text-gray-300 hover:text-white cursor-pointer transition-colors duration-200">{t.header.sustainability}</h4>
               <ul className="space-y-4 flex flex-col items-center text-center">
                 <li>
-                  <Link href="/sustainability/corporate-responsibility" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/sustainability" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
+                    {t.header.sustainability}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/sustainability?section=corporate-responsibility" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Corporate Responsibility" : language === "zh-cn" ? "企业责任" : "企業責任"}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sustainability/qhse" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/sustainability?section=qhse" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     QHSE
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sustainability/corporate-newsletter" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/sustainability?section=corporate-newsletter" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
                     {language === "en" ? "Corporate Newsletter" : language === "zh-cn" ? "企业通讯" : "企業通訊"}
                   </Link>
                 </li>
@@ -91,10 +103,14 @@ export default function Footer() {
 
             {/* Careers Column */}
             <div className="text-center">
-              <h4 className="text-lg font-semibold mb-6 text-gray-300 hover:text-white cursor-pointer transition-colors duration-200">{t.header.careers}</h4>
               <ul className="space-y-4 flex flex-col items-center text-center">
+              <li>
+                  <Link href="/careers" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
+                    {t.header.careers}
+                  </Link>
+                </li>
                 <li>
-                  <Link href="/contact" className="cursor-pointer text-gray-300 hover:text-white max-w-[200px] inline-block">
+                  <Link href="/contact" className="cursor-pointer text-gray-300 hover:text-white font-semibold max-w-[200px] inline-block">
                     {t.header.contact}
                   </Link>
                 </li>

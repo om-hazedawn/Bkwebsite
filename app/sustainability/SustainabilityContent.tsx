@@ -66,6 +66,7 @@ export default function Sustainability() {
   const { language } = useLanguage();
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
   const searchParams = useSearchParams();
+  const sectionParam = searchParams.get("section");
   const selectedCollections = searchParams.get('collections');
   const convertToChineseNumerals = (year: string): string => {
     const numerals: { [key: string]: string } = {
@@ -92,8 +93,12 @@ export default function Sustainability() {
   const [QHSEData, setQHSEData] = useState<QHSEData>();
   const [newsLetterData, setNewsLetterData] = useState<NewsLetterData>();
   const [selectedSection, setSelectedSection] = useState(
-    "corporate-responsibility"
+    sectionParam || "corporate-responsibility"
   );
+
+  useEffect(() => {
+    setSelectedSection(searchParams.get("section") || "corporate-responsibility");
+  }, [searchParams]);
 
   useEffect(() => {
     const fetchSustainabilityData = async () => {

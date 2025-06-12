@@ -105,6 +105,7 @@ export default function InvestorRelations() {
   const [annualReportData, setAnnualReportData] = useState<ReportData>();
   const [interiumReportData, setInteriumReportData] = useState<ReportData>();
   const searchParams = useSearchParams();
+  const sectionParam = searchParams.get("section");
   const year = searchParams.get('year');
   const collection = searchParams.get('collections');
   const annualYearRange = searchParams.get('annualYearRange');
@@ -201,10 +202,14 @@ export default function InvestorRelations() {
   }, [language]);
 
   const cmsBaseUrl = process.env.NEXT_PUBLIC_CMS_URL || 'http://52.175.21.181';
-  const [selectedSection, setSelectedSection] = useState("financial-reports");
+  const [selectedSection, setSelectedSection] = useState(sectionParam || "financial-reports");
   const [financialReportData, setFinancialReportData] = useState<FinancialReportData>();
   const [announcementData, setAnnouncementData] = useState<AnnouncementData>();
   const [circularAndNoticeData, setCircularAndNoticeData] = useState<CircularAndNoticeData>();
+
+  useEffect(() => {
+    setSelectedSection(searchParams.get("section") || "financial-reports");
+  }, [searchParams]);
 
   useEffect(() => {
     const fetchFinancialReportData = async () => {
@@ -330,7 +335,7 @@ export default function InvestorRelations() {
           <div>
             <div className="relative max-w-[1831px] w-full h-[740px] mx-auto">
               <Image
-                src={announcementData?.data?.MainImage?.url ? cmsBaseUrl + announcementData.data.MainImage.url : ''}
+                src={cmsBaseUrl + announcementData?.data.MainImage.url}
                 alt="Aerial view of construction site"
                 fill
                 className="object-cover"
