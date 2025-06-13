@@ -34,57 +34,46 @@ export default function Foundations() {
       <Header />
 
       <section className="relative">
-        <div className="relative max-w-[1690px] w-full h-[744px] mx-auto">
+        <div className="relative max-w-[1690px] w-full h-[400px] sm:h-[500px] md:h-[640px] lg:h-[740px] mx-auto overflow-hidden">
           <Image
             src="/our-business/heroimageofbusiness.jpg"
             alt="Foundations Hero"
             fill
-            className="object-cover"
+            sizes="100vw"
+            className="object-cover object-center transition-all duration-300"
             priority
           />
           <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-20"></div>
 
-          {/* Overlay boxes - First Row */}
-          <div className="absolute top-0 left-0 right-0 w-full">
-            <div className="flex justify-center">
-              {/* First box - Our Business */}
-              <div className="w-[350px] h-[372px] pl-8 pt-8 text-white">
+          <div className="absolute inset-0">
+            <div className="hidden min-[750px]:grid grid-cols-3 grid-rows-2 gap-0 w-full h-full max-w-[1110px] mx-auto">
+              {/* First Row */}
+              <div className="w-full h-full flex items-start pt-8 pl-8 text-white">
                 <h3 className="text-3xl font-semibold">Our Business</h3>
               </div>
 
               {/* Second box - Foundations */}
-              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5]/80 text-black">
+              <div className="relative w-full h-full flex items-end pl-8 pb-10 bg-[#D5D4D5] text-black">
                 <h3 className="text-3xl font-semibold">Foundations</h3>
-                
               </div>
 
-              {/* Third box - Black transparent */}
-              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start">
-                <h3 className="text-3xl font-semibold text-white"></h3>
-              </div>
-            </div>
-          </div>
+              {/* Third box - Empty */}
+              <div className="relative w-full h-full"></div>
 
-          {/* Overlay boxes - Second Row */}
-          <div className="absolute top-[372px] left-0 right-0 w-full">
-            <div className="flex justify-center">
-              {/* Fourth box - Back to Business */}
+              {/* Second Row */}
               <Link href="/our-business">
-                <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start bg-[#D5D4D5] text-[#595957] transition-colors duration-300 hover:bg-[#D5D4D5]/60">
-                  <h3 className="text-[1.50rem] font-semibold">◄ back to Our Business</h3>
-                 
+                <div className="relative w-full h-full flex items-end pl-8 pb-10 bg-[#D5D4D5] text-[#595957] transition-colors duration-300 hover:bg-[#D5D4D5]/60">
+                  <h3 className="text-[1.50rem] font-semibold">
+                    ◄ back to Our Business
+                  </h3>
                 </div>
               </Link>
 
-              {/* Fifth box - Black transparent */}
-              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start">
-                <h3 className="text-3xl font-semibold text-white"></h3>
-              </div>
+              {/* Fifth box - Empty */}
+              <div className="relative w-full h-full"></div>
 
-              {/* Sixth box - Black transparent */}
-              <div className="relative w-[350px] h-[372px] pl-8 pb-10 flex items-end justify-start">
-                <h3 className="text-3xl font-semibold text-white"></h3>
-              </div>
+              {/* Sixth box - Empty */}
+              <div className="relative w-full h-full"></div>
             </div>
           </div>
         </div>

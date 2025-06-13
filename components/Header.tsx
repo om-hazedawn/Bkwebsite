@@ -156,45 +156,45 @@ export default function Header() {
                 </svg>
               </button>
             </div>
-            <nav className="flex flex-col px-4 py-2">
+            <nav className="flex flex-col px-4">
               <Link
                 href="/about-us"
-                className={`py-2 font-bold transition-colors ${pathname === '/about-us' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/about-us' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.aboutUs}
               </Link>
               <Link
                 href="/our-business"
-                className={`py-2 font-bold transition-colors ${pathname === '/our-business' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/our-business' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.ourBusiness}
               </Link>
               <Link
                 href="/investor-relations"
-                className={`py-2 font-bold transition-colors ${pathname === '/investor-relations' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/investor-relations' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.investorRelations}
               </Link>
               <Link
                 href="/sustainability"
-                className={`py-2 font-bold transition-colors ${pathname === '/sustainability' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/sustainability' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.sustainability}
               </Link>
               <Link
                 href="/careers"
-                className={`py-2 font-bold transition-colors ${pathname === '/careers' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/careers' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.careers}
               </Link>
               <Link
                 href="/contact"
-                className={`py-2 font-bold transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-white'}`}
+                className={`pt-2 font-bold transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-white'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.header.contact}
