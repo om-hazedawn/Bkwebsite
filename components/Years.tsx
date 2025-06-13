@@ -24,7 +24,7 @@ const Years: React.FC<YearsProps> = ({ years, basePath = '' }) => {
       {years.map((year, index) => (
         <li key={year || index}>
           <Link
-            href={`${basePath}&year=${year}`}
+            href={`${basePath}?year=${year}`}
             className={`text-xl text-[#818182] ${selectedYear === year ? 'font-black flex items-center' : 'font-extralight hover:font-black'}`}
             scroll={false}
           >
