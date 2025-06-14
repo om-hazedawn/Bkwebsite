@@ -373,7 +373,7 @@ export default function Sustainability() {
                   {newsLetterData?.data.PageTitle}
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] justify-center">
-                  <Years years={newsLetterData?.data.Years.years || []} basePath="/sustainability?section=corporate-newsletter" />
+                  <Years years={newsLetterData?.data.Years.years || []} basePath="/sustainability?section=corporate-newsletter&" />
                   <div>
                     <NewsLettersList
                       initialYear={displayYear || '2021'} language={language}

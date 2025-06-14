@@ -108,7 +108,7 @@ export default function WhatsNew() {
           <div className="grid grid-cols-1 md:grid-cols-2 justify-center">
             <div>
               <h2 className="text-2xl font-bold text-[#0099A7] mb-6">What&apos;s New</h2>
-              <Years years={['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015']} basePath="/whats-new" />
+              <Years years={['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018', '2017', '2016', '2015']} basePath="/whats-new?" />
             </div>
             <div className="result_box w-full">
               <NewsList initialYear={year || ''} language={language} key={year || language} />
